@@ -49,10 +49,6 @@ public abstract class Model {
 	protected Value get(String key) {
 		return data.get(key);
 	}
-	private String getDbFileName() {
-		String[] names = getClass().getName().split("\\.");
-		return names[names.length - 1];
-	}
 	public void save() throws FileNotFoundException {
 		saveData();
 		Database.save(getClass(), this);

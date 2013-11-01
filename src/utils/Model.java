@@ -18,9 +18,9 @@ public abstract class Model {
 			String[] keyValue = pair.split("=");
 			if (keyValue[0].equals("id")) {
 				id = Integer.parseInt(keyValue[1]);
-				continue;
+			} else {
+				data.put(keyValue[0], new Value(keyValue[1]));
 			}
-			data.put(keyValue[0], new Value(keyValue[1]));
 		}
 		loadData();
 	}

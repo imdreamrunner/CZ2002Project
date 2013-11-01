@@ -3,7 +3,6 @@ package utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.lang.reflect.InvocationTargetException;
 import java.sql.Date;
 import java.util.List;
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ public class Database {
 		String[] names = classType.getName().split("\\.");
 		return new File("db/" + names[names.length - 1] + ".txt");
 	}
+	@SuppressWarnings("rawtypes")
 	public static List getAll(Class<? extends Model> classType) throws FileNotFoundException {
 		List<Model> models = new ArrayList<Model>();
 		Scanner scanner = new Scanner(getDbFile(classType));
@@ -43,6 +43,7 @@ public class Database {
 	
 	static void save(Class<? extends Model> classType, Model Model) throws FileNotFoundException {
 		boolean found = false;
+		@SuppressWarnings("unchecked")
 		List<Model> Models = getAll(classType);
 		for (int i = 0; i < Models.size(); i++) {
 			Model temp = Models.get(i);

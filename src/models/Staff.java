@@ -33,6 +33,7 @@ public class Staff extends Model {
 	}
 	
 	public static List<Staff> getAllStaff() throws FileNotFoundException {
+		@SuppressWarnings("unchecked")
 		List<Staff> staffs = Database.getAll(Staff.class);
 		return staffs;
 	}

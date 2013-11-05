@@ -28,13 +28,13 @@ public class Staff extends Model {
 	public String getPassword() {
 		return password;
 	}
-	public static List<Staff> getAllStaff() {
+	public static List<Staff> getAll() {
 		@SuppressWarnings("unchecked")
 		List<Staff> staffs = Database.getAll(Staff.class);
 		return staffs;
 	}
-	public static Staff getStaffByUsername(String username) {
-		List<Staff> staffs = getAllStaff();
+	public static Staff getByUsername(String username) {
+		List<Staff> staffs = getAll();
 		for (Staff staff : staffs) {
 			if (staff.getUsername().equals(username)) {
 				return staff;

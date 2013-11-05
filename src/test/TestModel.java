@@ -12,7 +12,7 @@ public class TestModel {
 		staff2.setUsername("admin2");
 		staff2.setPassword("password2");
 		staff2.save();
-		Staff test = Staff.getStaffByUsername("admin");
+		Staff test = Staff.getByUsername("admin");
 		System.out.println(test.getPassword());
 		staff.delete();
 		staff2.delete();

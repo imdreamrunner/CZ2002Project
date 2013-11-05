@@ -39,6 +39,9 @@ public abstract class Model {
 	protected void setId(int theId) {
 		id = theId;
 	}
+	protected void set(String key, Integer value) {
+		set(key, new Value(value.toString()));
+	}
 	protected void set(String key, String value) {
 		set(key, new Value(value));
 	}

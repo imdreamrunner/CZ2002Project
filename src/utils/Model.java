@@ -1,6 +1,5 @@
 package utils;
 
-import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -54,6 +53,6 @@ public abstract class Model {
 		Database.save(getClass(), this);
 	}
 	public void delete() {
-		
+		Database.delete(getClass(), this);
 	}
 }

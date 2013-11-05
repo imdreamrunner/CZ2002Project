@@ -8,8 +8,6 @@ import utils.Model;
 public class Staff extends Model {
 	private String username;
 	private String password;
-	public Staff() {
-	}
 	public void loadData() {
 		username = get("username").getString();
 		password = get("password").getString();
@@ -30,13 +28,11 @@ public class Staff extends Model {
 	public String getPassword() {
 		return password;
 	}
-	
 	public static List<Staff> getAllStaff() {
 		@SuppressWarnings("unchecked")
 		List<Staff> staffs = Database.getAll(Staff.class);
 		return staffs;
 	}
-
 	public static Staff getStaffByUsername(String username) {
 		List<Staff> staffs = getAllStaff();
 		for (Staff staff : staffs) {

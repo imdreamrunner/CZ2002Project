@@ -3,17 +3,15 @@ package models;
 import utils.Model;
 
 public class Cineplex extends Model {
-
-	@Override
+	private String name;
+	private String location;
 	public void loadData() {
-		// TODO Auto-generated method stub
-		
+		name = get("name").getString();
+		location = get("location").getString();
 	}
-
-	@Override
 	public void saveData() {
-		// TODO Auto-generated method stub
-		
+		set("name", name);
+		set("location", location);
 	}
 
 }

@@ -58,4 +58,12 @@ public abstract class Model {
 	public void delete() {
 		Database.delete(getClass(), this);
 	}
+	@Override
+	public boolean equals(Object model) {
+		if (model instanceof Model) {
+			return id == ((Model)model).getId();
+		} else {
+			return false;
+		}
+	}
 }

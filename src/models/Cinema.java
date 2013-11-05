@@ -1,7 +1,9 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import utils.Database;
 import utils.Model;
 
 public class Cinema extends Model {
@@ -27,7 +29,18 @@ public class Cinema extends Model {
 	public String getSeatPlan() {
 		return seatPlan;
 	}
+	@SuppressWarnings("unchecked")
+	public static List<Cinema> getAll() {
+		return Database.getAll(Cinema.class);
+	}
 	public static List<Cinema> getAllByCineplex(Cineplex cineplex) {
-		return null;
+		List<Cinema> cinemas = getAll();
+		List<Cinema> selected = new ArrayList<Cinema>();
+		for (Cinema cinema : cinemas) {
+			if (cinema.getCineplex().equals(cineplex)) {
+				selected.add(cinema);
+			}
+		}
+		return selected;
 	}
 }

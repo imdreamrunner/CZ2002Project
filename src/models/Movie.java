@@ -1,5 +1,8 @@
 package models;
 
+import java.util.List;
+
+import utils.Database;
 import utils.Model;
 
 public class Movie extends Model {
@@ -42,5 +45,17 @@ public class Movie extends Model {
 	}
 	public void setStatus(int theStatus) {
 		status = theStatus;
+	}
+	@SuppressWarnings("unchecked")
+	public static List<Movie> getAll() {
+		return Database.getAll(Movie.class);
+	}
+	public static Movie getOne(int id) {
+		List<Movie> movies = getAll();
+		for (Movie movie : movies) {
+			if (movie.getId() == id)
+				return movie;
+		}
+		return null;
 	}
 }

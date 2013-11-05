@@ -49,8 +49,11 @@ public abstract class Model {
 	protected Value get(String key) {
 		return data.get(key);
 	}
-	public void save() throws FileNotFoundException {
+	public void save() {
 		saveData();
 		Database.save(getClass(), this);
+	}
+	public void delete() {
+		
 	}
 }

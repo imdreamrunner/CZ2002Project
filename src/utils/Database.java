@@ -14,58 +14,84 @@ public class Database {
 		return new File("db/" + names[names.length - 1] + ".txt");
 	}
 	@SuppressWarnings("rawtypes")
-	public static List getAll(Class<? extends Model> classType) throws FileNotFoundException {
-		List<Model> models = new ArrayList<Model>();
-		Scanner scanner = new Scanner(getDbFile(classType));
-		while (scanner.hasNext()) {
-			try {
-				Model model = classType.newInstance();
-				model.setStringData(scanner.nextLine());
-				models.add(model);
-			} catch (InstantiationException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalAccessException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IllegalArgumentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	public static List getAll(Class<? extends Model> classType) {
+		try {
+			List<Model> models = new ArrayList<Model>();
+			Scanner scanner = new Scanner(getDbFile(classType));
+			while (scanner.hasNext()) {
+				try {
+					Model model = classType.newInstance();
+					model.setStringData(scanner.nextLine());
+					models.add(model);
+				} catch (InstantiationException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalAccessException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IllegalArgumentException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (SecurityException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// new Model(scanner.nextLine());
 			}
-			// new Model(scanner.nextLine());
+			scanner.close();
+			return models;
+		} catch (FileNotFoundException e) {
+			return null;
 		}
-		scanner.close();
-		return models;
 	}
 	
-	static void save(Class<? extends Model> classType, Model Model) throws FileNotFoundException {
-		boolean found = false;
-		@SuppressWarnings("unchecked")
-		List<Model> Models = getAll(classType);
-		for (int i = 0; i < Models.size(); i++) {
-			Model temp = Models.get(i);
-			if (temp.getId() == Model.getId()) {
-				found = true;
-				Models.set(i, Model);
+	static void save(Class<? extends Model> classType, Model Model) {
+		try {
+			boolean found = false;
+			@SuppressWarnings("unchecked")
+			List<Model> Models = getAll(classType);
+			for (int i = 0; i < Models.size(); i++) {
+				Model temp = Models.get(i);
+				if (temp.getId() == Model.getId()) {
+					found = true;
+					Models.set(i, Model);
+				}
 			}
-		}
-		if (!found) {
-			if (Models.size() > 0) {
-				Model.setId(Models.get(Models.size() - 1).getId() + 1);
-			} else {
-				Model.setId(1);
+			if (!found) {
+				if (Models.size() > 0) {
+					Model.setId(Models.get(Models.size() - 1).getId() + 1);
+				} else {
+					Model.setId(1);
+				}
+				System.out.println("new id " + Model.getId());
+				Models.add(Model);
 			}
-			System.out.println("new id " + Model.getId());
-			Models.add(Model);
+			PrintWriter writer = new PrintWriter(getDbFile(classType));
+			for (Model temp : Models) {
+				writer.println(temp.getStringData());
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("[FileNotFound]" + e.getMessage());
+			System.exit(0);
 		}
-		PrintWriter writer = new PrintWriter(getDbFile(classType));
-		for (Model temp : Models) {
-			writer.println(temp.getStringData());
+	}
+	
+	public static void delete(Class<? extends Model> classType, Model Model) {
+		try {
+			@SuppressWarnings("unchecked")
+			List<Model> Models = getAll(classType);
+			PrintWriter writer = new PrintWriter(getDbFile(classType));
+			for (Model temp : Models) {
+				if (temp.getId() != Model.getId()) {
+					writer.println(temp.getStringData());
+				}
+			}
+			writer.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("[FileNotFound]" + e.getMessage());
+			System.exit(0);
 		}
-		writer.close();
 	}
 	
 	public static class Value {

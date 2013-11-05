@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import models.Staff;
 
 public class TestModel {
-	public static void main(String[] args) throws FileNotFoundException {
+	public static void main(String[] args) {
 		Staff staff = new Staff();
 		staff.setUsername("admin");
 		staff.setPassword("password");

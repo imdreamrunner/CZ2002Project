@@ -1,8 +1,8 @@
 package views;
 
 
-import Controller.LoginController;
-import Controller.SystemController;
+import controllers.LoginController;
+import controllers.SystemController;
 
 import java.util.Scanner;
 

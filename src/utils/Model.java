@@ -1,5 +1,6 @@
 package utils;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -44,6 +45,9 @@ public abstract class Model {
 	}
 	protected void set(String key, String value) {
 		set(key, new Value(value));
+	}
+	protected void set(String key, Date value) {
+		set(key, new Value(((Long)value.getTime()).toString()));
 	}
 	protected void set(String key, Value value) {
 		data.put(key, value);

@@ -33,6 +33,13 @@ public class Cinema extends Model {
 	public static List<Cinema> getAll() {
 		return Database.getAll(Cinema.class);
 	}
+	public static Cinema getOne() {
+		List<Cinema> cinemas = getAll();
+		for (Cinema cinema : cinemas) {
+			return cinema;
+		}
+		return null;
+	}
 	public static List<Cinema> getAllByCineplex(Cineplex cineplex) {
 		List<Cinema> cinemas = getAll();
 		List<Cinema> selected = new ArrayList<Cinema>();

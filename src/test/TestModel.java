@@ -1,7 +1,5 @@
 package test;
 
-import java.io.FileNotFoundException;
-
 import models.Staff;
 
 public class TestModel {
@@ -16,5 +14,7 @@ public class TestModel {
 		staff2.save();
 		Staff test = Staff.getStaffByUsername("admin");
 		System.out.println(test.getPassword());
+		staff.delete();
+		staff2.delete();
 	}
 }

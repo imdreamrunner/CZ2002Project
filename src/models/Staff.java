@@ -32,13 +32,13 @@ public class Staff extends Model {
 		return password;
 	}
 	
-	public static List<Staff> getAllStaff() throws FileNotFoundException {
+	public static List<Staff> getAllStaff() {
 		@SuppressWarnings("unchecked")
 		List<Staff> staffs = Database.getAll(Staff.class);
 		return staffs;
 	}
 
-	public static Staff getStaffByUsername(String username) throws FileNotFoundException {
+	public static Staff getStaffByUsername(String username) {
 		List<Staff> staffs = getAllStaff();
 		for (Staff staff : staffs) {
 			if (staff.getUsername().equals(username)) {

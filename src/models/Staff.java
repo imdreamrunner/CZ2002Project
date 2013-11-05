@@ -1,6 +1,5 @@
 package models;
 
-import java.io.FileNotFoundException;
 import java.util.List;
 
 import utils.Database;

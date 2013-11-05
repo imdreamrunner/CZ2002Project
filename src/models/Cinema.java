@@ -33,10 +33,11 @@ public class Cinema extends Model {
 	public static List<Cinema> getAll() {
 		return Database.getAll(Cinema.class);
 	}
-	public static Cinema getOne() {
+	public static Cinema getOne(int id) {
 		List<Cinema> cinemas = getAll();
 		for (Cinema cinema : cinemas) {
-			return cinema;
+			if (cinema.getId() == id)
+				return cinema;
 		}
 		return null;
 	}

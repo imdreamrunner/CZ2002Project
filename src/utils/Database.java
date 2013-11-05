@@ -45,29 +45,29 @@ public class Database {
 		}
 	}
 	
-	static void save(Class<? extends Model> classType, Model Model) {
+	static void save(Class<? extends Model> classType, Model model) {
 		try {
 			boolean found = false;
 			@SuppressWarnings("unchecked")
-			List<Model> Models = getAll(classType);
-			for (int i = 0; i < Models.size(); i++) {
-				Model temp = Models.get(i);
-				if (temp.getId() == Model.getId()) {
+			List<Model> models = getAll(classType);
+			for (int i = 0; i < models.size(); i++) {
+				Model temp = models.get(i);
+				if (temp.getId() == model.getId()) {
 					found = true;
-					Models.set(i, Model);
+					models.set(i, model);
 				}
 			}
 			if (!found) {
-				if (Models.size() > 0) {
-					Model.setId(Models.get(Models.size() - 1).getId() + 1);
+				if (models.size() > 0) {
+					model.setId(models.get(models.size() - 1).getId() + 1);
 				} else {
-					Model.setId(1);
+					model.setId(1);
 				}
-				System.out.println("new id " + Model.getId());
-				Models.add(Model);
+				System.out.println("new id " + model.getId());
+				models.add(model);
 			}
 			PrintWriter writer = new PrintWriter(getDbFile(classType));
-			for (Model temp : Models) {
+			for (Model temp : models) {
 				writer.println(temp.getStringData());
 			}
 			writer.close();
@@ -77,13 +77,13 @@ public class Database {
 		}
 	}
 	
-	public static void delete(Class<? extends Model> classType, Model Model) {
+	public static void delete(Class<? extends Model> classType, Model model) {
 		try {
 			@SuppressWarnings("unchecked")
-			List<Model> Models = getAll(classType);
+			List<Model> models = getAll(classType);
 			PrintWriter writer = new PrintWriter(getDbFile(classType));
-			for (Model temp : Models) {
-				if (temp.getId() != Model.getId()) {
+			for (Model temp : models) {
+				if (temp.getId() != model.getId()) {
 					writer.println(temp.getStringData());
 				}
 			}

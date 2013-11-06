@@ -30,6 +30,11 @@ public class ListingController {
 		return movieList;
 	}
 	
+	public static List<Movie> getMovieByCineplex(int cineplexId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		return getMovieByCineplex(cineplex);
+	}
+	
 	public static List<Cinema> getCinemaByCineplex(Cineplex cineplex) {
 		List<Cinema> cinemaList = Cinema.getAll();
 		List<Cinema> resultList = new ArrayList<Cinema>();
@@ -39,6 +44,11 @@ public class ListingController {
 			}
 		}
 		return resultList;
+	}
+	
+	public static List<Cinema> getCinemaByCineplex(int cineplexId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		return getCinemaByCineplex(cineplex);
 	}
 	
     public static List<Movie> getMovieList() {

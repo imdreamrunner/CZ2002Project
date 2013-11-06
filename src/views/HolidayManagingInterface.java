@@ -35,7 +35,7 @@ public class HolidayManagingInterface {
         System.out.println("*****HOLIDAY LIST*****");
         List<Holiday> holidayList = SystemController.getHolidayList();
         for (Holiday holiday : holidayList) {
-        	System.out.println(holiday.getId() + " " + holiday.getMonth() + " " + holiday.getDay());
+        	System.out.println(holiday.getId() + " Month = " + holiday.getMonth() + " Day = " + holiday.getDay());
         }
         System.out.println("*****END OF HOLIDAY LIST*****");
     }

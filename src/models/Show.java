@@ -21,6 +21,20 @@ public class Show extends Model {
 		set("cinemaId", cinema.getId());
 		set("showTime", showTime);
 	}
+	public Show(Movie movie, Cinema cinema, Date showTime) {
+		setMovie(movie);
+		setCinema(cinema);
+		setShowTime(showTime);
+		String seatPlan = cinema.getSeatPlan();
+		String[] seatNames = seatPlan.split(" ");
+		for (String seatName : seatNames) {
+			Seat seat = new Seat();
+			seat.setName(seatName);
+			seat.setShow(this);
+			seat.setStatus(true);
+			seat.save();
+		}
+	}
 	public Movie getMovie() {
 		return movie;
 	}

@@ -26,12 +26,12 @@ public class ShowManagingInterface {
         }
 	}
 	public static void addShow() {
-		
+		listMovie();
 	}
 	public static void deleteShow() {
 		
 	}
-	public void listMovie() {
+	public static void listMovie() {
 		List<Movie> movieList = ListingController.getMovieList();
 		for (Movie movie : movieList) {
 			System.out.println("" + movie.getId() + " " + movie.getName());

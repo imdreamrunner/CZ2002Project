@@ -8,12 +8,14 @@ public class Seat extends Model {
 	private Show show;
 	public void loadData() {
 		name = get("name").getString();
+		status = get("status").getBoolean();
 		setShow(get("showId").getInteger());
 	}
 	@Override
 	public void saveData() {
-		// TODO Auto-generated method stub
-		
+		set("name", name);
+		set("status", status);
+		set("showId", show.getId());
 	}
 	public String getName() {
 		return name;

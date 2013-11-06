@@ -3,6 +3,7 @@ package views;
 import java.util.List;
 import java.util.Scanner;
 
+import controllers.ListingController;
 import controllers.SystemController;
 import models.Cineplex;
 import models.Movie;
@@ -31,7 +32,7 @@ public class ShowManagingInterface {
 		
 	}
 	public void listMovie() {
-		List<Movie> movieList = SystemController.getMovieList();
+		List<Movie> movieList = ListingController.getMovieList();
 		for (Movie movie : movieList) {
 			System.out.println("" + movie.getId() + " " + movie.getName());
 		}

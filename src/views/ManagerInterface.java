@@ -34,9 +34,19 @@ public class ManagerInterface {
         while (choice<6) {
             switch (choice) {
                 case 1: //add movie
+                	/*
+                	 * 	private String name;
+						private String type;
+						private String rating;
+						private int status;
+                	 */
                     System.out.println("Enter movie name: ");
                     String newMovieName = scanner.next();
-                    boolean success = SystemController.addMovie(newMovieName);
+                    System.out.println("Enter movie type: ");
+                    String newMovieType = scanner.next();
+                    System.out.println("Enter movie status: 1. now showing; 2. coming soon;");
+                    int newMovieStatus = scanner.nextInt();
+                    boolean success = SystemController.addMovie(newMovieName,newMovieType,newMovieStatus);
                     if (success) System.out.println("Movie added!");
                     else System.out.println("Error!");
                     break;

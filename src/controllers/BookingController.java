@@ -15,7 +15,7 @@ public class BookingController {
 	    	if (seat.getStatus()==false){
 	    		seat.setName(customer.getName());
 	    		seat.setStatus(true);
-	        	seat.saveData();
+	        	seat.save();
 	        	return true;
 	    	}else
 	    		return false;

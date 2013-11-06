@@ -43,6 +43,9 @@ public class Cinema extends Model {
 		Cineplex cineplex = Cineplex.getOne(cineplexId);
 		setCineplex(cineplex);
 	}
+	public void setSeatPlan(String theSeatPlan) {
+		seatPlan = theSeatPlan;
+	}
 	public void setCinemaClass(int theCinemaClass) {
 		cinemaClass = theCinemaClass;
 	}

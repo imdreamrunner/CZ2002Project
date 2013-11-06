@@ -1,11 +1,12 @@
 package test;
 
+import models.Cinema;
 import models.Cineplex;
 import models.Staff;
 
 public class TestModel {
 	public static void main(String[] args) {
-		testCineplex();
+		testCinema();
 	}
 	
 	public static void testStaff() {
@@ -27,5 +28,14 @@ public class TestModel {
 		Cineplex cineplex = new Cineplex();
 		cineplex.setName("Apple");
 		cineplex.save();
+	}
+	
+	public static void testCinema() {
+		Cinema cinema = new Cinema();
+		cinema.setCinemaCode("1");
+		cinema.setCineplex(1);
+		cinema.setCinemaClass(1);
+		cinema.setSeatPlan("A1 A2 A3 B2 B3");
+		cinema.save();
 	}
 }

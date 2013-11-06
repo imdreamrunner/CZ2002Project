@@ -44,6 +44,9 @@ public class Show extends Model {
 	public Date getShowTime() {
 		return showTime;
 	}
+	public List<Seat> getSeats() {
+		return Seat.getAllByShow(this);
+	}
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}

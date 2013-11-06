@@ -62,6 +62,9 @@ public class ManagerInterface {
                     else System.out.println("Error!");
                     break;
                     
+                case 3:
+                	ShowManagingInterface.main();
+                    break;
                 case 4: //set price
                 	PriceManagingInterface.main();
                     break;

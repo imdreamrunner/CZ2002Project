@@ -1,7 +1,10 @@
 package models;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import utils.Database;
 import utils.Model;
 
 public class Show extends Model {
@@ -41,5 +44,29 @@ public class Show extends Model {
 	}
 	public void setShowTime(Date showTime) {
 		this.showTime = showTime;
+	}
+	@SuppressWarnings("unchecked")
+	public static List<Show> getAll() {
+		return Database.getAll(Show.class);
+	}
+	public static List<Show> getAllByMovie(Movie movie) {
+		List<Show> shows = getAll();
+		List<Show> selected = new ArrayList<Show>();
+		for (Show show : shows) {
+			if (show.getMovie().equals(movie)) {
+				selected.add(show);
+			}
+		}
+		return selected;
+	}
+	public static Show getOne(int id) {
+		List<Show> shows = getAll();
+		for (Show show : shows) {
+			if (show.getId() == id) {
+				return show;
+			}
+		}
+		return null;
+		
 	}
 }

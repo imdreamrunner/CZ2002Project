@@ -6,7 +6,6 @@ import controllers.SystemController;
 import java.util.List;
 import java.util.Scanner;
 
-import models.Holiday;
 import models.Movie;
 
 

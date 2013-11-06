@@ -10,6 +10,7 @@ public class Cinema extends Model {
 	private String cinemaCode;
 	private Cineplex cineplex;
 	private String seatPlan;
+	private int cinemaClass;
 	public void loadData() {
 		cinemaCode = get("cinemaCode").getString();
 		cineplex = Cineplex.getOne(get("cineplexId").getInteger());
@@ -28,6 +29,22 @@ public class Cinema extends Model {
 	}
 	public String getSeatPlan() {
 		return seatPlan;
+	}
+	public int getCinemaClass() {
+		return cinemaClass;
+	}
+	public void setCinemaCode(String theCinemaCode) {
+		cinemaCode = theCinemaCode;
+	}
+	public void setCineplex(Cineplex theCineplex) {
+		cineplex = theCineplex;
+	}
+	public void setCineplex(int cineplexId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		setCineplex(cineplex);
+	}
+	public void setCinemaClass(int theCinemaClass) {
+		cinemaClass = theCinemaClass;
 	}
 	@SuppressWarnings("unchecked")
 	public static List<Cinema> getAll() {

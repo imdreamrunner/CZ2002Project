@@ -51,11 +51,10 @@ public class ManagerInterface {
                     break;
                     
                 case 2: //update movie details
-                	
                 	displayMovieList();
                     System.out.print("Enter movie id: ");
                     int movieId = scanner.nextInt();
-                    System.out.print("Enter filed number to edit: ");
+                    System.out.print("Enter filed number to edit: [Name,Type,Satus] ");
                     String key = scanner.next();
                     System.out.print("Enter new value: ");
                     String value = scanner.next();

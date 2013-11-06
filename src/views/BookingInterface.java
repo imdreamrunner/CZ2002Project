@@ -1,8 +1,10 @@
 package views;
+import controllers.BookingController;
 import controllers.SystemController;
 import models.Customer;
 import models.Show;
 import models.Movie;
+
 import java.util.Scanner;
 
 public class BookingInterface {
@@ -10,7 +12,7 @@ public class BookingInterface {
     	displayMenu();
         Scanner scanner = new Scanner(System.in);
         int showId = 0, seatId = 0, result=-1;
-        Customer customer= new Customer();
+        Customer customer= null;
         System.out.println("Please enter the show id for booking: ");
         showId = scanner.nextInt();
         displaySeats(showId);
@@ -18,8 +20,8 @@ public class BookingInterface {
         seatId = scanner.nextInt();
         inputUserInfo(customer);
         displayBookingInfor(showId);
-        getUserInfo(customer);
-        result = controllers.BookingController.createBooking(showId, seatId, customer);
+        inputUserInfo(customer);
+        result = BookingController.createBooking(showId, seatId, customer);
         displayBookingResult(result);
     }
 
@@ -30,14 +32,14 @@ public class BookingInterface {
     
     public static void displayBookingInfor(int showId){
     	System.out.println("***** Movie Info *****");
-    	Show show = new Show();
-    	Movie movie = new Movie();
+    	Show show = null;
+    	Movie movie = null;
     	show = models.Show.getOne(showId);
-    	movie = Show.getMovie();
-        System.out.printf("Movie name: "+ Movie.getName());
-        System.out.printf("Cineplex: "+ Movie.getCinema().getCineplex().getname());
-        System.out.printf("Cinema: "+ Movie.getCinema().getCinemaCode());
-        System.out.printf("Date: "+ Show.getShowTime().getTime());
+    	movie = show.getMovie();
+        System.out.printf("Movie name: "+ movie.getName());
+        System.out.printf("Cineplex: "+ show.getCinema().getCineplex().getName());
+        System.out.printf("Cinema: "+ show.getCinema().getCinemaCode());
+        System.out.printf("Date: "+ show.getShowTime().getTime());
     }
     public static void displaySeats(int showId){
     	int[] seats;
@@ -58,10 +60,10 @@ public class BookingInterface {
     	System.out.println("***** Enter Customer Info *****");
     	System.out.println("Please enter your mobile number: ");
     	mobile = scanner.nextInt();
-    	while (Customer.getOneByMobile() != null){
-    		customer = 	Customer.getOneByMobile();
+    	while (Customer.getOneByMobile(100) != null){
+    		customer = 	Customer.getOneByMobile(100);
     	}customer.setMobile(mobile);
-    	String name, email;
+    	String name = null, email = null;
     	System.out.println("Please enter your name: ");
     	customer.setName(name);
     	System.out.println("Please enter your email address: ");

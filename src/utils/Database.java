@@ -120,5 +120,9 @@ public class Database {
 			long timestamp = getLong();
 			return new Date(timestamp);
 		}
+		public boolean getBoolean() {
+			int number = getInteger();
+			return number == 1;
+		}
 	}
 }

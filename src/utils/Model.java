@@ -49,6 +49,10 @@ public abstract class Model {
 	protected void set(String key, Date value) {
 		set(key, new Value(((Long)value.getTime()).toString()));
 	}
+	protected void set(String key, boolean value) {
+		Integer number = value ? 1 : 0;
+		set(key, new Value(number.toString()));
+	}
 	protected void set(String key, Value value) {
 		data.put(key, value);
 	}

@@ -24,13 +24,35 @@ public class Booking extends Model{
 		set("bookingStatus", bookingStatus);
 		set("customerId", customer.getId());
 	}
-
+	
+	public void setTID(String TID) {
+		this.TID = TID;
+	}
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public void setBookingStatus(String bookingStatus) {
+		this.bookingStatus = bookingStatus;
+	}	
 	public void setCustomer(int customerId) {
 		Customer customer = Customer.getOneById(customerId);
 		setCustomer(customer);
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	
+	public String getTID() {
+		return TID;
+	}
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+	public String getBookingStatus() {
+		return bookingStatus;
+	}
+	public Customer getCustomer() {
+		return customer;
 	}
 	
 	public static Booking getOneById(int id) {
@@ -45,5 +67,4 @@ public class Booking extends Model{
 	public static List<Booking> getAll() {
 		return Database.getAll(Booking.class);
 	}
-	
 }

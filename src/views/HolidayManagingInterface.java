@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import controllers.SystemController;
+import controllers.ListingController;
 import models.Holiday;
 
 public class HolidayManagingInterface {
@@ -33,7 +34,7 @@ public class HolidayManagingInterface {
         
     public static void displayHolidayList() {
         System.out.println("*****HOLIDAY LIST*****");
-        List<Holiday> holidayList = SystemController.getHolidayList();
+        List<Holiday> holidayList = ListingController.getHolidayList();
         for (Holiday holiday : holidayList) {
         	System.out.println(holiday.getId() + " Month = " + holiday.getMonth() + " Day = " + holiday.getDay());
         }

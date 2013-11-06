@@ -1,9 +1,11 @@
 package controllers;
 
 import models.Cineplex;
+import models.Holiday;
 import models.Movie;
 import models.Show;
 import models.Cinema;
+import models.TicketPrice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,4 +40,19 @@ public class ListingController {
 		}
 		return resultList;
 	}
+	
+    public static List<Movie> getMovieList() {
+    	List<Movie> movieList = Movie.getAll();
+    	return movieList;
+    }
+    
+    public static List<TicketPrice> getPriceList() {
+    	List<TicketPrice> priceList = TicketPrice.getAll();
+    	return priceList;
+    }
+    
+    public static List<Holiday> getHolidayList() {
+    	List<Holiday> holidayList = Holiday.getAll();
+    	return holidayList;
+    }
 }

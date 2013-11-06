@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import controllers.SystemController;
+import controllers.ListingController;
 import models.TicketPrice;
 
 public class PriceManagingInterface {
@@ -41,7 +42,7 @@ public class PriceManagingInterface {
 	
     public static void displayPriceList() {
     	System.out.println("*****PRICE LIST*****");
-    	List<TicketPrice> priceList = SystemController.getPriceList();
+    	List<TicketPrice> priceList = ListingController.getPriceList();
     	for (TicketPrice tp : priceList) {
     		System.out.println(tp.getId() + " " + tp.getKey() + " " + (tp.getValue()/100) + "." + (tp.getValue()%100));
     	}

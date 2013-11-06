@@ -2,6 +2,7 @@ package views;
 
 import controllers.LoginController;
 import controllers.SystemController;
+import controllers.ListingController;
 
 import java.util.List;
 import java.util.Scanner;
@@ -91,7 +92,7 @@ public class ManagerInterface {
     
     public static void displayMovieList() {
     	System.out.println("*****MOVIE LIST*****");
-    	List<Movie> movieList = SystemController.getMovieList();
+    	List<Movie> movieList = ListingController.getMovieList();
     	for (Movie movie : movieList) {
     		displayMovieInfo(movie);
     	}

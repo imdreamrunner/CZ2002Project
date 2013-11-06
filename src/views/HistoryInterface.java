@@ -10,6 +10,7 @@ public class HistoryInterface {
     	String name = scanner.next();
     	System.out.print("Please Enter Your Contact Number: ");
     	int number = scanner.nextInt();
+    	
     }
     
     

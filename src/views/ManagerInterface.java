@@ -70,8 +70,7 @@ public class ManagerInterface {
                     break;
                 case 4: //set holiday
                 	//HolidayManagingInterface.main();
-                	displayHolidayList();
-                	
+                	HolidayManagingInterface.main();
                     break;
                 case 5: //generate sales report
                     break;
@@ -84,7 +83,7 @@ public class ManagerInterface {
     public static void displayMenu() {
         System.out.print("1. Enter forthcoming movie \n" +
                 "2. Update movie details \n" +
-                "3, Set price \n" +
+                "3. Set price \n" +
                 "4. Set holiday \n" +
                 "5. Generate sale revenue report \n" +
                 "6. Go back to previous page \n" +
@@ -104,17 +103,8 @@ public class ManagerInterface {
     	System.out.println("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
     			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
     }
+   
     
-
-    
-    public static void displayHolidayList() {
-    	System.out.println("*****HOLIDAY LIST*****");
-    	List<Holiday> holidayList = SystemController.getHolidayList();
-    	for (Holiday holiday : holidayList) {
-    		System.out.println(holiday.getId() + " " + holiday.getMonth() + " " + holiday.getDay());
-    	}
-    	System.out.println("*****END OF HOLIDAY LIST*****");
-    }
 
     public static boolean login() {
         Scanner scanner = new Scanner(System.in);

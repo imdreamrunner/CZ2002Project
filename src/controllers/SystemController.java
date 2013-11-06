@@ -41,6 +41,7 @@ public class SystemController {
     }
     
     public static boolean addPrice(String key, int value) {
+    	//add some restriction
     	TicketPrice tp = new TicketPrice();
     	tp.setKey(key);
     	tp.setValue(value);
@@ -52,6 +53,15 @@ public class SystemController {
     	TicketPrice tp = TicketPrice.getOne(id);
     	if (tp==null) return false;
     	tp.delete();
+    	return true;
+    }
+    
+    public static boolean addHoliday(int month, int day) {
+    	//add some restriction here
+    	Holiday holiday = new Holiday();
+    	holiday.setMonth(month);
+    	holiday.setDay(day);
+    	holiday.save();
     	return true;
     }
     

@@ -41,7 +41,7 @@ public class Database {
 			scanner.close();
 			return models;
 		} catch (FileNotFoundException e) {
-			return null;
+			return new ArrayList<Model>();
 		}
 	}
 	

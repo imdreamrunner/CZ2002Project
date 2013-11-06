@@ -11,7 +11,8 @@ public class BookingInterface {
     public static void main() {
     	displayMenu();
         Scanner scanner = new Scanner(System.in);
-        int showId = 0, seatId = 0, result=-1;
+        int showId = 0, seatId = 0;
+        boolean result = false;
         Customer customer= null;
         System.out.println("Please enter the show id for booking: ");
         showId = scanner.nextInt();
@@ -62,16 +63,16 @@ public class BookingInterface {
     	mobile = scanner.nextInt();
     	while (Customer.getOneByMobile(100) != null){
     		customer = 	Customer.getOneByMobile(100);
-    	}customer.setMobile(mobile);
+    	}
     	String name = null, email = null;
     	System.out.println("Please enter your name: ");
-    	customer.setName(name);
+    	scanner.next(name);
     	System.out.println("Please enter your email address: ");
-    	customer.setEmail(email);
-    	customer.saveData();
+    	scanner.next(email);
+    	SystemController.CreateCustomer(name, mobile, email);
     }
-    public static void displayBookingResult(int result){
-    	if (result>=0)
+    public static void displayBookingResult(boolean result){
+    	if (result)
     		System.out.println("***Booking successful!***");
     	else
     		System.out.println("***Booking failure!***");

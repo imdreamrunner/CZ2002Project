@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.List;
 import models.Movie;
+import models.TicketPrice;
 
 public class SystemController {
 
@@ -31,11 +32,35 @@ public class SystemController {
         return true;
     }
     public static boolean editPrice(int id, int newPrice) {
+    	TicketPrice tp = TicketPrice.getOne(id);
+    	if (tp==null) return false;
+    	tp.setValue(newPrice);
+    	tp.save();
         return true;
+    }
+    
+    public static boolean addPrice(String key, int value) {
+    	TicketPrice tp = new TicketPrice();
+    	tp.setKey(key);
+    	tp.setValue(value);
+    	tp.save();
+    	return true;
+    }
+    
+    public static boolean deletePrice(int id) {
+    	TicketPrice tp = TicketPrice.getOne(id);
+    	if (tp==null) return false;
+    	tp.delete();
+    	return true;
     }
     
     public static List<Movie> getMovieList() {
     	List<Movie> movieList = Movie.getAll();
     	return movieList;
+    }
+    
+    public static List<TicketPrice> getPriceList() {
+    	List<TicketPrice> priceList = TicketPrice.getAll();
+    	return priceList;
     }
 }

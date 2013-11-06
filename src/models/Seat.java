@@ -1,5 +1,9 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import utils.Database;
 import utils.Model;
 
 public class Seat extends Model {
@@ -38,5 +42,28 @@ public class Seat extends Model {
 	public void setShow(int showId) {
 		Show theShow = Show.getOne(showId);
 		setShow(theShow);
+	}
+	@SuppressWarnings("unchecked")
+	public static List<Seat> getAll() {
+		return Database.getAll(Seat.class);
+	}
+	public static List<Seat> getAllByShow(Show show) {
+		List<Seat> seats = getAll();
+		List<Seat> selected = new ArrayList<Seat>();
+		for (Seat seat : seats) {
+			if (seat.getShow().equals(show)) {
+				selected.add(seat);
+			}
+		}
+		return selected;
+	}
+	public static Seat getOne(int id) {
+		List<Seat> seats = getAll();
+		for (Seat seat : seats) {
+			if (seat.getId() == id) {
+				return seat;
+			}
+		}
+		return null;
 	}
 }

@@ -65,6 +65,13 @@ public class SystemController {
     	return true;
     }
     
+    public static boolean deleteHoliday(int id) {
+    	Holiday holiday = Holiday.getOne(id);
+    	if (holiday == null) return false;
+    	holiday.delete();
+    	return true;
+    }
+    
     public static List<Movie> getMovieList() {
     	List<Movie> movieList = Movie.getAll();
     	return movieList;

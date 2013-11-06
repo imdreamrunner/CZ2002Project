@@ -24,19 +24,19 @@ public class HolidayManagingInterface {
             else System.out.println("Error!");
         } else if (operation == 2) {
         	System.out.print("Enter ID: ");
-        	int newID = scanner.nextInt();
-        	success = SystemController.deletePrice(newID);
-        	if (success) System.out.println("Price deleted!");
+        	int id = scanner.nextInt();
+        	success = SystemController.deleteHoliday(id);
+        	if (success) System.out.println("Holiday deleted!");
             else System.out.println("Error!");
         }
+	}
         
-        public static void displayHolidayList() {
-        	System.out.println("*****HOLIDAY LIST*****");
-        	List<Holiday> holidayList = SystemController.getHolidayList();
-        	for (Holiday holiday : holidayList) {
-        		System.out.println(holiday.getId() + " " + holiday.getMonth() + " " + holiday.getDay());
-        	}
-        	System.out.println("*****END OF HOLIDAY LIST*****");
+    public static void displayHolidayList() {
+        System.out.println("*****HOLIDAY LIST*****");
+        List<Holiday> holidayList = SystemController.getHolidayList();
+        for (Holiday holiday : holidayList) {
+        	System.out.println(holiday.getId() + " " + holiday.getMonth() + " " + holiday.getDay());
         }
-
+        System.out.println("*****END OF HOLIDAY LIST*****");
+    }
 }

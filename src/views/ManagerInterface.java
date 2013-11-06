@@ -62,13 +62,13 @@ public class ManagerInterface {
                     else System.out.println("Error!");
                     break;
                     
-                case 3: //set price
+                case 4: //set price
                 	PriceManagingInterface.main();
                     break;
-                case 4: //set holiday
+                case 5: //set holiday
                 	HolidayManagingInterface.main();
                     break;
-                case 5: //generate sales report
+                case 6: //generate sales report
                     break;
             }
             displayMenu();
@@ -78,11 +78,12 @@ public class ManagerInterface {
 
     public static void displayMenu() {
         System.out.print("1. Enter forthcoming movie \n" +
-                "2. Update movie details \n" +
-                "3. Set price \n" +
-                "4. Set holiday \n" +
-                "5. Generate sale revenue report \n" +
-                "6. Go back to previous page \n" +
+                "2. Update movie details\n" +
+        		"3. Update show list\n" +
+                "4. Set price \n" +
+                "5. Set holiday \n" +
+                "6. Generate sale revenue report \n" +
+                "7. Go back to previous page \n" +
                 "Please input your choice: ");
     }
     

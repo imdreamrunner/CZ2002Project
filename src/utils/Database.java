@@ -63,7 +63,7 @@ public class Database {
 				} else {
 					model.setId(1);
 				}
-				System.out.println("new id " + model.getId());
+				// System.out.println("new id " + model.getId());
 				models.add(model);
 			}
 			PrintWriter writer = new PrintWriter(getDbFile(classType));

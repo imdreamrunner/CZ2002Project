@@ -1,9 +1,14 @@
 package test;
 
+import models.Cineplex;
 import models.Staff;
 
 public class TestModel {
 	public static void main(String[] args) {
+		testCineplex();
+	}
+	
+	public static void testStaff() {
 		Staff staff = new Staff();
 		staff.setUsername("admin");
 		staff.setPassword("password");
@@ -16,5 +21,11 @@ public class TestModel {
 		System.out.println(test.getPassword());
 		staff.delete();
 		staff2.delete();
+	}
+	
+	public static void testCineplex() {
+		Cineplex cineplex = new Cineplex();
+		cineplex.setName("Apple");
+		cineplex.save();
 	}
 }

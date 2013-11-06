@@ -54,6 +54,9 @@ public class Booking extends Model{
 	public Customer getCustomer() {
 		return customer;
 	}
+	public List<Booking> getTickets() {
+		return null;
+	}
 	
 	public static Booking getOneById(int id) {
 		List<Booking> bookings = getAll();

@@ -15,7 +15,7 @@ public class ListingController {
 		return cineplexList;
 	}
 	
-	public static List<Movie> getMovieByCineplexList(Cineplex cineplex) {
+	public static List<Movie> getMovieByCineplex(Cineplex cineplex) {
 		List<Show> showList = Show.getAll();
 		List<Movie> movieList = new ArrayList<Movie>();
 		for (Show show : showList) {
@@ -26,5 +26,16 @@ public class ListingController {
 			}
 		}
 		return movieList;
+	}
+	
+	public static List<Cinema> getCinemaByCineplex(Cineplex cineplex) {
+		List<Cinema> cinemaList = Cinema.getAll();
+		List<Cinema> resultList = new ArrayList<Cinema>();
+		for (Cinema cinema : cinemaList) {
+			if (cinema.getCineplex().equals(cineplex)) {
+				resultList.add(cinema);
+			}
+		}
+		return resultList;
 	}
 }

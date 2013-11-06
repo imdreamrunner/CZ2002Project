@@ -1,9 +1,11 @@
 package controllers;
 
 import java.util.List;
+
 import models.Movie;
 import models.TicketPrice;
 import models.Holiday;
+import models.Customer;
 
 public class SystemController {
 
@@ -78,5 +80,13 @@ public class SystemController {
     public static List<Holiday> getHolidayList() {
     	List<Holiday> holidayList = Holiday.getAll();
     	return holidayList;
+    }
+    
+    public void CreateCustomer(String name, int mobile, String email){
+    Customer customer = new Customer();
+    customer.setMobile(mobile);
+	customer.setName(name);
+	customer.setEmail(email);
+	customer.saveData();
     }
 }

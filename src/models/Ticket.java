@@ -1,7 +1,6 @@
 package models;
 
 import java.util.List;
-
 import utils.Database;
 import utils.Model;
 
@@ -48,12 +47,17 @@ public class Ticket extends Model{
 	public void setTicketType(String ticketType) {
 		this.ticketType = ticketType;
 	}
+	
+	public Show getShow() {
+		return show;
+	}
+	public Seat getSeat() {
+		return seat;
+	}
 	public int getPrice() {
 		return price;
 	}
-	
-	public void printTicket() {
-		
+	public String ticketType() {
+		return ticketType;
 	}
-	
 }

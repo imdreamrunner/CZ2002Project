@@ -1,1 +1,2 @@
 id=2&value=800&key=PriceOfElderly
+id=3&value=1500&key=PriceOfAdults

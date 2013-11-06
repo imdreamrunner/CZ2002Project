@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 import models.Movie;
 import models.TicketPrice;
+import models.Holiday;
 
 public class SystemController {
 
@@ -62,5 +63,10 @@ public class SystemController {
     public static List<TicketPrice> getPriceList() {
     	List<TicketPrice> priceList = TicketPrice.getAll();
     	return priceList;
+    }
+    
+    public static List<Holiday> getHolidayList() {
+    	List<Holiday> holidayList = Holiday.getAll();
+    	return holidayList;
     }
 }

@@ -1,14 +1,14 @@
 package views;
 
-
 import controllers.LoginController;
 import controllers.SystemController;
 
 import java.util.List;
 import java.util.Scanner;
 
+import models.Holiday;
 import models.Movie;
-import models.TicketPrice;
+
 
 public class ManagerInterface {
 
@@ -66,34 +66,12 @@ public class ManagerInterface {
                     
                 case 3: //set price
                     //print current price rule]
-                	displayPriceList();
-                    System.out.println("1. change a price; 2. add a new price; 3. delete a price");
-                    int operation = scanner.nextInt();
-                    if (operation == 1) {
-                    	System.out.print("Enter ID: ");
-                    	int newID = scanner.nextInt();
-                    	System.out.print("Enter Value: ");
-                    	int newPrice = scanner.nextInt();
-                    	success = SystemController.editPrice(newID,newPrice);
-                        if (success) System.out.println("Price updated!");
-                        else System.out.println("Error!");
-                    } else if (operation == 2) {
-                    	System.out.print("Enter New Key: ");
-                    	String newKey = scanner.next();
-                    	System.out.print("Enter New Value: ");
-                    	int newValue = scanner.nextInt();
-                    	success = SystemController.addPrice(newKey,newValue);
-                        if (success) System.out.println("Price added!");
-                        else System.out.println("Error!");
-                    } else if (operation == 3) {
-                    	System.out.print("Enter ID: ");
-                    	int newID = scanner.nextInt();
-                    	success = SystemController.deletePrice(newID);
-                    	if (success) System.out.println("Price deleted!");
-                        else System.out.println("Error!");
-                    }
+                	PriceManagingInterface.main();
                     break;
                 case 4: //set holiday
+                	//HolidayManagingInterface.main();
+                	displayHolidayList();
+                	
                     break;
                 case 5: //generate sales report
                     break;
@@ -127,13 +105,15 @@ public class ManagerInterface {
     			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
     }
     
-    public static void displayPriceList() {
-    	System.out.println("*****PRICE LIST*****");
-    	List<TicketPrice> priceList = SystemController.getPriceList();
-    	for (TicketPrice tp : priceList) {
-    		System.out.println(tp.getId() + " " + tp.getKey() + " " + (tp.getValue()/100) + "." + (tp.getValue()%100));
+
+    
+    public static void displayHolidayList() {
+    	System.out.println("*****HOLIDAY LIST*****");
+    	List<Holiday> holidayList = SystemController.getHolidayList();
+    	for (Holiday holiday : holidayList) {
+    		System.out.println(holiday.getId() + " " + holiday.getMonth() + " " + holiday.getDay());
     	}
-    	System.out.println("*****END OF PRICE LIST*****");
+    	System.out.println("*****END OF HOLIDAY LIST*****");
     }
 
     public static boolean login() {

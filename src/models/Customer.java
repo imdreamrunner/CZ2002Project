@@ -1,7 +1,6 @@
 package models;
 
 import java.util.List;
-
 import utils.Database;
 import utils.Model;
 
@@ -50,7 +49,17 @@ public class Customer extends Model {
 	public static Customer getOneByName(String name) {
 		List<Customer> customers = getAll();
 		for (Customer customer : customers) {
-			if (customer.getName() == name) {
+			if (customer.getName().equals(name)) {
+				return customer;
+			}
+		}
+		return null;
+	}
+	
+	public static Customer getOneById(int customerId) {
+		List<Customer> customers = getAll();
+		for (Customer customer : customers) {
+			if (customer.getId() == customerId) {
 				return customer;
 			}
 		}

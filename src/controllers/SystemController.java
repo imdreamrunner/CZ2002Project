@@ -17,6 +17,7 @@ public class SystemController {
     	newMovie.save();
         return true;  //for successful adding
     }
+    
     public static boolean editMovie(int id, String key, String value) {
     	Movie movie = Movie.getOne(id);
     	if (key.equals("Name")) {
@@ -34,6 +35,7 @@ public class SystemController {
     	movie.save();
         return true;
     }
+    
     public static boolean editPrice(int id, int newPrice) {
     	TicketPrice tp = TicketPrice.getOne(id);
     	if (tp==null) return false;
@@ -67,16 +69,12 @@ public class SystemController {
     	return true;
     }
     
-    public static List<Movie> getMovieList() {
-    	List<Movie> movieList = Movie.getAll();
-    	return movieList;
+    public static boolean deleteHoliday(int id) {
+    	Holiday holiday = Holiday.getOne(id);
+    	if (holiday == null) return false;
+    	holiday.delete();
+    	return true;
     }
-    
-    public static List<TicketPrice> getPriceList() {
-    	List<TicketPrice> priceList = TicketPrice.getAll();
-    	return priceList;
-    }
-    
     public static List<Holiday> getHolidayList() {
     	List<Holiday> holidayList = Holiday.getAll();
     	return holidayList;

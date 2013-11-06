@@ -2,11 +2,11 @@ package views;
 
 import controllers.LoginController;
 import controllers.SystemController;
+import controllers.ListingController;
 
 import java.util.List;
 import java.util.Scanner;
 
-import models.Holiday;
 import models.Movie;
 
 
@@ -37,7 +37,6 @@ public class ManagerInterface {
         choice = scanner.nextInt();
         while (choice<6) {
             switch (choice) {
-            
                 case 1: //add movie
                     System.out.println("Enter movie name: ");
                     String newMovieName = scanner.next();
@@ -45,7 +44,6 @@ public class ManagerInterface {
                     String newMovieType = scanner.next();
                     System.out.println("Enter movie status: 1. now showing; 2. coming soon;");
                     int newMovieStatus = scanner.nextInt();
-                    
                     boolean success = SystemController.addMovie(newMovieName,newMovieType,newMovieStatus);
                     if (success) System.out.println("Movie added!");
                     else System.out.println("Error!");
@@ -64,15 +62,16 @@ public class ManagerInterface {
                     else System.out.println("Error!");
                     break;
                     
-                case 3: //set price
-                    //print current price rule]
+                case 3:
+                	ShowManagingInterface.main();
+                    break;
+                case 4: //set price
                 	PriceManagingInterface.main();
                     break;
-                case 4: //set holiday
-                	//HolidayManagingInterface.main();
+                case 5: //set holiday
                 	HolidayManagingInterface.main();
                     break;
-                case 5: //generate sales report
+                case 6: //generate sales report
                     break;
             }
             displayMenu();
@@ -82,17 +81,18 @@ public class ManagerInterface {
 
     public static void displayMenu() {
         System.out.print("1. Enter forthcoming movie \n" +
-                "2. Update movie details \n" +
-                "3. Set price \n" +
-                "4. Set holiday \n" +
-                "5. Generate sale revenue report \n" +
-                "6. Go back to previous page \n" +
+                "2. Update movie details\n" +
+        		"3. Update show list\n" +
+                "4. Set price \n" +
+                "5. Set holiday \n" +
+                "6. Generate sale revenue report \n" +
+                "7. Go back to previous page \n" +
                 "Please input your choice: ");
     }
     
     public static void displayMovieList() {
     	System.out.println("*****MOVIE LIST*****");
-    	List<Movie> movieList = SystemController.getMovieList();
+    	List<Movie> movieList = ListingController.getMovieList();
     	for (Movie movie : movieList) {
     		displayMovieInfo(movie);
     	}

@@ -30,7 +30,7 @@ public class CustomerInterface {
 
     public static void displayMenu() {
         System.out.println("***** Customer Page *****");
-        System.out.printf("1. Make a booking \n " +
+        System.out.printf("1. Make a booking \n" +
                 "2. View booking history \n" +
                 "3. Go back to previous page \n" +
                 "4. Quit \n" +

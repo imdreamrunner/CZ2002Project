@@ -81,7 +81,6 @@ public class ManagerInterface {
             displayMenu();
             choice = scanner.nextInt();
         }
-
     }
 
     public static void displayMenu() {

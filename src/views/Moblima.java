@@ -21,7 +21,7 @@ public class Moblima {
     }
 
     public static void displayMenu() {
-        System.out.printf("***** Welcome To MOBLIMA *****");
+        System.out.printf("***** Welcome To MOBLIMA *****\n");
         System.out.print("Please select your entry: \n" +
                 "1. Customer Entry \n" +
                 "2. Staff Entry \n" +

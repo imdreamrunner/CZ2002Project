@@ -73,4 +73,14 @@ public class Ticket extends Model{
 	public String ticketType() {
 		return ticketType;
 	}
+	
+	public static List<Ticket> getAll() {
+		return null;
+	}
+	public static List<Ticket> getAllByBooking(Booking booking) {
+		return null;
+	}
+	public static Ticket getOne(int id) {
+		return null;
+	}
 }

@@ -1,14 +1,16 @@
 package controllers;
 
+import models.Staff;
+
 public class LoginController {
 
     public static boolean checkAccount(String username,String password) {
-
-        /*Account account = Account.getAccountByUsername(username);
-        if (account == null) return false;
-        if (account.password == password) retrun true;
-        else return false;*/
-        return true;
-
+    	Staff staffAccount = Staff.getByUsername(username);
+   
+    	if (staffAccount.getPassword().equals(password)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
     }
 }

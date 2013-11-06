@@ -80,11 +80,12 @@ public class SystemController {
     	return holidayList;
     }
     
-    public static void  CreateCustomer(String name, int mobile, String email){
-    Customer customer = new Customer();
-    customer.setMobile(mobile);
-	customer.setName(name);
-	customer.setEmail(email);
-	customer.save();
+    public static Customer CreateCustomer(String name, int mobile, String email){
+    	Customer customer = new Customer();
+    	customer.setMobile(mobile);
+    	customer.setName(name);
+    	customer.setEmail(email);
+    	customer.save();
+    	return customer;
     }
 }

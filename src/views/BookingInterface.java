@@ -1,27 +1,45 @@
 package views;
+
 import controllers.BookingController;
 import controllers.SystemController;
+
 import models.Customer;
 import models.Show;
 import models.Movie;
+import models.Seat;
 
 import java.util.Scanner;
+import java.util.List;
 
 public class BookingInterface {
+	
     public static void main() {
     	displayMenu();
         Scanner scanner = new Scanner(System.in);
-        int showId = 0, seatId = 0;
         boolean result = false;
+        
         Customer customer= null;
-        System.out.println("Please enter the show id for booking: ");
-        showId = scanner.nextInt();
+        System.out.print("Please enter the show id for booking: ");
+        int showId = scanner.nextInt();
+        displayShowInfo(showId);
         displaySeats(showId);
-        System.out.println("Please enter the seat id for booking: ");
-        seatId = scanner.nextInt();
-        inputUserInfo(customer);
-        displayBookingInfor(showId);
-        inputUserInfo(customer);
+        
+        System.out.print("Please enter the seat id for booking: ");
+        int seatId = scanner.nextInt();
+        
+        System.out.println("*****ENTER COSTOMER INFO*****");
+    	System.out.print("Please enter your mobile number: ");
+    	int mobile = scanner.nextInt();
+    	if (Customer.getOneByMobile(mobile) != null) {  //!!!!!ugly code!!!!!
+    		customer = 	Customer.getOneByMobile(mobile);
+    	} else {
+    		System.out.println("Please enter your name: ");
+        	String name = scanner.next();
+        	System.out.println("Please enter your email address: ");
+        	String email = scanner.next();
+        	customer = SystemController.CreateCustomer(name, mobile, email);
+    	}
+        
         result = BookingController.createBooking(showId, seatId, customer);
         displayBookingResult(result);
     }
@@ -31,8 +49,8 @@ public class BookingInterface {
         System.out.printf("Welcome to XXX CinemaComplex Website ");
     }
     
-    public static void displayBookingInfor(int showId){
-    	System.out.println("***** Movie Info *****");
+    public static void displayShowInfo(int showId){
+    	System.out.println("*****SHOW INFO*****");
     	Show show = null;
     	Movie movie = null;
     	show = models.Show.getOne(showId);
@@ -41,36 +59,21 @@ public class BookingInterface {
         System.out.printf("Cineplex: "+ show.getCinema().getCineplex().getName());
         System.out.printf("Cinema: "+ show.getCinema().getCinemaCode());
         System.out.printf("Date: "+ show.getShowTime().getTime());
+        System.out.println("*****END OF SHOW INFO*****");
     }
     public static void displaySeats(int showId){
-    	int[] seats;
-    	int i=0;
-//    	seats=controllers.SystemController.getSeats(showId);
-    	System.out.println("***** Seat Info *****");
-    	System.out.println("***** Seat Available *****");
-/*    	while(seats[i]){
-    		System.out.print(seats[i] + " ");	
+    	List<Seat> seatList;
+    	seatList = controllers.ListingController.getSeatsByShow(showId);
+    	System.out.println("*****SEAT AVAILABLE*****");
+    	for (Seat seat : seatList) {
+    		if (seat.getStatus()) {
+    			System.out.println(seat.getId() + " " + seat.getName());
+    		}
     	}
-*/
     	System.out.println("**************************");
     }
-    public static void inputUserInfo(Customer customer){
-    	int mobile;
-    	int i=0;
-    	Scanner scanner = new Scanner(System.in);
-    	System.out.println("***** Enter Customer Info *****");
-    	System.out.println("Please enter your mobile number: ");
-    	mobile = scanner.nextInt();
-    	while (Customer.getOneByMobile(100) != null){
-    		customer = 	Customer.getOneByMobile(100);
-    	}
-    	String name = null, email = null;
-    	System.out.println("Please enter your name: ");
-    	scanner.next(name);
-    	System.out.println("Please enter your email address: ");
-    	scanner.next(email);
-    	SystemController.CreateCustomer(name, mobile, email);
-    }
+    
+    
     public static void displayBookingResult(boolean result){
     	if (result)
     		System.out.println("***Booking successful!***");

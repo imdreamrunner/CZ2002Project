@@ -76,12 +76,12 @@ public class ListingController {
     	}
     	return resultList;
     }
-    
 
     public static List<Show> getShowByCineplextAndMovie(int cineplexId, int movieId) {
     	Cineplex cineplex = Cineplex.getOne(cineplexId);
     	Movie movie = Movie.getOne(movieId);
     	return getShowByCineplextAndMovie(cineplex, movie);
     }
+    
     
 }

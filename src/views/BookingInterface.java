@@ -46,7 +46,7 @@ public class BookingInterface {
 
     public static void displayMenu() {
         System.out.println("***** Customer Page *****");
-        System.out.printf("Welcome to XXX CinemaComplex Website ");
+        System.out.println("Welcome to XXX CinemaComplex Website ");
     }
     
     public static void displayShowInfo(int showId){
@@ -63,7 +63,8 @@ public class BookingInterface {
     }
     public static void displaySeats(int showId){
     	List<Seat> seatList;
-    	seatList = controllers.ListingController.getSeatsByShow(showId);
+    	Show show = Show.getOne(showId);
+    	seatList = show.getSeats();
     	System.out.println("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {
     		if (seat.getStatus()) {

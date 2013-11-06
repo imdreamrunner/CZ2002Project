@@ -13,7 +13,7 @@ public class CustomerInterface {
         while (choice < 3) {
             switch (choice) {
                 case 1:
-                    //BookingInterface.main();
+                    BookingInterface.main();
                     break;
                 case 2:
                     HistoryInterface.main();

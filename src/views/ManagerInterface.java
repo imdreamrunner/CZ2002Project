@@ -37,7 +37,6 @@ public class ManagerInterface {
         choice = scanner.nextInt();
         while (choice<6) {
             switch (choice) {
-            
                 case 1: //add movie
                     System.out.println("Enter movie name: ");
                     String newMovieName = scanner.next();
@@ -45,7 +44,6 @@ public class ManagerInterface {
                     String newMovieType = scanner.next();
                     System.out.println("Enter movie status: 1. now showing; 2. coming soon;");
                     int newMovieStatus = scanner.nextInt();
-                    
                     boolean success = SystemController.addMovie(newMovieName,newMovieType,newMovieStatus);
                     if (success) System.out.println("Movie added!");
                     else System.out.println("Error!");
@@ -65,11 +63,9 @@ public class ManagerInterface {
                     break;
                     
                 case 3: //set price
-                    //print current price rule]
                 	PriceManagingInterface.main();
                     break;
                 case 4: //set holiday
-                	//HolidayManagingInterface.main();
                 	HolidayManagingInterface.main();
                     break;
                 case 5: //generate sales report

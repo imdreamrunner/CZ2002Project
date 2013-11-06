@@ -14,10 +14,6 @@ public class SystemController {
         return true;  //for successful adding
     }
     public static boolean editMovie(int id, String key, String value) {
-    	/*
-    	 * movie.getId() + " Movie Name = " + movie.getName()
-    			+ " Movie Type = " + movie.getType() + "Movie Status = " + movie.getStatus());
-    	 */
     	Movie movie = Movie.getOne(id);
     	if (key.equals("Name")) {
     		movie.setName(value);
@@ -31,6 +27,7 @@ public class SystemController {
     			return false;
     		}
     	} else return false;
+    	movie.save();
         return true;
     }
     public static boolean editPrice(int id, int newPrice) {

@@ -106,7 +106,7 @@ public class ManagerInterface {
     
     public static void displayMovieInfo(Movie movie) {
     	System.out.println("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
-    			+ " Movie Type = " + movie.getType() + "Mvoie Status = " + movie.getStatus());
+    			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
     }
 
     public static boolean login() {

@@ -1,6 +1,7 @@
 package models;
 
 import java.util.List;
+
 import utils.Database;
 import utils.Model;
 
@@ -32,5 +33,17 @@ public class Booking extends Model{
 		this.customer = customer;
 	}
 	
+	public static Booking getOneById(int id) {
+		List<Booking> bookings = getAll();
+		for (Booking booking : bookings) {
+			if (booking.getId() == id) {
+				return booking;
+			}
+		}
+		return null;
+	}
+	public static List<Booking> getAll() {
+		return Database.getAll(Booking.class);
+	}
 	
 }

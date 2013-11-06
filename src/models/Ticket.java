@@ -8,12 +8,14 @@ public class Ticket extends Model{
 	private Show show;
 	private Seat seat;
 	private int price;
+	private Booking booking;
 	private String 	ticketType;
 	
 	public void loadData() {
 		setShow(get("showId").getInteger());
 		setSeat(get("seatId").getInteger());
 		price = get("price").getInteger();
+		setBooking(get("bookingid").getInteger());
 		ticketType = get("ticketType").getString();
 	}
 	
@@ -21,6 +23,7 @@ public class Ticket extends Model{
 		set("showId", show.getId());
 		set("seatId", seat.getId());
 		set("price", price);
+		set("bookingId",booking.getId());
 		set("ticketType", ticketType);
 	}
 	
@@ -41,6 +44,16 @@ public class Ticket extends Model{
 	public void setSeat(Seat seat) {
 		this.seat = seat;
 	}
+	
+	//two methods to set booking
+	public void setBooking(int bookingId) {
+		Booking booking = Booking.getOneById(bookingId);
+		setBooking(booking);
+	}
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+	
 	public void setPrice(int price) {
 		this.price = price;
 	}

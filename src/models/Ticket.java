@@ -1,6 +1,8 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
+
 import utils.Database;
 import utils.Model;
 
@@ -70,17 +72,34 @@ public class Ticket extends Model{
 	public int getPrice() {
 		return price;
 	}
-	public String ticketType() {
+	public Booking getBooking() {
+		return booking;
+	}
+	public String getTicketType() {
 		return ticketType;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public static List<Ticket> getAll() {
-		return null;
+		return Database.getAll(Ticket.class);
 	}
 	public static List<Ticket> getAllByBooking(Booking booking) {
-		return null;
+		List<Ticket> ticketList = getAll();
+		List<Ticket> select = new ArrayList<Ticket>();
+		for (Ticket ticket : ticketList) {
+			if (ticket.getBooking().equals(booking)) {
+				select.add(ticket);
+			}
+		}
+		return select;
 	}
 	public static Ticket getOne(int id) {
+		List<Ticket> ticketList = getAll();
+		for (Ticket ticket : ticketList) {
+			if (ticket.getId() == id) {
+				return ticket;
+			}
+		}
 		return null;
 	}
 }

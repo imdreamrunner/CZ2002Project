@@ -54,8 +54,8 @@ public class Booking extends Model{
 	public Customer getCustomer() {
 		return customer;
 	}
-	public List<Booking> getTickets() {
-		return null;
+	public List<Ticket> getTickets() {
+		return Ticket.getAllByBooking(this);
 	}
 	
 	public static Booking getOneById(int id) {
@@ -67,6 +67,7 @@ public class Booking extends Model{
 		}
 		return null;
 	}
+	@SuppressWarnings("unchecked")
 	public static List<Booking> getAll() {
 		return Database.getAll(Booking.class);
 	}

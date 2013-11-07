@@ -11,11 +11,13 @@ public class Show extends Model {
 	private Movie movie;
 	private Cinema cinema;
 	private Date showTime;
+	
 	public void loadData() {
 		setMovie(get("movieId").getInteger());
 		setCinema(get("cinemaId").getInteger());
 		showTime = get("showTime").getData();
 	}
+	
 	public void saveData() {
 		set("movieId", movie.getId());
 		set("cinemaId", cinema.getId());
@@ -90,6 +92,5 @@ public class Show extends Model {
 			}
 		}
 		return null;
-		
 	}
 }

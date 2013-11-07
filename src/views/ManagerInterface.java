@@ -35,7 +35,7 @@ public class ManagerInterface {
         displayMenu();
         int choice;
         choice = scanner.nextInt();
-        while (choice<6) {
+        while (choice<=6) {
             switch (choice) {
                 case 1: //add movie
                     System.out.println("Enter movie name: ");

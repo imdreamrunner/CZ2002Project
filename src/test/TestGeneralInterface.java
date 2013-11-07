@@ -11,5 +11,6 @@ public class TestGeneralInterface {
 				"Line B"
 		};
 		gi.display(stringList);
+		int month = gi.inputInteger("month", 1, 12);
 	}
 }

@@ -20,10 +20,14 @@ public class BookingController {
 		 //set all price to be 10 now
 		 int price = 10;
 		 Booking booking = new Booking();
+		 booking.save();
 		 for (int seatId : seatIdList) {
 			 Seat seat = Seat.getOne(seatId);
 			 if (seat == null) return false;
 			 if (!seat.getStatus()) return false;
+		 }
+		 for (int seatId : seatIdList) {
+			 Seat seat = Seat.getOne(seatId);
 			 //change seat status
 			 seat.setName(customer.getName());
 			 seat.setStatus(false);

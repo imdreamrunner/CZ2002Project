@@ -33,6 +33,11 @@ public class ManagerController extends Controller {
         choice = gi.inputInteger("choice", 1, 7);
         while (choice<=6) {
             switch (choice) {
+            case 1:
+            case 2:
+            	(new MovieManagingController()).run();
+            	break;
+            /*
                 case 1: //add movie
                     String newMovieName = gi.inputString("movie name");
                     String newMovieType = gi.inputString("movie type");
@@ -52,7 +57,7 @@ public class ManagerController extends Controller {
                     if (success) gi.display("Movie details updated!");
                     else gi.display("Error!");
                     break;
-                    
+                 */   
                 case 3:
                 	(new ShowManagingController()).run();
                     break;
@@ -72,8 +77,8 @@ public class ManagerController extends Controller {
 	}
 
     public void displayMenu() {
-        gi.display(new String[] {"1. Enter forthcoming movie",
-                "2. Update movie details",
+        gi.display(new String[] {
+                "1. Update movie list",
         		"3. Update show list",
                 "4. Set price",
                 "5. Set holiday",
@@ -81,20 +86,6 @@ public class ManagerController extends Controller {
                 "7. Go back to previous page"});
     }
     
-    public void displayMovieList() {
-    	gi.display("*****MOVIE LIST*****");
-    	List<Movie> movieList = getMovieList();
-    	for (Movie movie : movieList) {
-    		displayMovieInfo(movie);
-    	}
-    	gi.display("*****END OF MOVIE LIST*****");
-    }
-    
-    public void displayMovieInfo(Movie movie) {
-    	gi.display("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
-    			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
-    }
-   
     
 
     public boolean login() {
@@ -107,11 +98,6 @@ public class ManagerController extends Controller {
         return (checkAccount(username, password));
     }
 
-    public List<Movie> getMovieList() {
-    	List<Movie> movieList = Movie.getAll();
-    	return movieList;
-    }
-    
     public boolean checkAccount(String username,String password) {
     	Staff staffAccount = Staff.getByUsername(username);
    
@@ -122,31 +108,6 @@ public class ManagerController extends Controller {
     	}
     }
     
-    public boolean addMovie(String newMovieName, String newMovieType, int newMovieStatus) {
-    	Movie newMovie = new Movie();
-    	newMovie.setName(newMovieName);
-    	newMovie.setType(newMovieType);
-    	newMovie.setStatus(newMovieStatus);
-    	newMovie.save();
-        return true;  //for successful adding
-    }
     
-    public boolean editMovie(int id, String key, String value) {
-    	Movie movie = Movie.getOne(id);
-    	if (key.equals("Name")) {
-    		movie.setName(value);
-    	} else if (key.equals("Type")) {
-    		movie.setType(value);
-    	} else if (key.equals("Status")) {
-    		try {
-    			int newStatus = Integer.parseInt(value);
-    			movie.setStatus(newStatus);
-    		} catch (Exception e) {
-    			return false;
-    		}
-    	} else return false;
-    	movie.save();
-        return true;
-    }
     
 }

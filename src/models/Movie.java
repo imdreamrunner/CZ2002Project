@@ -1,5 +1,6 @@
 package models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import utils.Database;
@@ -57,5 +58,21 @@ public class Movie extends Model {
 				return movie;
 		}
 		return null;
+	}
+	public static List<Movie> getAllByCineplex(Cineplex cineplex) {
+		List<Show> showList = Show.getAll();
+		List<Movie> movieList = new ArrayList<Movie>();
+		for (Show show : showList) {
+			boolean sameCineplex = show.getCinema().getCineplex().equals(cineplex);
+			boolean notInList = !(movieList.contains(show.getMovie()));
+			if ( sameCineplex && notInList ) {
+				movieList.add(show.getMovie());
+			}
+		}
+		return movieList;
+	}
+	public static List<Movie> getMovieByCineplex(int cineplexId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		return getAllByCineplex(cineplex);
 	}
 }

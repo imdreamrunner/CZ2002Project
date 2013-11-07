@@ -1,11 +1,11 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 import models.Booking;
 import models.Customer;
-import old_controllers.ListingController;
 import utils.Controller;
 
 public class HistoryController extends Controller {
@@ -24,7 +24,7 @@ public class HistoryController extends Controller {
     	if ( customer == null) {
     		System.out.println("Sorry, no matching customers found.");
     	} else {
-    		List<Booking> bookingList = ListingController.getBookingByCustomer(customer);
+    		List<Booking> bookingList = getBookingByCustomer(customer);
     		displayHistory(bookingList);
     	}
 	}
@@ -41,12 +41,20 @@ public class HistoryController extends Controller {
     }
     
     public Customer validateCustomer(String name, int mobile){
-		
     	Customer customer = Customer.getOneByMobile(mobile);
     	if (customer == null) return null;
     	if (!customer.getName().equals(name)) return null;
     	return customer;
     }
 		
-
+    public List<Booking> getBookingByCustomer(Customer customer) {
+    	List<Booking> bookingList = Booking.getAll();
+    	List<Booking> resultList = new ArrayList<Booking>();
+    	for (Booking booking : bookingList) {
+    		if (booking.getCustomer().equals(customer)) 
+    			resultList.add(booking);
+    	}
+    	return resultList;
+    }
+    
 }

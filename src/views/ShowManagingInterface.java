@@ -20,16 +20,13 @@ public class ShowManagingInterface {
 	}
 	public static void main() {
 		scanner = new Scanner(System.in);
-        System.out.println("1. add a show 2. delete a show 3. list coming shows");
+        System.out.println("1. add a show 2. list coming shows");
         int choice = scanner.nextInt();
         switch(choice) {
         case 1:
         	addShow();
         	break;
         case 2:
-        	deleteShow();
-        	break;
-        case 3:
         	listShow();
         	break;
         }

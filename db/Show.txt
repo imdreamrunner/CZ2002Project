@@ -1,2 +1,2 @@
-id=1&movieId=1&cinemaId=1&showTime=1384049400000
-id=2&movieId=2&cinemaId=2&showTime=1384049400000
+id=1&movieId=1&cinemaId=1&showTime=1384049400000&deleted=0
+id=2&movieId=2&cinemaId=2&showTime=1384049400000&deleted=0

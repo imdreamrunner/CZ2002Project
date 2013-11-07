@@ -3,10 +3,10 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import old_controllers.HistoryController;
+import old_controllers.ListingController;
 import models.Booking;
 import models.Customer;
-import controllers.ListingController;
-import controllers.HistoryController;
 
 public class HistoryInterface {
     

@@ -1,7 +1,5 @@
 package views;
 
-import controllers.BookingController;
-import controllers.SystemController;
 import models.Customer;
 import models.Show;
 import models.Movie;
@@ -10,6 +8,9 @@ import models.Seat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+
+import old_controllers.BookingController;
+import old_controllers.SystemController;
 
 public class BookingInterface {
 	

@@ -1,6 +1,5 @@
-package controllers;
+package old_controllers;
 
-import controllers.SystemController;
 import models.Customer;
 import models.Seat;
 import models.Show;
@@ -12,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
+
+import old_controllers.SystemController;
 
 public class BookingController {
 	 public static boolean createBooking(int showId, List<Integer> seatIdList, Customer customer) {

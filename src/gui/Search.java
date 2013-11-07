@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import controllers.ListingController;
+import old_controllers.ListingController;
 import models.Cinema;
 import models.Cineplex;
 import models.Movie;

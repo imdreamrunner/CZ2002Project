@@ -6,8 +6,8 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
 
-import controllers.ListingController;
-import controllers.SystemController;
+import old_controllers.ListingController;
+import old_controllers.SystemController;
 import models.Cinema;
 import models.Cineplex;
 import models.Movie;

@@ -1,6 +1,6 @@
 package views;
 
-import controllers.MainController;
+import old_controllers.MainController;
 
 public class NewMoblima {
 	public static void main(String[] args) {

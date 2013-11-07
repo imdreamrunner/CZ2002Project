@@ -2,8 +2,8 @@ package views;
 
 import java.util.Scanner;
 
+import old_controllers.ReportController;
 import models.Movie;
-import controllers.ReportController;
 
 public class ReportInterface {
 	

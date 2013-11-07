@@ -3,8 +3,8 @@ package views;
 import java.util.List;
 import java.util.Scanner;
 
-import controllers.SystemController;
-import controllers.ListingController;
+import old_controllers.ListingController;
+import old_controllers.SystemController;
 import models.TicketPrice;
 
 public class PriceManagingInterface {

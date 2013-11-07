@@ -1,12 +1,13 @@
 package views;
 
-import controllers.ListingController;
 import models.Cineplex;
 import models.Movie;
 import models.Show;
 
 import java.util.List;
 import java.util.Scanner;
+
+import old_controllers.ListingController;
 
 public class NonGraphSearchInterface {
 	public static void main(String[] args){

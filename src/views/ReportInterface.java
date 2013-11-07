@@ -1,9 +1,26 @@
 package views;
 
+import java.util.Scanner;
+
 public class ReportInterface {
 	
 	public static void main() {
 		displayMenu();
+		Scanner scanner = new Scanner(System.in);
+		int operation = scanner.nextInt();
+		switch (operation) {
+			case 1:
+				
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+		}
 	}
 	
 	public static void displayMenu() {

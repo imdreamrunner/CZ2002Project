@@ -19,7 +19,7 @@ public class Ticket extends Model{
 		setShow(get("showId").getInteger());
 		setSeat(get("seatId").getInteger());
 		price = get("price").getInteger();
-		setBooking(get("bookingid").getInteger());
+		setBooking(get("bookingId").getInteger());
 		ticketType = get("ticketType").getString();
 	}
 	

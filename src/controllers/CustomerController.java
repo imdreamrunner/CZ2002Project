@@ -3,7 +3,6 @@ package controllers;
 import java.util.Scanner;
 
 import utils.Controller;
-import views.HistoryInterface;
 
 public class CustomerController extends Controller {
 
@@ -19,7 +18,7 @@ public class CustomerController extends Controller {
                     (new BookingController()).run();
                     break;
                 case 2:
-                    HistoryInterface.main();
+                    (new HistoryController()).run();
                     break;
                 case 3:
                     return;

@@ -52,7 +52,7 @@ public class ShowManagingInterface {
 		int minute = scanner.nextInt();
 		Calendar showTime = new GregorianCalendar(year, month, day, hour, minute, 0);
 		Show show = new Show(movie, cinema, showTime.getTime());
-		show.save();
+		show.createSeats();
 	}
 	public static void deleteShow() {
 		

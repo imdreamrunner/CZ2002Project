@@ -21,10 +21,16 @@ public class Show extends Model {
 		set("cinemaId", cinema.getId());
 		set("showTime", showTime);
 	}
+	public Show() {
+	}
 	public Show(Movie movie, Cinema cinema, Date date) {
 		setMovie(movie);
 		setCinema(cinema);
 		setShowTime(date);
+		save();
+	}
+	public void createSeats() {
+		save();
 		String seatPlan = cinema.getSeatPlan();
 		String[] seatNames = seatPlan.split(" ");
 		for (String seatName : seatNames) {

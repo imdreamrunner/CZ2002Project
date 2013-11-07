@@ -78,6 +78,9 @@ public class Ticket extends Model{
 	public String getTicketType() {
 		return ticketType;
 	}
+	public Movie getMovie() {
+		return show.getMovie();
+	}
 	
 	@SuppressWarnings("unchecked")
 	public static List<Ticket> getAll() {

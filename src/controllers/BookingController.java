@@ -11,7 +11,6 @@ import models.Movie;
 import models.Seat;
 import models.Show;
 import models.Ticket;
-import old_controllers.SystemController;
 import utils.Controller;
 
 public class BookingController extends Controller {
@@ -48,7 +47,7 @@ public class BookingController extends Controller {
         	String name = scanner.nextLine();
         	System.out.println("Please enter your email address: ");
         	String email = scanner.nextLine();
-        	customer = SystemController.CreateCustomer(name, mobile, email);
+        	customer = CreateCustomer(name, mobile, email);
     	}
         
         result = createBooking(showId, seatIdList, customer);
@@ -131,4 +130,14 @@ public class BookingController extends Controller {
 		 booking.save();
 		 return true;
 	 }
+	 
+
+	    public Customer CreateCustomer(String name, int mobile, String email){
+	    	Customer customer = new Customer();
+	    	customer.setMobile(mobile);
+	    	customer.setName(name);
+	    	customer.setEmail(email);
+	    	customer.save();
+	    	return customer;
+	    }
 }

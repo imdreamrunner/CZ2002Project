@@ -117,7 +117,7 @@ public class Ticket extends Model{
 		List<Ticket> ticketList = getAll();
 		List<Ticket> selected = new ArrayList<Ticket>();
 		for (Ticket ticket : ticketList) {
-			Date sellingDate = ticket.getBooking().getDate();
+			Date sellingDate = ticket.getBooking().getCreateTime();
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(sellingDate);
 			if (cal.get(Calendar.YEAR) != year) continue;
@@ -131,7 +131,7 @@ public class Ticket extends Model{
 		List<Ticket> ticketList = getAll();
 		List<Ticket> selected = new ArrayList<Ticket>();
 		for (Ticket ticket : ticketList) {
-			Date sellingDate = ticket.getBooking().getDate();
+			Date sellingDate = ticket.getBooking().getCreateTime();
 			Calendar cal = Calendar.getInstance();
 			cal.setTime(sellingDate);
 			if (cal.get(Calendar.YEAR) != year) continue;

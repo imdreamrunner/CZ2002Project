@@ -11,6 +11,8 @@ public class TestGeneralInterface {
 				"Line B"
 		};
 		gi.display(stringList);
-		int month = gi.inputInteger("month", 1, 12);
+		// int month = gi.inputInteger("month", 1, 12);
+		String name = gi.inputString("name");
+		System.out.println(name);
 	}
 }

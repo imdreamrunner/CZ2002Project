@@ -21,6 +21,7 @@ public class GeneralInterface {
 		while (true) {
 			try {
 				System.out.print(">> " + title + " (number): ");
+				scanner.nextLine();
 				return scanner.nextInt();
 			} catch (InputMismatchException e) {
 				scanner.nextLine();
@@ -33,6 +34,7 @@ public class GeneralInterface {
 			try {
 				System.out.print(">> " + title + " (" + lower + "~" + upper + "): ");
 				int input =scanner.nextInt();
+				scanner.nextLine();
 				if (input >= lower & input <= upper) {
 					return input;
 				}

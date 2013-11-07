@@ -37,39 +37,18 @@ public class ManagerController extends Controller {
             case 2:
             	(new MovieManagingController()).run();
             	break;
-            /*
-                case 1: //add movie
-                    String newMovieName = gi.inputString("movie name");
-                    String newMovieType = gi.inputString("movie type");
-                    int newMovieStatus = gi.inputInteger("status (1. now showing 2. coming soon)", 1, 2);
-                    boolean success = addMovie(newMovieName,newMovieType,newMovieStatus);
-                    if (success) System.out.println("Movie added!");
-                    else System.out.println("Error!");
-                    break;
-                    
-                case 2: //update movie details
-                	displayMovieList();
-                    int movieId = gi.inputInteger("movie id");
-                    gi.display("Enter filed number to edit: [Name,Type,Satus] ");
-                    String key = gi.inputString("key");
-                    String value = gi.inputString("new value");
-                    success = editMovie(movieId,key,value);
-                    if (success) gi.display("Movie details updated!");
-                    else gi.display("Error!");
-                    break;
-                 */   
-                case 3:
-                	(new ShowManagingController()).run();
-                    break;
-                case 4: //set price
-                	(new PriceManagingController()).run();
-                    break;
-                case 5: //set holiday
-                	(new HolidayManagingController()).run();
-                    break;
-                case 6: //generate sales report
-                	(new ReportController()).run();
-                    break;
+            case 3:
+            	(new ShowManagingController()).run();
+                break;
+            case 4: //set price
+            	(new PriceManagingController()).run();
+                break;
+            case 5: //set holiday
+            	(new HolidayManagingController()).run();
+                break;
+            case 6: //generate sales report
+            	(new ReportController()).run();
+                break;
             }
             displayMenu();
             choice = gi.inputInteger("choice", 1, 7);
@@ -89,12 +68,8 @@ public class ManagerController extends Controller {
     
 
     public boolean login() {
-        Scanner scanner = new Scanner(System.in);
-        String username, password;
-        System.out.print("Username: ");
-        username = scanner.next();
-        System.out.print("Password: ");
-        password = scanner.next();
+        String username = gi.inputString("username")
+             , password = gi.inputString("password");
         return (checkAccount(username, password));
     }
 

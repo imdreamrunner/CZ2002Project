@@ -11,8 +11,7 @@ public class MainController extends Controller {
 					"Please select your entry:",
 	                "1. Customer Entry",
 	                "2. Staff Entry",
-	                "3. Quit",
-	                "Please input your choice: "
+	                "3. Quit"
 			};
 			gi.display(menu);
 			choice = gi.inputInteger("choice", 1, 3);

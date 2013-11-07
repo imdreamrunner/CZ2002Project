@@ -83,6 +83,12 @@ public class Ticket extends Model{
 	public Movie getMovie() {
 		return show.getMovie();
 	}
+	public Cinema getCinema() {
+		return show.getCinema();
+	}
+	public Cineplex getCineplex() {
+		return show.getCinema().getCineplex();
+	}
 	
 	@SuppressWarnings("unchecked")
 	public static List<Ticket> getAll() {

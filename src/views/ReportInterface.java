@@ -2,6 +2,9 @@ package views;
 
 import java.util.Scanner;
 
+import models.Movie;
+import controllers.ReportController;
+
 public class ReportInterface {
 	
 	public static void main() {
@@ -10,7 +13,14 @@ public class ReportInterface {
 		int operation = scanner.nextInt();
 		switch (operation) {
 			case 1:
-				
+				int year,month,day;
+				System.out.print("Input the year:");
+				year = scanner.nextInt();
+				System.out.print("Input the month:");
+				month = scanner.nextInt();
+				System.out.print("Input the day:");
+				day = scanner.nextInt();
+				ReportController.ListByMovie(year,month,day);
 				break;
 			case 2:
 				break;
@@ -33,5 +43,14 @@ public class ReportInterface {
                 "5. Return to previous page \n" +
                 "Please input your choice: ");		
 	}
+	
+	public static void displayRevenue(String name, int revenue) {
+		System.out.println(name + " : " + revenue);
+	}
+	
+	public static void displayTotalRevenue(int revenue) {
+		System.out.println("Total Revenue: " + revenue);
+	}
+
 
 }

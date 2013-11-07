@@ -29,7 +29,6 @@ public class BookingController {
 		 for (int seatId : seatIdList) {
 			 Seat seat = Seat.getOne(seatId);
 			 //change seat status
-			 seat.setName(customer.getName());
 			 seat.setStatus(false);
 			 seat.save();
 			 totalPrice += price;

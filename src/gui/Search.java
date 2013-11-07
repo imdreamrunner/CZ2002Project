@@ -13,6 +13,17 @@ import models.Show;
 
 public class Search extends javax.swing.JFrame {
     
+    private javax.swing.JButton list;
+    private javax.swing.JButton close;
+    private javax.swing.JComboBox cineplexListing;
+    private javax.swing.JComboBox movieListing;
+    private javax.swing.JLabel cineplex;
+    private javax.swing.JLabel movie;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea showTime;
+	
     public Search() {
         initComponents();
     }
@@ -20,19 +31,19 @@ public class Search extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        Cineplex = new javax.swing.JLabel();
-        Movie = new javax.swing.JLabel();
-        CineplexList = new javax.swing.JComboBox();
-        MovieList = new javax.swing.JComboBox();
-        List = new javax.swing.JButton();
-        Close = new javax.swing.JButton();
+        cineplex = new javax.swing.JLabel();
+        movie = new javax.swing.JLabel();
+        cineplexListing = new javax.swing.JComboBox();
+        movieListing = new javax.swing.JComboBox();
+        list = new javax.swing.JButton();
+        close = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        ShowTime = new javax.swing.JTextArea();
+        showTime = new javax.swing.JTextArea();
 
-        Cineplex.setText("Cineplex:");
+        cineplex.setText("Cineplex:");
 
-        Movie.setText("Movie:");
+        movie.setText("Movie:");
         
         List<Cineplex> cineplexList = ListingController.getCineplexList();
         List<String> cineplexNameList = new ArrayList<String>();
@@ -42,10 +53,10 @@ public class Search extends javax.swing.JFrame {
         	cineplexNameList.add(cineplexItem); 
         	}
         String[] cineplexNameArray = cineplexNameList.toArray(new String[0]);
-        CineplexList.setModel(new javax.swing.DefaultComboBoxModel(cineplexNameArray));
-        CineplexList.addActionListener(new java.awt.event.ActionListener() {
+        cineplexListing.setModel(new javax.swing.DefaultComboBoxModel(cineplexNameArray));
+        cineplexListing.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CineplexListActionPerformed(evt);
+                cineplexListingActionPerformed(evt);
             }
         });
         
@@ -58,36 +69,89 @@ public class Search extends javax.swing.JFrame {
         	movieNameList.add(movieItem); 
         	}
         String[] movieNameArray = movieNameList.toArray(new String[0]);
-        MovieList.setModel(new javax.swing.DefaultComboBoxModel(movieNameArray));
-        MovieList.addActionListener(new java.awt.event.ActionListener() {
+        movieListing.setModel(new javax.swing.DefaultComboBoxModel(movieNameArray));
+//        movieListing.addActionListener(new java.awt.event.ActionListener() {
+//            public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                movieListingActionPerformed(evt);
+//            }
+//        }
+//        );
+
+        list.setText("List");
+        list.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MovieListActionPerformed(evt);
+                listActionPerformed(evt);
             }
         });
 
-        List.setText("List");
-        List.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListActionPerformed(evt);
-            }
-        });
-
-        Close.setText("Close");
-        Close.addActionListener(new java.awt.event.ActionListener() {
+        close.setText("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CloseActionPerformed(evt);
             }
         });
         
-        ShowTime.setEditable(false);
-        ShowTime.setOpaque(false);
-        ShowTime.setColumns(50);
-        ShowTime.setRows(5);
-        ShowTime.setText("Movies listed...");
-        jScrollPane1.setViewportView(ShowTime);
+        showTime.setEditable(false);
+        showTime.setOpaque(false);
+        showTime.setColumns(30);
+        showTime.setRows(10);
+        showTime.setText("Movies listed...");
+        jScrollPane1.setViewportView(showTime);
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Movie Searching & Listing");
 
+        configuration();
+    }                        
+
+    private void cineplexListingActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        String selectedCineplex = (String)cineplexListing.getSelectedItem();
+        String[] temp = selectedCineplex.split(" ");
+        int cineplexId = Integer.parseInt(temp[0]);
+        List<Movie> movieList = ListingController.getMovieByCineplex(cineplexId);
+        List<String> movieNameList = new ArrayList<String>();
+        String movieItem = "";
+        for (Movie movie: movieList){
+        	movieItem = movie.getId() + " " + movie.getName();
+        	movieNameList.add(movieItem);
+        	} 
+        String[] movieNameArray = movieNameList.toArray(new String[0]);
+        movieListing.setModel(new javax.swing.DefaultComboBoxModel(movieNameArray));
+    }                                          
+
+//    private void MovieListingActionPerformed(java.awt.event.ActionEvent evt) {
+//    }                                          
+
+    private void listActionPerformed(java.awt.event.ActionEvent evt) {
+    	String selectedCineplex = (String)cineplexListing.getSelectedItem();
+    	String selectedMovie = (String)movieListing.getSelectedItem();
+        String[] temp = selectedCineplex.split(" ");
+        int cineplexId = Integer.parseInt(temp[0]);
+        temp = selectedMovie.split(" ");
+        int movieId = Integer.parseInt(temp[0]);
+    	List<Show> showList = ListingController.getShowByCineplextAndMovie(cineplexId, movieId);
+    	
+    	//String display = "ShowId  Cinema    Showtime            Type    Rating\n";
+    	Movie movie = showList.get(0).getMovie();
+    	String display = String.format("Title: %s\nType: %s\nRating: %s\nShowId  Cinema    Showtime\n\n",movie.getName(),movie.getType(),movie.getRating());
+    	for(Show show : showList){
+    		int Id = show.getId();
+    		String cinema = show.getCinema().getCinemaCode();
+    		String showtime = show.getShowTime().toString();
+    		//String type = show.getMovie().getType();
+    		//String rating = show.getMovie().getRating();
+    		//String item = String.format("%-8d%-10s%-20s%-8s%s\n",Id,cinema,showtime,type,rating);
+    		String item = String.format("%-8d%-10s%-20s\n",Id,cinema,showtime);
+    		display.concat(item);
+    	}
+    	
+        showTime.setText(display);
+    }                                        
+
+    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        this.dispose();
+    }
+    
+    private void configuration(){
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Movie Searching", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 204)));
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -95,27 +159,27 @@ public class Search extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(Cineplex)
-                    .addComponent(Movie))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cineplex)
+                    .addComponent(movie))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(CineplexList, 0, 220, Short.MAX_VALUE)
-                    .addComponent(MovieList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(cineplexListing, 0, 220, Short.MAX_VALUE)
+                    .addComponent(movieListing, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addComponent(List))
+                .addComponent(list))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CineplexList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cineplex))
+                    .addComponent(cineplexListing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cineplex))
                 .addGap(7, 7, 7)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MovieList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Movie, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(List)))
+                    .addComponent(movieListing, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(movie, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(list)))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Showtime", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, null, new java.awt.Color(0, 102, 255)));
@@ -127,7 +191,7 @@ public class Search extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -136,7 +200,7 @@ public class Search extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Close)
+                .addComponent(close)
                 .addGap(19, 19, 19))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -153,65 +217,10 @@ public class Search extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Close)
+                .addComponent(close)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
-    }                        
-
-    private void CineplexListActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        String selectedCineplex = (String)CineplexList.getSelectedItem();
-        String[] temp = selectedCineplex.split(" ");
-        int cineplexId = Integer.parseInt(temp[0]);
-        List<Movie> movieList = ListingController.getMovieByCineplex(cineplexId);
-        List<String> movieNameList = new ArrayList<String>();
-        String movieItem = "";
-        for (Movie movie: movieList){
-        	movieItem = movie.getId() + " " + movie.getName();
-        	movieNameList.add(movieItem);
-        	} 
-        String[] movieNameArray = movieNameList.toArray(new String[0]);
-        MovieList.setModel(new javax.swing.DefaultComboBoxModel(movieNameArray));
-    }                                          
-
-    private void MovieListActionPerformed(java.awt.event.ActionEvent evt) {
-    }                                          
-
-    private void ListActionPerformed(java.awt.event.ActionEvent evt) {
-    	String selectedCineplex = (String)CineplexList.getSelectedItem();
-    	String selectedMovie = (String)MovieList.getSelectedItem();
-        String[] temp = selectedCineplex.split(" ");
-        int cineplexId = Integer.parseInt(temp[0]);
-        temp = selectedMovie.split(" ");
-        int movieId = Integer.parseInt(temp[0]);
-    	List<Show> showList = ListingController.getShowByCineplextAndMovie(cineplexId, movieId);
-    	
-    	String display = "Cinema    Showtime            Type    Rating\n";
-    	for(Show show : showList){
-    		String cinema = show.getCinema().getCinemaCode();
-    		String showtime = show.getShowTime().toString();
-    		String type = show.getMovie().getType();
-    		String rating = show.getMovie().getRating();
-    		String item = String.format("%-10s%-20s%-8s%s\n",cinema,showtime,type,rating);
-    		display.concat(item);
-    	}
-    	
-        ShowTime.setText(display);
-    }                                        
-
-    private void CloseActionPerformed(java.awt.event.ActionEvent evt) {                                         
-        this.dispose();
-    }                                        
-
-    private javax.swing.JButton List;
-    private javax.swing.JButton Close;
-    private javax.swing.JComboBox CineplexList;
-    private javax.swing.JComboBox MovieList;
-    private javax.swing.JLabel Cineplex;
-    private javax.swing.JLabel Movie;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea ShowTime;              
+    }
 }

@@ -1,2 +1,2 @@
-id=1&bookingId=0&price=10&ticketType=T T&showId=1&seatId=1
-id=2&bookingId=0&price=10&ticketType=T T&seatId=4&showId=1
+id=1&bookingId=1&price=10&ticketType=T T&showId=1&seatId=1
+id=2&bookingId=1&price=10&ticketType=T T&seatId=4&showId=1

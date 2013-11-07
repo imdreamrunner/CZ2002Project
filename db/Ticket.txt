@@ -1,6 +1,0 @@
-id=1&bookingId=0&price=10&ticketType=T T&showId=1&seatId=1
-id=2&bookingId=0&price=10&ticketType=T T&seatId=4&showId=1
-id=3&bookingId=0&price=10&ticketType=T T&showId=2&seatId=6
-id=4&bookingId=0&price=10&ticketType=T T&seatId=7&showId=2
-id=5&bookingId=0&price=10&ticketType=T T&showId=2&seatId=8
-id=6&bookingId=0&price=10&ticketType=T T&seatId=9&showId=2

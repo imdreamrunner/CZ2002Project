@@ -8,7 +8,6 @@ import old_controllers.ListingController;
 import old_controllers.LoginController;
 import old_controllers.SystemController;
 import utils.Controller;
-import views.HolidayManagingInterface;
 import views.PriceManagingInterface;
 import views.ReportInterface;
 import views.ShowManagingInterface;
@@ -72,7 +71,7 @@ public class ManagerController extends Controller {
                 	PriceManagingInterface.main();
                     break;
                 case 5: //set holiday
-                	HolidayManagingInterface.main();
+                	(new HolidayManagingController()).run();
                     break;
                 case 6: //generate sales report
                 	ReportInterface.main();

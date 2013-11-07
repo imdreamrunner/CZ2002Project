@@ -1,15 +1,17 @@
-package views;
+package controllers;
 
 import java.util.List;
 import java.util.Scanner;
 
+import models.Holiday;
 import old_controllers.ListingController;
 import old_controllers.SystemController;
-import models.Holiday;
+import utils.Controller;
 
-public class HolidayManagingInterface {
-	
-	public static void main() {
+public class HolidayManagingController extends Controller {
+
+	@Override
+	public void run() {
 		displayHolidayList();
 		Scanner scanner = new Scanner(System.in);
         System.out.println("1. add a new holiday; 2. delete a holiday");
@@ -31,8 +33,8 @@ public class HolidayManagingInterface {
             else System.out.println("Error!");
         }
 	}
-        
-    public static void displayHolidayList() {
+	
+	 public static void displayHolidayList() {
         System.out.println("*****HOLIDAY LIST*****");
         List<Holiday> holidayList = ListingController.getHolidayList();
         for (Holiday holiday : holidayList) {
@@ -40,4 +42,5 @@ public class HolidayManagingInterface {
         }
         System.out.println("*****END OF HOLIDAY LIST*****");
     }
+
 }

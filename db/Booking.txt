@@ -1,3 +1,0 @@
-id=1&createTime=1383825976543&customerId=2&TID=-1&bookingStatus=success&totalPrice=10
-id=2&createTime=1383826463294&customerId=2&TID=-1&bookingStatus=success&totalPrice=20
-id=3&createTime=1383826482485&customerId=1&TID=-1&bookingStatus=success&totalPrice=20

@@ -64,6 +64,9 @@ public class Booking extends Model{
 	public Date getCreateTime() {
 		return createTime;
 	}
+	public Movie getMovie() {
+		return getTickets().get(0).getMovie();
+	}
 	public List<Ticket> getTickets() {
 		return Ticket.getAllByBooking(this);
 	}

@@ -3,7 +3,6 @@ package controllers;
 import java.util.Scanner;
 
 import utils.Controller;
-import views.BookingInterface;
 import views.HistoryInterface;
 
 public class CustomerController extends Controller {
@@ -17,7 +16,7 @@ public class CustomerController extends Controller {
         while (choice < 3) {
             switch (choice) {
                 case 1:
-                    BookingInterface.main();
+                    (new BookingController()).run();
                     break;
                 case 2:
                     HistoryInterface.main();

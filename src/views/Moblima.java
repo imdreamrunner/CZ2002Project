@@ -1,6 +1,6 @@
 package views;
 import java.util.Scanner;
-
+/*
 public class Moblima {
 
     public static void main(String[] args) {
@@ -28,4 +28,5 @@ public class Moblima {
                 "Please input your choice: ");
     }
 }
+*/
 

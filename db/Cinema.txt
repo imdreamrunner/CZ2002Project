@@ -1,1 +1,2 @@
 id=1&cinemaCode=1&cineplexId=1&seatPlan=A1 A2 A3 B2 B3
+id=2&cinemaCode=2&cineplexId=1&seatPlan=A1 A2 A3 B2 B3

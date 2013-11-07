@@ -13,7 +13,7 @@ public class ReportController {
 	public static final int[] NumberOfDay = {31,28,31,30,31,30,31,31,30,31,30,31};
 	
 	public static void ListByMovie(int year, int month, int day) {
-		List<Ticket> ticketList = Ticket.getTicketsByDay(year,month,day);
+		List<Ticket> ticketList = Ticket.getAllByDay(year,month,day);
 		List<Movie> movieList = new ArrayList<Movie>();
 		for (Ticket ticket : ticketList) {
 			if (!movieList.contains(ticket.getMovie())) {
@@ -35,7 +35,7 @@ public class ReportController {
 	}
 	
 	public static void ListByCineplexes(int year, int month, int day) {
-		List<Ticket> ticketList = Ticket.getTicketsByDay(year,month,day);
+		List<Ticket> ticketList = Ticket.getAllByDay(year,month,day);
 		List<Cineplex> cineplexList = new ArrayList<Cineplex>();
 		for (Ticket ticket : ticketList) {
 			if (!cineplexList.contains(ticket.getCineplex())) {
@@ -59,8 +59,8 @@ public class ReportController {
 	
 	
 	public static void ListByDay(int year, int month) {
-		int totalRevenue = 0;
 		for (int day=1; day<NumberOfDay[month-1]; day++) {
+			//display the day frist
 			ListByCineplexes(year,month,day);
 		}
 	}

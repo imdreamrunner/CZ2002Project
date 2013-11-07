@@ -79,10 +79,10 @@ public class ShowManagingInterface {
 		List<Show> showList = ListingController.getShowList();
 		for (Show show : showList) {
 			System.out.println("" + show.getId() 
-					+ " " + show.getMovie().getName() 
-					+ " " + show.getCinema().getCineplex().getName()
+					+ " | " + show.getMovie().getName() 
+					+ " | " + show.getCinema().getCineplex().getName()
 					+ " " + show.getCinema().getCinemaCode() 
-					+ " " + show.getShowTime().toLocaleString());
+					+ " | " + show.getShowTime().toLocaleString());
 		}
 	}
 }

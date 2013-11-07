@@ -100,6 +100,10 @@ public class BookingController extends Controller {
 		 //set all price to be 10 now
 		 int price = 10;
 		 Booking booking = new Booking();
+		 booking.setTID("-1");
+		 booking.setCustomer(customer);
+		 booking.setBookingStatus("success");
+		 booking.setCreateTime(new Date());
 		 booking.save();
 		 for (int seatId : seatIdList) {
 			 Seat seat = Seat.getOne(seatId);
@@ -122,11 +126,7 @@ public class BookingController extends Controller {
 			 ticket.save();
 		 }
 		//create booking
-		 booking.setTID("-1");
 		 booking.setTotalPrice(totalPrice);
-		 booking.setCustomer(customer);
-		 booking.setBookingStatus("success");
-		 booking.setCreateTime(new Date());
 		 booking.save();
 		 return true;
 	 }

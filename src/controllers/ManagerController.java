@@ -4,9 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import models.Movie;
-import old_controllers.ListingController;
-import old_controllers.LoginController;
-import old_controllers.SystemController;
+import models.Staff;
 import utils.Controller;
 
 public class ManagerController extends Controller {
@@ -43,7 +41,7 @@ public class ManagerController extends Controller {
                     String newMovieType = scanner.next();
                     System.out.println("Enter movie status: 1. now showing; 2. coming soon;");
                     int newMovieStatus = scanner.nextInt();
-                    boolean success = SystemController.addMovie(newMovieName,newMovieType,newMovieStatus);
+                    boolean success = addMovie(newMovieName,newMovieType,newMovieStatus);
                     if (success) System.out.println("Movie added!");
                     else System.out.println("Error!");
                     break;
@@ -56,7 +54,7 @@ public class ManagerController extends Controller {
                     String key = scanner.next();
                     System.out.print("Enter new value: ");
                     String value = scanner.next();
-                    success = SystemController.editMovie(movieId,key,value);
+                    success = editMovie(movieId,key,value);
                     if (success) System.out.println("Movie details updated!");
                     else System.out.println("Error!");
                     break;
@@ -92,7 +90,7 @@ public class ManagerController extends Controller {
     
     public void displayMovieList() {
     	System.out.println("*****MOVIE LIST*****");
-    	List<Movie> movieList = ListingController.getMovieList();
+    	List<Movie> movieList = getMovieList();
     	for (Movie movie : movieList) {
     		displayMovieInfo(movie);
     	}
@@ -113,7 +111,49 @@ public class ManagerController extends Controller {
         username = scanner.next();
         System.out.print("Password: ");
         password = scanner.next();
-        return (LoginController.checkAccount(username, password));
+        return (checkAccount(username, password));
     }
 
+    public List<Movie> getMovieList() {
+    	List<Movie> movieList = Movie.getAll();
+    	return movieList;
+    }
+    
+    public boolean checkAccount(String username,String password) {
+    	Staff staffAccount = Staff.getByUsername(username);
+   
+    	if (staffAccount.getPassword().equals(password)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
+    
+    public boolean addMovie(String newMovieName, String newMovieType, int newMovieStatus) {
+    	Movie newMovie = new Movie();
+    	newMovie.setName(newMovieName);
+    	newMovie.setType(newMovieType);
+    	newMovie.setStatus(newMovieStatus);
+    	newMovie.save();
+        return true;  //for successful adding
+    }
+    
+    public boolean editMovie(int id, String key, String value) {
+    	Movie movie = Movie.getOne(id);
+    	if (key.equals("Name")) {
+    		movie.setName(value);
+    	} else if (key.equals("Type")) {
+    		movie.setType(value);
+    	} else if (key.equals("Status")) {
+    		try {
+    			int newStatus = Integer.parseInt(value);
+    			movie.setStatus(newStatus);
+    		} catch (Exception e) {
+    			return false;
+    		}
+    	} else return false;
+    	movie.save();
+        return true;
+    }
+    
 }

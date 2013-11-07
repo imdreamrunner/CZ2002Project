@@ -72,6 +72,7 @@ public class ManagerInterface {
                 	HolidayManagingInterface.main();
                     break;
                 case 6: //generate sales report
+                	ReportInterface.main();
                     break;
             }
             displayMenu();

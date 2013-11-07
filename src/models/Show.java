@@ -102,4 +102,19 @@ public class Show extends Model {
 		}
 		return null;
 	}
+	public static List<Show> getAllByCineplextAndMovie(Cineplex cineplex, Movie movie) {
+    	List<Show> showList = getAll();
+    	List<Show> resultList = new ArrayList<Show>();
+    	for (Show show : showList) {
+    		if (show.getMovie().equals(movie) && show.getCinema().getCineplex().equals(cineplex)) {
+    			resultList.add(show);
+    		}
+    	}
+    	return resultList;
+    }
+	public static List<Show> getAllByCineplextAndMovie(int cineplexId, int movieId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		Movie movie = Movie.getOne(movieId);
+		return getAllByCineplextAndMovie(cineplex, movie);
+	}
 }

@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-import old_controllers.ListingController;
 import models.Cinema;
 import models.Cineplex;
 import models.Movie;
@@ -45,7 +44,7 @@ public class Search extends javax.swing.JFrame {
 
         movie.setText("Movie:");
         
-        List<Cineplex> cineplexList = ListingController.getCineplexList();
+        List<Cineplex> cineplexList = Cineplex.getAll();
         List<String> cineplexNameList = new ArrayList<String>();
         String cineplexItem = "";
         for (Cineplex cineplex : cineplexList){
@@ -62,7 +61,7 @@ public class Search extends javax.swing.JFrame {
         
         String movieItem = "";
         Cineplex defaultCineplex = cineplexList.get(0);
-        List<Movie> movieList = ListingController.getMovieByCineplex(defaultCineplex);
+        List<Movie> movieList = getMovieByCineplex(defaultCineplex);
         List<String> movieNameList = new ArrayList<String>();
         for (Movie movie: movieList){
         	movieItem = movie.getId() + " " + movie.getName();
@@ -107,7 +106,7 @@ public class Search extends javax.swing.JFrame {
         String selectedCineplex = (String)cineplexListing.getSelectedItem();
         String[] temp = selectedCineplex.split(" ");
         int cineplexId = Integer.parseInt(temp[0]);
-        List<Movie> movieList = ListingController.getMovieByCineplex(cineplexId);
+        List<Movie> movieList = getMovieByCineplex(cineplexId);
         List<String> movieNameList = new ArrayList<String>();
         String movieItem = "";
         for (Movie movie: movieList){
@@ -128,7 +127,7 @@ public class Search extends javax.swing.JFrame {
         int cineplexId = Integer.parseInt(temp[0]);
         temp = selectedMovie.split(" ");
         int movieId = Integer.parseInt(temp[0]);
-    	List<Show> showList = ListingController.getShowByCineplextAndMovie(cineplexId, movieId);
+    	List<Show> showList = Show.getAllByCineplextAndMovie(cineplexId, movieId);
     	
     	//String display = "ShowId  Cinema    Showtime            Type    Rating\n";
     	Movie movie = showList.get(0).getMovie();
@@ -222,5 +221,35 @@ public class Search extends javax.swing.JFrame {
         );
 
         pack();
+    }
+    
+
+	public List<Movie> getMovieByCineplex(Cineplex cineplex) {
+		List<Show> showList = Show.getAll();
+		List<Movie> movieList = new ArrayList<Movie>();
+		for (Show show : showList) {
+			boolean sameCineplex = show.getCinema().getCineplex().equals(cineplex);
+			boolean notInList = !(movieList.contains(show.getMovie()));
+			if ( sameCineplex && notInList ) {
+				movieList.add(show.getMovie());
+			}
+		}
+		return movieList;
+	}
+
+	public List<Movie> getMovieByCineplex(int cineplexId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		return getMovieByCineplex(cineplex);
+	}
+	
+	public List<Show> getShowByCineplextAndMovie(Cineplex cineplex, Movie movie) {
+    	List<Show> showList = Show.getAll();
+    	List<Show> resultList = new ArrayList<Show>();
+    	for (Show show : showList) {
+    		if (show.getMovie().equals(movie) && show.getCinema().getCineplex().equals(cineplex)) {
+    			resultList.add(show);
+    		}
+    	}
+    	return resultList;
     }
 }

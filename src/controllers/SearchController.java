@@ -1,16 +1,18 @@
-package views;
-
-import models.Cineplex;
-import models.Movie;
-import models.Show;
+package controllers;
 
 import java.util.List;
 import java.util.Scanner;
 
+import models.Cineplex;
+import models.Movie;
+import models.Show;
 import old_controllers.ListingController;
+import utils.Controller;
 
-public class NonGraphSearchInterface {
-	public static void main(String[] args){
+public class SearchController extends Controller {
+
+	@Override
+	public void run() {
 		Scanner sc = new Scanner(System.in);
 		char search = 'y';
 		int i;
@@ -55,4 +57,5 @@ public class NonGraphSearchInterface {
 			search = sc.next().charAt(0);
 		}
 	}
+
 }

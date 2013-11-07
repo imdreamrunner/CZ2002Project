@@ -2,12 +2,12 @@ package views;
 
 import controllers.BookingController;
 import controllers.SystemController;
-
 import models.Customer;
 import models.Show;
 import models.Movie;
 import models.Seat;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
 
@@ -23,24 +23,31 @@ public class BookingInterface {
         int showId = scanner.nextInt();
         displayShowInfo(showId);
         displaySeats(showId);
-        
-        System.out.print("Please enter the seat id for booking: ");
-        int seatId = scanner.nextInt();
-        
+        System.out.print("Please enter the number of seats you want to book: ");
+        int quantity = scanner.nextInt();
+        List<Integer> seatIdList = new ArrayList<Integer>(); 
+        for (int i=0; i<quantity; i++) {
+        	System.out.print("Please enter the seat id for booking: ");
+            int seatId = scanner.nextInt();
+            seatIdList.add(seatId);
+        }
+        	
         System.out.println("*****ENTER COSTOMER INFO*****");
     	System.out.print("Please enter your mobile number: ");
     	int mobile = scanner.nextInt();
     	if (Customer.getOneByMobile(mobile) != null) {  //!!!!!ugly code!!!!!
     		customer = 	Customer.getOneByMobile(mobile);
+    		System.out.println("Customer Record Retrieved...");
     	} else {
+    		scanner.nextLine();
     		System.out.println("Please enter your name: ");
-        	String name = scanner.next();
+        	String name = scanner.nextLine();
         	System.out.println("Please enter your email address: ");
-        	String email = scanner.next();
+        	String email = scanner.nextLine();
         	customer = SystemController.CreateCustomer(name, mobile, email);
     	}
         
-        result = BookingController.createBooking(showId, seatId, customer);
+        result = BookingController.createBooking(showId, seatIdList, customer);
         displayBookingResult(result);
     }
 
@@ -79,7 +86,7 @@ public class BookingInterface {
     	if (result)
     		System.out.println("***Booking successful!***");
     	else
-    		System.out.println("***Booking failure!***");
+    		System.out.println("***Booking failed!***");
     }
     
 }

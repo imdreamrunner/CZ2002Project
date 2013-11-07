@@ -1,4 +1,4 @@
-package old_controllers;
+package controllers;
 
 import utils.Controller;
 

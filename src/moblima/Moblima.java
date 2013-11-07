@@ -1,6 +1,6 @@
 package moblima;
 
-import old_controllers.MainController;
+import controllers.MainController;
 
 public class Moblima {
 	public static void main(String[] args) {

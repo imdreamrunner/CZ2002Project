@@ -1,5 +1,8 @@
 package views;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Scanner;
 
@@ -37,8 +40,18 @@ public class ShowManagingInterface {
 		listCinema(cineplexId);
 		int cinemaId = scanner.nextInt();
 		Cinema cinema = Cinema.getOne(cinemaId);
+		System.out.print("Input Year (eg 2013): ");
+		int year = scanner.nextInt();
 		System.out.print("Input Month (1 ~ 12): ");
 		int month = scanner.nextInt();
+		System.out.print("Input Day: ");
+		int day = scanner.nextInt();
+		System.out.print("Input Hour: ");
+		int hour = scanner.nextInt();
+		System.out.print("Input Minute: ");
+		int minute = scanner.nextInt();
+		Calendar showTime = new GregorianCalendar(year, month, day, hour, minute, 0);
+		Show show = new Show(movie, cinema, showTime.getTime());
 	}
 	public static void deleteShow() {
 		

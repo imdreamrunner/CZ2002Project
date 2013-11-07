@@ -1,6 +1,6 @@
 package models;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,10 +21,10 @@ public class Show extends Model {
 		set("cinemaId", cinema.getId());
 		set("showTime", showTime);
 	}
-	public Show(Movie movie, Cinema cinema, Date showTime) {
+	public Show(Movie movie, Cinema cinema, Date date) {
 		setMovie(movie);
 		setCinema(cinema);
-		setShowTime(showTime);
+		setShowTime(date);
 		String seatPlan = cinema.getSeatPlan();
 		String[] seatNames = seatPlan.split(" ");
 		for (String seatName : seatNames) {

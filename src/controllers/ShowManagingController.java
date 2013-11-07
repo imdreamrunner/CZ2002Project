@@ -55,25 +55,25 @@ public class ShowManagingController extends Controller {
 		
 	}
 	public void listMovie() {
-		List<Movie> movieList = getMovieList();
+		List<Movie> movieList = Movie.getAll();
 		for (Movie movie : movieList) {
 			System.out.println("" + movie.getId() + " " + movie.getName());
 		}
 	}
 	public void listCineplex() {
-		List<Cineplex> cineplexList = getCineplexList();
+		List<Cineplex> cineplexList = Cineplex.getAll();
 		for (Cineplex cineplex : cineplexList) {
 			System.out.println("" + cineplex.getId() + " " + cineplex.getName());
 		}
 	}
 	public void listCinema(int cineplexId) {
-		List<Cinema> cinemaList = getCinemaByCineplex(cineplexId);
+		List<Cinema> cinemaList = Cinema.getAllByCineplex(cineplexId);
 		for (Cinema cinema : cinemaList) {
 			System.out.println("" + cinema.getId() + " " + cinema.getCinemaCode());
 		}
 	}
 	public void listShow() {
-		List<Show> showList = getShowList();
+		List<Show> showList = Show.getAll();
 		for (Show show : showList) {
 			System.out.println("" + show.getId() 
 					+ " | " + show.getMovie().getName() 
@@ -82,53 +82,5 @@ public class ShowManagingController extends Controller {
 					+ " | " + show.getShowTime().toLocaleString());
 		}
 	}
-	
-	public List<Cineplex> getCineplexList() {
-		List<Cineplex> cineplexList = Cineplex.getAll();
-		return cineplexList;
-	}
-	
-	public List<Movie> getMovieByCineplex(Cineplex cineplex) {
-		List<Show> showList = Show.getAll();
-		List<Movie> movieList = new ArrayList<Movie>();
-		for (Show show : showList) {
-			boolean sameCineplex = show.getCinema().getCineplex().equals(cineplex);
-			boolean notInList = !(movieList.contains(show.getMovie()));
-			if ( sameCineplex && notInList ) {
-				movieList.add(show.getMovie());
-			}
-		}
-		return movieList;
-	}
-	
-	public List<Movie> getMovieByCineplex(int cineplexId) {
-		Cineplex cineplex = Cineplex.getOne(cineplexId);
-		return getMovieByCineplex(cineplex);
-	}
-	
-	public List<Cinema> getCinemaByCineplex(Cineplex cineplex) {
-		List<Cinema> cinemaList = Cinema.getAll();
-		List<Cinema> resultList = new ArrayList<Cinema>();
-		for (Cinema cinema : cinemaList) {
-			if (cinema.getCineplex().equals(cineplex)) {
-				resultList.add(cinema);
-			}
-		}
-		return resultList;
-	}
-	
-	public List<Cinema> getCinemaByCineplex(int cineplexId) {
-		Cineplex cineplex = Cineplex.getOne(cineplexId);
-		return getCinemaByCineplex(cineplex);
-	}
-	
-    public List<Movie> getMovieList() {
-    	List<Movie> movieList = Movie.getAll();
-    	return movieList;
-    }
-    
-    public List<Show> getShowList() {
-    	return Show.getAll();
-    }
     
 }

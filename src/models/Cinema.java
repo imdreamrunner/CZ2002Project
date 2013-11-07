@@ -75,4 +75,8 @@ public class Cinema extends Model {
 		}
 		return selected;
 	}
+	public static List<Cinema> getAllByCineplex(int cineplexId) {
+		Cineplex cineplex = Cineplex.getOne(cineplexId);
+		return getAllByCineplex(cineplex);
+	}
 }

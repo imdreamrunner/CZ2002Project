@@ -61,7 +61,7 @@ public class Booking extends Model{
 	public Customer getCustomer() {
 		return customer;
 	}
-	public Date getDate() {
+	public Date getCreateTime() {
 		return createTime;
 	}
 	public List<Ticket> getTickets() {

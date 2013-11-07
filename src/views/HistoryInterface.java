@@ -12,20 +12,18 @@ public class HistoryInterface {
     
 	public static void main() {
 		displayMenu();
-		int mobile;
-		String name;
-		Customer customer = null;
-		List<Booking> bookingList = null;
+		
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter your name: ");
-    	name = scanner.next();
+    	String name = scanner.next();
         System.out.println("Please enter your mobile number: ");
-    	mobile = scanner.nextInt();
-    	if (HistoryController.validCustomer(name, mobile) == null){
-    		System.out.println("Sorry, no matching customer found.");
-    	}else{
-    		customer = HistoryController.validCustomer(name, mobile);
-    	//	List<Booking> bookingList = ListingController.getHistory(customer);
+    	int mobile = scanner.nextInt();
+    	Customer customer = HistoryController.validateCustomer(name, mobile);
+    	
+    	if ( customer == null) {
+    		System.out.println("Sorry, no matching customers found.");
+    	} else {
+    		List<Booking> bookingList = ListingController.getBookingByCustomer(customer);
     		displayHistory(bookingList);
     	}
 	}        
@@ -34,8 +32,9 @@ public class HistoryInterface {
         System.out.println("***** Customer History Page *****");
     }    
     public static void displayHistory(List<Booking> bookingList){
-    	for (int i =0; i<bookingList.size(); i++){
-    		System.out.println("");
+    	for (Booking booking : bookingList) {
+    		System.out.println(booking.getDate().toString() + " " + booking.getMovie().getName()
+    				+ " " + booking.getTotalPrice());
     		
     	}
     	System.out.println("********************************");

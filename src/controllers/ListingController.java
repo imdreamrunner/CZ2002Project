@@ -5,6 +5,8 @@ import models.Holiday;
 import models.Movie;
 import models.Show;
 import models.Cinema;
+import models.Booking;
+import models.Customer;
 import models.TicketPrice;
 
 import java.util.ArrayList;
@@ -85,6 +87,16 @@ public class ListingController {
     	Cineplex cineplex = Cineplex.getOne(cineplexId);
     	Movie movie = Movie.getOne(movieId);
     	return getShowByCineplextAndMovie(cineplex, movie);
+    }
+    
+    public static List<Booking> getBookingByCustomer(Customer customer) {
+    	List<Booking> bookingList = Booking.getAll();
+    	List<Booking> resultList = new ArrayList<Booking>();
+    	for (Booking booking : bookingList) {
+    		if (booking.getCustomer().equals(customer)) 
+    			resultList.add(booking);
+    	}
+    	return resultList;
     }
     
     

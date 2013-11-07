@@ -45,7 +45,7 @@ public class BookingInterface {
     }
 
     public static void displayMenu() {
-        System.out.println("***** Customer Page *****");
+        System.out.println("*****CUSTOMER PAGE*****");
         System.out.println("Welcome to XXX CinemaComplex Website ");
     }
     

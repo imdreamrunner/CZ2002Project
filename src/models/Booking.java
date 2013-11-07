@@ -1,5 +1,6 @@
 package models;
 
+import java.util.Date;
 import java.util.List;
 
 import utils.Database;
@@ -10,12 +11,14 @@ public class Booking extends Model{
 	private int totalPrice;
 	private String bookingStatus;
 	private Customer customer;
+	private Date createTime;
 	
 	public void loadData() {
 		TID = get("TID").getString();
 		totalPrice = get("totalPrice").getInteger();
 		bookingStatus = get("bookingStatus").getString();
 		setCustomer(get("customerId").getInteger());
+		createTime = get("createTime").getData();
 	}
 	
 	public void saveData() {
@@ -23,6 +26,7 @@ public class Booking extends Model{
 		set("totalPrice", totalPrice);
 		set("bookingStatus", bookingStatus);
 		set("customerId", customer.getId());
+		set("createTime", createTime);
 	}
 	
 	public void setTID(String TID) {
@@ -41,6 +45,9 @@ public class Booking extends Model{
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+	public void setCreateTime(Date theCreateTime) {
+		createTime = theCreateTime;
+	}
 	
 	public String getTID() {
 		return TID;
@@ -53,6 +60,9 @@ public class Booking extends Model{
 	}
 	public Customer getCustomer() {
 		return customer;
+	}
+	public Date getDate() {
+		return createTime;
 	}
 	public List<Ticket> getTickets() {
 		return Ticket.getAllByBooking(this);

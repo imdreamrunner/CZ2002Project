@@ -1,6 +1,8 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import utils.Database;
@@ -104,5 +106,32 @@ public class Ticket extends Model{
 			}
 		}
 		return null;
+	}
+	public static List<Ticket> getAllByDay(int year, int month, int day) {
+		List<Ticket> ticketList = getAll();
+		List<Ticket> selected = new ArrayList<Ticket>();
+		for (Ticket ticket : ticketList) {
+			Date sellingDate = ticket.getBooking().getDate();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(sellingDate);
+			if (cal.get(Calendar.YEAR) != year) continue;
+			if (cal.get(Calendar.MONTH) != (month - 1)) continue;
+			if (cal.get(Calendar.DAY_OF_MONTH) != day) continue;
+			selected.add(ticket);
+		}
+		return selected;
+	}
+	public static List<Ticket> getAllByMonth(int year, int month) {
+		List<Ticket> ticketList = getAll();
+		List<Ticket> selected = new ArrayList<Ticket>();
+		for (Ticket ticket : ticketList) {
+			Date sellingDate = ticket.getBooking().getDate();
+			Calendar cal = Calendar.getInstance();
+			cal.setTime(sellingDate);
+			if (cal.get(Calendar.YEAR) != year) continue;
+			if (cal.get(Calendar.MONTH) != (month - 1)) continue;
+			selected.add(ticket);
+		}
+		return selected;
 	}
 }

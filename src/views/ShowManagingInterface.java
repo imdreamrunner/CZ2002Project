@@ -29,6 +29,9 @@ public class ShowManagingInterface {
         case 2:
         	deleteShow();
         	break;
+        case 3:
+        	listShow();
+        	break;
         }
 	}
 	public static void addShow() {
@@ -73,6 +76,16 @@ public class ShowManagingInterface {
 		List<Cinema> cinemaList = ListingController.getCinemaByCineplex(cineplexId);
 		for (Cinema cinema : cinemaList) {
 			System.out.println("" + cinema.getId() + " " + cinema.getCinemaCode());
+		}
+	}
+	public static void listShow() {
+		List<Show> showList = ListingController.getShowList();
+		for (Show show : showList) {
+			System.out.println("" + show.getId() 
+					+ " " + show.getMovie().getName() 
+					+ " " + show.getCinema().getCineplex().getName()
+					+ " " + show.getCinema().getCinemaCode() 
+					+ " " + show.getShowTime().toLocaleString());
 		}
 	}
 }

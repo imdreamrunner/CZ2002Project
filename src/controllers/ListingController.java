@@ -66,6 +66,10 @@ public class ListingController {
     	return holidayList;
     }
     
+    public static List<Show> getShowList() {
+    	return Show.getAll();
+    }
+    
     public static List<Show> getShowByCineplextAndMovie(Cineplex cineplex, Movie movie) {
     	List<Show> showList = Show.getAll();
     	List<Show> resultList = new ArrayList<Show>();

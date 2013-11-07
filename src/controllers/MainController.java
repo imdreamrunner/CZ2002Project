@@ -21,6 +21,7 @@ public class MainController extends Controller {
 				(new CustomerController()).run();
 				break;
 			case 2:
+				(new ManagerController()).run();
 				break;
 			}
 		}

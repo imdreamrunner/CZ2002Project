@@ -1,4 +1,4 @@
-package views;
+package controllers;
 import gui.Search;
 
 public class GraphSearchInterface {

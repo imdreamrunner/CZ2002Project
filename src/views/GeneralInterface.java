@@ -46,14 +46,4 @@ public class GeneralInterface {
 		System.out.print(">> " + title + ": ");
 		return scanner.nextLine();
 	}
-	public Date inputDate(String title) {
-		System.out.print(">> [[" + title + "]] ");
-		while (true) {
-			int year = inputInteger("year");
-			int month = inputInteger("month", 1, 12);
-			int day = inputInteger("day", 1, 31);
-			break;
-		}
-		return new Date();
-	}
 }

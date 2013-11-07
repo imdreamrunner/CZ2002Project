@@ -33,7 +33,7 @@ public class HistoryInterface {
     }    
     public static void displayHistory(List<Booking> bookingList){
     	for (Booking booking : bookingList) {
-    		System.out.println(booking.getDate().toString() + " " + booking.getMovie().getName()
+    		System.out.println(booking.getCreateTime().toString() + " " + booking.getMovie().getName()
     				+ " " + booking.getTotalPrice());
     		
     	}

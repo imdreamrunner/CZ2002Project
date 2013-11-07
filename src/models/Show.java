@@ -11,17 +11,20 @@ public class Show extends Model {
 	private Movie movie;
 	private Cinema cinema;
 	private Date showTime;
+	private boolean deleted;
 	
 	public void loadData() {
 		setMovie(get("movieId").getInteger());
 		setCinema(get("cinemaId").getInteger());
 		showTime = get("showTime").getData();
+		deleted = get("deleted").getBoolean();
 	}
 	
 	public void saveData() {
 		set("movieId", movie.getId());
 		set("cinemaId", cinema.getId());
 		set("showTime", showTime);
+		set("deleted", deleted);
 	}
 	public Show() {
 	}
@@ -52,6 +55,9 @@ public class Show extends Model {
 	public Date getShowTime() {
 		return showTime;
 	}
+	public boolean getDeleted() {
+		return deleted;
+	}
 	public List<Seat> getSeats() {
 		return Seat.getAllByShow(this);
 	}
@@ -69,6 +75,9 @@ public class Show extends Model {
 	}
 	public void setShowTime(Date showTime) {
 		this.showTime = showTime;
+	}
+	public void setDeleted(boolean deleted) {
+		this.deleted = deleted;
 	}
 	@SuppressWarnings("unchecked")
 	public static List<Show> getAll() {

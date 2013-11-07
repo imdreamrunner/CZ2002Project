@@ -20,5 +20,4 @@ public class BookingController {
 	    	}else
 	    		return false;
 	 }
-
 }

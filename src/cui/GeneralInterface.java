@@ -20,8 +20,9 @@ public class GeneralInterface {
 		while (true) {
 			try {
 				System.out.print(">> " + title + " (number): ");
+				int num = scanner.nextInt();
 				scanner.nextLine();
-				return scanner.nextInt();
+				return num;
 			} catch (InputMismatchException e) {
 				scanner.nextLine();
 			}

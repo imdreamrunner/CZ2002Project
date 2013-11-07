@@ -82,16 +82,16 @@ public class ManagerController extends Controller {
     }
     
     public void displayMovieList() {
-    	System.out.println("*****MOVIE LIST*****");
+    	gi.display("*****MOVIE LIST*****");
     	List<Movie> movieList = getMovieList();
     	for (Movie movie : movieList) {
     		displayMovieInfo(movie);
     	}
-    	System.out.println("*****END OF MOVIE LIST*****");
+    	gi.display("*****END OF MOVIE LIST*****");
     }
     
     public void displayMovieInfo(Movie movie) {
-    	System.out.println("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
+    	gi.display("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
     			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
     }
    

@@ -17,36 +17,38 @@ public class BookingController extends Controller {
 
 	@Override
 	public void run() {
-    	displayMenu();
-        Scanner scanner = new Scanner(System.in);
+    	gi.display(menu);
         boolean result = false;
         
         Customer customer= null;
         System.out.print("Please enter the show id for booking: ");
-        int showId = scanner.nextInt();
+        int showId = gi.inputInteger("showId");
         displayShowInfo(showId);
         displaySeats(showId);
         System.out.print("Please enter the number of seats you want to book: ");
-        int quantity = scanner.nextInt();
+        int quantity = gi.inputInteger("quantity");
         List<Integer> seatIdList = new ArrayList<Integer>(); 
         for (int i=0; i<quantity; i++) {
         	System.out.print("Please enter the seat id for booking: ");
-            int seatId = scanner.nextInt();
+            int seatId = gi.inputInteger("seatId");
             seatIdList.add(seatId);
         }
         	
         System.out.println("*****ENTER COSTOMER INFO*****");
     	System.out.print("Please enter your mobile number: ");
-    	int mobile = scanner.nextInt();
+    	int mobile = gi.inputInteger("mobile");
     	if (Customer.getOneByMobile(mobile) != null) {  //!!!!!ugly code!!!!!
     		customer = 	Customer.getOneByMobile(mobile);
     		System.out.println("Customer Record Retrieved...");
     	} else {
-    		scanner.nextLine();
+    		//can i use the next line to replace
+    		//scanner.nextLine();  ?
+    		gi.inputString("");
+    		
     		System.out.println("Please enter your name: ");
-        	String name = scanner.nextLine();
+        	String name = gi.inputString("name");
         	System.out.println("Please enter your email address: ");
-        	String email = scanner.nextLine();
+        	String email = gi.inputString("email");
         	customer = CreateCustomer(name, mobile, email);
     	}
         
@@ -54,43 +56,43 @@ public class BookingController extends Controller {
         displayBookingResult(result);
 	}
 
-    public void displayMenu() {
-        System.out.println("*****CUSTOMER PAGE*****");
-        System.out.println("Welcome to XXX CinemaComplex Website ");
-    }
+        String[] menu = { 
+        		"*****CUSTOMER PAGE*****",
+        		"Welcome to XXX CinemaComplex Website"
+        };
     
     public void displayShowInfo(int showId){
-    	System.out.println("*****SHOW INFO*****");
+    	gi.display("*****SHOW INFO*****");
     	Show show = null;
     	Movie movie = null;
     	show = models.Show.getOne(showId);
     	movie = show.getMovie();
-        System.out.printf("Movie name: "+ movie.getName());
-        System.out.printf("Cineplex: "+ show.getCinema().getCineplex().getName());
-        System.out.printf("Cinema: "+ show.getCinema().getCinemaCode());
-        System.out.printf("Date: "+ show.getShowTime().getTime());
-        System.out.println("*****END OF SHOW INFO*****");
+    	gi.display("Movie name: "+ movie.getName());
+    	gi.display("Cineplex: "+ show.getCinema().getCineplex().getName());
+    	gi.display("Cinema: "+ show.getCinema().getCinemaCode());
+    	gi.display("Date: "+ show.getShowTime().getTime());
+    	gi.display("*****END OF SHOW INFO*****");
     }
 
     public void displaySeats(int showId){
     	List<Seat> seatList;
     	Show show = Show.getOne(showId);
     	seatList = show.getSeats();
-    	System.out.println("*****SEAT AVAILABLE*****");
+    	gi.display("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {
     		if (seat.getStatus()) {
-    			System.out.println(seat.getId() + " " + seat.getName());
+    			gi.display(seat.getId() + " " + seat.getName());
     		}
     	}
-    	System.out.println("**************************");
+    	gi.display("**************************");
     }
     
     
     public void displayBookingResult(boolean result){
     	if (result)
-    		System.out.println("***Booking successful!***");
+    		gi.display("***Booking successful!***");
     	else
-    		System.out.println("***Booking failed!***");
+    		gi.display("***Booking failed!***");
     }
     
 

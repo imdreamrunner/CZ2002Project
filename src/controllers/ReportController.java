@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import models.Cineplex;
 import models.Movie;
@@ -13,18 +12,17 @@ public class ReportController extends Controller {
 
 	@Override
 	public void run() {
-		displayMenu();
-		Scanner scanner = new Scanner(System.in);
-		int operation = scanner.nextInt();
+		gi.display(menu);
+		int operation = gi.inputInteger("operation");
 		switch (operation) {
 			case 1:
-				int year,month,day;
-				System.out.print("Input the year:");
-				year = scanner.nextInt();
-				System.out.print("Input the month:");
-				month = scanner.nextInt();
-				System.out.print("Input the day:");
-				day = scanner.nextInt();
+				int year, month, day;
+				gi.display("Input the year:");
+				year = gi.inputInteger("year");
+				gi.display("Input the month:");
+				month = gi.inputInteger("month");
+				gi.display("Input the day:");
+				day = gi.inputInteger("day");
 				ListByMovie(year,month,day);
 				break;
 			case 2:
@@ -38,23 +36,23 @@ public class ReportController extends Controller {
 		}
 	}
 
-	public void displayMenu() {
-        System.out.printf("*****REPORT CENTER*****\n");
-        System.out.print("Input your option: \n" +
-                "1. List by movie \n" +
-                "2. List by cineplex \n" +
-                "3. List by day \n" +
-                "4. List by month \n" + 
-                "5. Return to previous page \n" +
-                "Please input your choice: ");		
-	}
+	String[] menu = {
+			"*****REPORT CENTER****",
+			"Input your option:", 
+			"1. List by movie",
+			"2. List by cineplex",
+			"3. List by day",
+			"4. List by month",
+			"5. Return to previous page",
+			"Please input your choice:"		
+	};
 	
 	public void displayRevenue(String name, int revenue) {
-		System.out.println(name + " : " + revenue);
+		gi.display(name + " : " + revenue);
 	}
 	
 	public void displayTotalRevenue(int revenue) {
-		System.out.println("Total Revenue: " + revenue);
+		gi.display("Total Revenue: " + revenue);
 	}
 	
 

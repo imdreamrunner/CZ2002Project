@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import models.Booking;
 import models.Customer;
@@ -12,32 +11,32 @@ public class HistoryController extends Controller {
 
 	@Override
 	public void run() {
-		displayMenu();
+		gi.display(menu);
 		
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Please enter your name: ");
-    	String name = scanner.next();
-        System.out.println("Please enter your mobile number: ");
-    	int mobile = scanner.nextInt();
+		gi.display("Please enter your name: ");
+    	String name = gi.inputString("name");
+    	gi.display("Please enter your mobile number: ");
+    	
+    	//do we need any error checking on this?
+    	int mobile = gi.inputInteger("mobile", 0, 99999999);
     	Customer customer = validateCustomer(name, mobile);
     	
     	if ( customer == null) {
-    		System.out.println("Sorry, no matching customers found.");
+    		gi.display("Sorry, no matching customers found.");
     	} else {
     		List<Booking> bookingList = getBookingByCustomer(customer);
     		displayHistory(bookingList);
     	}
 	}
-    public void displayMenu() {
-        System.out.println("***** Customer History Page *****");
-    }    
+	String[] menu ={"***** Customer History Page *****"};
+    	
     public void displayHistory(List<Booking> bookingList){
     	for (Booking booking : bookingList) {
-    		System.out.println(booking.getCreateTime().toString() + " " + booking.getMovie().getName()
+    		gi.display(booking.getCreateTime().toString() + " " + booking.getMovie().getName()
     				+ " " + booking.getTotalPrice());
     		
     	}
-    	System.out.println("********************************");
+    	gi.display("********************************");
     }
     
     public Customer validateCustomer(String name, int mobile){
@@ -56,5 +55,4 @@ public class HistoryController extends Controller {
     	}
     	return resultList;
     }
-    
 }

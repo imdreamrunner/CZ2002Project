@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.List;
-import java.util.Scanner;
 
 import models.TicketPrice;
 import utils.Controller;
@@ -11,41 +10,46 @@ public class PriceManagingController extends Controller {
 	@Override
 	public void run() {
 		displayPriceList();
-		Scanner scanner = new Scanner(System.in);
-        System.out.println("1. change a price; 2. add a new price; 3. delete a price");
+		gi.display("1. change a price; 2. add a new price; 3. delete a price");
         boolean success;
-        int operation = scanner.nextInt();
+        int operation = gi.inputInteger("operation");
         if (operation == 1) {
-        	System.out.print("Enter ID: ");
-        	int newID = scanner.nextInt();
-        	System.out.print("Enter Value: ");
-        	int newPrice = scanner.nextInt();
+        	gi.display("Enter ID: ");
+        	int newID = gi.inputInteger("newID");
+        	gi.display("Enter Value: ");
+        	int newPrice = gi.inputInteger("newPrice");
         	success = editPrice(newID,newPrice);
-            if (success) System.out.println("Price updated!");
-            else System.out.println("Error!");
+            if (success) 
+            	gi.display("Price updated!");
+            else 
+            	gi.display("Error!");
         } else if (operation == 2) {
-        	System.out.print("Enter New Key: ");
-        	String newKey = scanner.next();
-        	System.out.print("Enter New Value: ");
-        	int newValue = scanner.nextInt();
+        	gi.display("Enter New Key: ");
+        	String newKey = gi.inputString("newKey");
+        	gi.display("Enter New Value: ");
+        	int newValue = gi.inputInteger("newValue");
         	success = addPrice(newKey,newValue);
-            if (success) System.out.println("Price added!");
-            else System.out.println("Error!");
+            if (success) 
+            	gi.display("Price added!");
+            else 
+            	gi.display("Error!");
         } else if (operation == 3) {
-        	System.out.print("Enter ID: ");
-        	int newID = scanner.nextInt();
+        	gi.display("Enter ID: ");
+        	int newID = gi.inputInteger("newID");
         	success = deletePrice(newID);
-        	if (success) System.out.println("Price deleted!");
-            else System.out.println("Error!");
+        	if (success) 
+        		gi.display("Price deleted!");
+            else 
+            	gi.display("Error!");
         }
 	}
     public void displayPriceList() {
-    	System.out.println("*****PRICE LIST*****");
+    	gi.display("*****PRICE LIST*****");
     	List<TicketPrice> priceList = getPriceList();
     	for (TicketPrice tp : priceList) {
-    		System.out.println(tp.getId() + " " + tp.getKey() + " " + (tp.getValue()/100) + "." + (tp.getValue()%100));
+    		gi.display(tp.getId() + " " + tp.getKey() + " " + (tp.getValue()/100) + "." + (tp.getValue()%100));
     	}
-    	System.out.println("*****END OF PRICE LIST*****");
+    	gi.display("*****END OF PRICE LIST*****");
     }
 
     public boolean editPrice(int id, int newPrice) {

@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.List;
-import java.util.Scanner;
 
 import models.Movie;
 import models.Staff;
@@ -65,8 +64,6 @@ public class ManagerController extends Controller {
                 "7. Go back to previous page"});
     }
     
-    
-
     public boolean login() {
         String username = gi.inputString("username")
              , password = gi.inputString("password");
@@ -82,7 +79,4 @@ public class ManagerController extends Controller {
     		return false;
     	}
     }
-    
-    
-    
 }

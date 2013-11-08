@@ -1,7 +1,6 @@
 package controllers;
 
 import java.util.List;
-import java.util.Scanner;
 
 import models.Holiday;
 import models.TicketPrice;
@@ -12,34 +11,37 @@ public class HolidayManagingController extends Controller {
 	@Override
 	public void run() {
 		displayHolidayList();
-		Scanner scanner = new Scanner(System.in);
-        System.out.println("1. add a new holiday; 2. delete a holiday");
+		gi.display("1. add a new holiday; 2. delete a holiday");
         boolean success;
-        int operation = scanner.nextInt();
+        int operation = gi.inputInteger("operation");
         if (operation == 1) {
-        	System.out.print("Enter Month: ");
-        	int month = scanner.nextInt();
-        	System.out.print("Enter Day: ");
-        	int day = scanner.nextInt();
+        	gi.display("Enter Month: ");
+        	int month = gi.inputInteger("month");
+        	gi.display("Enter Day: ");
+        	int day = gi.inputInteger("day");
         	success = addHoliday(month,day);
-            if (success) System.out.println("Price added!");
-            else System.out.println("Error!");
+            if (success) 
+            	gi.display("Price added!");
+            else 
+            	gi.display("Error!");
         } else if (operation == 2) {
-        	System.out.print("Enter ID: ");
-        	int id = scanner.nextInt();
+        	gi.display("Enter ID: ");
+        	int id = gi.inputInteger("id");
         	success = deleteHoliday(id);
-        	if (success) System.out.println("Holiday deleted!");
-            else System.out.println("Error!");
+        	if (success) 
+        		gi.display("Holiday deleted!");
+            else 
+            	gi.display("Error!");
         }
 	}
 	
 	 public void displayHolidayList() {
-        System.out.println("*****HOLIDAY LIST*****");
+        gi.display("*****HOLIDAY LIST*****");
         List<Holiday> holidayList = getHolidayList();
         for (Holiday holiday : holidayList) {
-        	System.out.println(holiday.getId() + " Month = " + holiday.getMonth() + " Day = " + holiday.getDay());
+        	gi.display(holiday.getId() + " Month = " + holiday.getMonth() + " Day = " + holiday.getDay());
         }
-        System.out.println("*****END OF HOLIDAY LIST*****");
+        gi.display("*****END OF HOLIDAY LIST*****");
     }
 	 
     public List<Holiday> getHolidayList() {

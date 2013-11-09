@@ -18,7 +18,7 @@ public class HistoryController extends Controller {
     	gi.display("Please enter your mobile number: ");
     	
     	//do we need any error checking on this?
-    	int mobile = gi.inputInteger("mobile", 0, 99999999);
+    	int mobile = gi.inputInteger("mobile");
     	Customer customer = validateCustomer(name, mobile);
     	
     	if ( customer == null) {

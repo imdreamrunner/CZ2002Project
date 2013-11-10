@@ -10,10 +10,12 @@ public class PriceManagingController extends Controller {
 	@Override
 	public void run() {
 		displayPriceList();
-		gi.display("1. change a price; 2. add a new price; 3. delete a price");
+		gi.display("1. display price list 2. change a price; 3. add a new price; 4. delete a price");
         boolean success;
         int operation = gi.inputInteger("operation");
         if (operation == 1) {
+        	displayPriceList();
+        } else if (operation == 2) {
         	gi.display("Enter ID: ");
         	int newID = gi.inputInteger("newID");
         	gi.display("Enter Value: ");
@@ -23,7 +25,7 @@ public class PriceManagingController extends Controller {
             	gi.display("Price updated!");
             else 
             	gi.display("Error!");
-        } else if (operation == 2) {
+        } else if (operation == 3) {
         	gi.display("Enter New Key: ");
         	String newKey = gi.inputString("newKey");
         	gi.display("Enter New Value: ");
@@ -33,7 +35,7 @@ public class PriceManagingController extends Controller {
             	gi.display("Price added!");
             else 
             	gi.display("Error!");
-        } else if (operation == 3) {
+        } else if (operation == 4) {
         	gi.display("Enter ID: ");
         	int newID = gi.inputInteger("newID");
         	success = deletePrice(newID);

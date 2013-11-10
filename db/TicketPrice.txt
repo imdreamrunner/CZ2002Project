@@ -1,2 +1,8 @@
-id=2&value=800&key=PriceOfElderly
-id=3&value=1500&key=PriceOfAdults
+id=1&value=10&key=Regular Movie
+id=2&value=800&key=Regular Senior
+id=3&value=1500&key=Regular Student
+id=4&value=1500&key=Regular Holoday
+id=21&value=800&key=3D Movie
+id=22&value=800&key=3D Senior
+id=23&value=1500&key=3D Student
+id=24&value=1500&key=3D Holoday

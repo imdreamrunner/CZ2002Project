@@ -17,10 +17,9 @@ public class ManagerController extends Controller {
             valid = login();
             if (!valid) {
             	gi.display(new String[] {
-            		"Invalid Account \n",
-                    "1. Log in again \n",
-                    "2. go back to previous page \n",
-                    "Please input your choice: "
+            		"Invalid Account",
+                    "1. Log in again",
+                    "2. go back to previous page"
             	});
                 int choice = gi.inputInteger("choice", 1, 2);
                 if (choice == 2) return;
@@ -72,7 +71,9 @@ public class ManagerController extends Controller {
 
     public boolean checkAccount(String username,String password) {
     	Staff staffAccount = Staff.getByUsername(username);
-   
+    	if (staffAccount == null) {
+    		return false;
+    	}
     	if (staffAccount.getPassword().equals(password)) {
     		return true;
     	} else {

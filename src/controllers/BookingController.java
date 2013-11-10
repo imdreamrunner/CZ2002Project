@@ -22,17 +22,37 @@ public class BookingController extends Controller {
         
         Customer customer= null;
         int showId = gi.inputInteger("show id");
+        Show show = Show.getOne(showId);
+        if (show == null) {
+        	gi.display("No such show");
+        	return;
+        }
         displayShowInfo(showId);
         displaySeats(showId);
-        int quantity = gi.inputInteger("number of tickets", 1, Show.getOne(showId).getAvailableSeats().size());
+        int quantity = gi.inputInteger("number of tickets", 1, show.getAvailableSeats().size());
         List<Integer> seatIdList = new ArrayList<Integer>();
         List<Integer> seatTypeList = new ArrayList<Integer>(); 
         
         for (int i=0; i<quantity; i++) {
-            int seatId = gi.inputInteger("seat");
-            seatIdList.add(seatId);
-            int seatType = gi.inputInteger("type (1 Adult, 2 Senior Citizen, 3 Student)");
-            seatTypeList.add(seatType);
+        	while (true) {
+        		int seatId;
+                String seatName = gi.inputString("seat");
+                Seat seat = Seat.getOneByShowAndName(show, seatName);
+                if (seat == null) {
+                	gi.display("no such seat");
+                	continue;
+                } else {
+                	seatId = seat.getId();
+                	if (seatIdList.contains(seatId)) {
+                		gi.display("already selected");
+                		continue;
+                	}
+                }
+                int seatType = gi.inputInteger("type (1 Adult, 2 Senior Citizen, 3 Student)");
+                seatIdList.add(seatId);
+                seatTypeList.add(seatType);
+                break;
+        	}
         }
         	
         gi.display("*****ENTER COSTOMER INFO*****");

@@ -76,4 +76,13 @@ public class Seat extends Model {
 		}
 		return null;
 	}
+	public static Seat getOneByShowAndName(Show show, String name) {
+		List<Seat> seats = getAvailableByShow(show);
+		for (Seat seat : seats) {
+			if (seat.getName().equals(name)) {
+				return seat;
+			}
+		}
+		return null;
+	}
 }

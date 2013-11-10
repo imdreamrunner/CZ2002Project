@@ -57,6 +57,16 @@ public class Seat extends Model {
 		}
 		return selected;
 	}
+	public static List<Seat> getAvailableByShow(Show show) {
+		List<Seat> seats = getAll();
+		List<Seat> selected = new ArrayList<Seat>();
+		for (Seat seat : seats) {
+			if (seat.getStatus() && seat.getShow().equals(show)) {
+				selected.add(seat);
+			}
+		}
+		return selected;
+	}
 	public static Seat getOne(int id) {
 		List<Seat> seats = getAll();
 		for (Seat seat : seats) {

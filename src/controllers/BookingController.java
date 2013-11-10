@@ -21,17 +21,18 @@ public class BookingController extends Controller {
         boolean result = false;
         
         Customer customer= null;
-        System.out.print("Please enter the show id for booking: ");
-        int showId = gi.inputInteger("showId");
+        int showId = gi.inputInteger("show id");
         displayShowInfo(showId);
         displaySeats(showId);
-        int quantity = gi.inputInteger("number of tickets", 1, Show.getOne(showId).getSeats().size());
-        List<Integer> seatIdList = new ArrayList<Integer>(); 
+        int quantity = gi.inputInteger("number of tickets", 1, Show.getOne(showId).getAvailableSeats().size());
+        List<Integer> seatIdList = new ArrayList<Integer>();
+        List<Integer> seatTypeList = new ArrayList<Integer>(); 
         
         for (int i=0; i<quantity; i++) {
-        	System.out.print("Please enter the seat id for booking: ");
-            int seatId = gi.inputInteger("seatId");
+            int seatId = gi.inputInteger("seat");
             seatIdList.add(seatId);
+            int seatType = gi.inputInteger("type (1 Adult, 2 Senior Citizen, 3 Student)");
+            seatTypeList.add(seatType);
         }
         	
         gi.display("*****ENTER COSTOMER INFO*****");
@@ -45,13 +46,13 @@ public class BookingController extends Controller {
         	customer = CreateCustomer(name, mobile, email);
     	}
         
-        result = createBooking(showId, seatIdList, customer);
+        result = createBooking(showId, seatIdList, seatTypeList, customer);
         displayBookingResult(result);
 	}
 
         String[] menu = { 
         		"*****CUSTOMER PAGE*****",
-        		"Welcome to XXX CinemaComplex Website"
+        		"Please get show info from GUI."
         };
     
     public void displayShowInfo(int showId){
@@ -70,12 +71,10 @@ public class BookingController extends Controller {
     public void displaySeats(int showId){
     	List<Seat> seatList;
     	Show show = Show.getOne(showId);
-    	seatList = show.getSeats();
+    	seatList = show.getAvailableSeats();
     	gi.display("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {
-    		if (seat.getStatus()) {
-    			gi.display(seat.getId() + " " + seat.getName());
-    		}
+			gi.display(seat.getId() + " " + seat.getName());
     	}
     	gi.display("**************************");
     }
@@ -89,7 +88,7 @@ public class BookingController extends Controller {
     }
     
 
-	 public boolean createBooking(int showId, List<Integer> seatIdList, Customer customer) {
+	 public boolean createBooking(int showId, List<Integer> seatIdList, List<Integer> seatTypeList, Customer customer) {
 		 Show show = Show.getOne(showId);
 		 int totalPrice = 0;
 		 //set all price to be 10 now
@@ -105,7 +104,9 @@ public class BookingController extends Controller {
 			 if (seat == null) return false;
 			 if (!seat.getStatus()) return false;
 		 }
-		 for (int seatId : seatIdList) {
+		 for (int i = 0; i < seatIdList.size(); i++) {
+			 int seatId = seatIdList.get(i);
+			 int type = seatTypeList.get(i);
 			 Seat seat = Seat.getOne(seatId);
 			 //change seat status
 			 seat.setStatus(false);
@@ -117,7 +118,7 @@ public class BookingController extends Controller {
 			 ticket.setPrice(price);
 			 ticket.setSeat(seat);
 			 ticket.setBooking(booking);
-			 ticket.setTicketType("T T");
+			 ticket.setTicketType(1);
 			 ticket.save();
 		 }
 		//create booking

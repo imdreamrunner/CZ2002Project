@@ -61,6 +61,9 @@ public class Show extends Model {
 	public List<Seat> getSeats() {
 		return Seat.getAllByShow(this);
 	}
+	public List<Seat> getAvailableSeats() {
+		return Seat.getAvailableByShow(this);
+	}
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}

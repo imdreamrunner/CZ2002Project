@@ -25,29 +25,22 @@ public class BookingController extends Controller {
         int showId = gi.inputInteger("showId");
         displayShowInfo(showId);
         displaySeats(showId);
-        System.out.print("Please enter the number of seats you want to book: ");
-        int quantity = gi.inputInteger("quantity");
+        int quantity = gi.inputInteger("number of tickets", 1, Show.getOne(showId).getSeats().size());
         List<Integer> seatIdList = new ArrayList<Integer>(); 
+        
         for (int i=0; i<quantity; i++) {
         	System.out.print("Please enter the seat id for booking: ");
             int seatId = gi.inputInteger("seatId");
             seatIdList.add(seatId);
         }
         	
-        System.out.println("*****ENTER COSTOMER INFO*****");
-    	System.out.print("Please enter your mobile number: ");
-    	int mobile = gi.inputInteger("mobile");
+        gi.display("*****ENTER COSTOMER INFO*****");
+    	int mobile = gi.inputInteger("mobile number");
     	if (Customer.getOneByMobile(mobile) != null) {  //!!!!!ugly code!!!!!
     		customer = 	Customer.getOneByMobile(mobile);
     		System.out.println("Customer Record Retrieved...");
     	} else {
-    		//can i use the next line to replace
-    		//scanner.nextLine();  ?
-    		gi.inputString("");
-    		
-    		System.out.println("Please enter your name: ");
         	String name = gi.inputString("name");
-        	System.out.println("Please enter your email address: ");
         	String email = gi.inputString("email");
         	customer = CreateCustomer(name, mobile, email);
     	}

@@ -35,6 +35,9 @@ public class Booking extends Model{
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	public void calculateTotalPrice() {
+		totalPrice = 10;
+	}
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;
 	}	
@@ -48,7 +51,6 @@ public class Booking extends Model{
 	public void setCreateTime(Date theCreateTime) {
 		createTime = theCreateTime;
 	}
-	
 	public String getTID() {
 		return TID;
 	}

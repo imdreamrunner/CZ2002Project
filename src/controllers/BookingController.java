@@ -90,9 +90,6 @@ public class BookingController extends Controller {
 
 	 public boolean createBooking(int showId, List<Integer> seatIdList, List<Integer> seatTypeList, Customer customer) {
 		 Show show = Show.getOne(showId);
-		 int totalPrice = 0;
-		 //set all price to be 10 now
-		 int price = 10;
 		 Booking booking = new Booking();
 		 booking.setTID("-1");
 		 booking.setCustomer(customer);
@@ -111,19 +108,18 @@ public class BookingController extends Controller {
 			 //change seat status
 			 seat.setStatus(false);
 			 seat.save();
-			 totalPrice += price;
 			 //create ticket
 			 Ticket ticket = new Ticket();
 			 ticket.setShow(show);
-			 ticket.setPrice(price);
 			 ticket.setSeat(seat);
 			 ticket.setBooking(booking);
 			 ticket.setTicketType(1);
 			 ticket.save();
 		 }
 		//create booking
-		 booking.setTotalPrice(totalPrice);
 		 booking.save();
+		 booking.calculateTotalPrice();
+		 booking.getTotalPrice();
 		 return true;
 	 }
 	 

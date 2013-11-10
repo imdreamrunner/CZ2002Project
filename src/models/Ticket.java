@@ -71,7 +71,11 @@ public class Ticket extends Model{
 	public Seat getSeat() {
 		return seat;
 	}
+	public void calculatePrice() {
+		price = 10;
+	}
 	public int getPrice() {
+		// calculate price here.
 		return price;
 	}
 	public Booking getBooking() {

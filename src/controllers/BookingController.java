@@ -119,7 +119,7 @@ public class BookingController extends Controller {
 		//create booking
 		 booking.save();
 		 booking.calculateTotalPrice();
-		 booking.getTotalPrice();
+		 gi.display("Totol price: " + booking.getTotalPrice());
 		 return true;
 	 }
 	 

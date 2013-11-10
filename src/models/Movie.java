@@ -8,12 +8,12 @@ import utils.Model;
 
 public class Movie extends Model {
 	private String name;
-	private String type;
+	private int type;
 	private String rating;
 	private int status;
 	public void loadData() {
 		name = get("name").getString();
-		type = get("type").getString();
+		type = get("type").getInteger();
 		rating = get("rating").getString();
 		status = get("status").getInteger();
 	}
@@ -26,7 +26,7 @@ public class Movie extends Model {
 	public String getName() {
 		return name;
 	}
-	public String getType() {
+	public int getType() {
 		return type;
 	}
 	public String getRating() {
@@ -38,7 +38,7 @@ public class Movie extends Model {
 	public void setName(String theName) {
 		name = theName;
 	}
-	public void setType(String theType) {
+	public void setType(int theType) {
 		type = theType;
 	}
 	public void setRating(String theRating) {

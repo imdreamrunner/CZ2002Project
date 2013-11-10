@@ -36,7 +36,13 @@ public class Booking extends Model{
 		this.totalPrice = totalPrice;
 	}
 	public void calculateTotalPrice() {
-		totalPrice = 10;
+		int total = 0;
+		for (Ticket ticket : getTickets()) {
+			ticket.calculatePrice();
+			total += ticket.getPrice();
+		}
+		totalPrice = total;
+		save();
 	}
 	public void setBookingStatus(String bookingStatus) {
 		this.bookingStatus = bookingStatus;

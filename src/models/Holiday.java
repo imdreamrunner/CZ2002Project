@@ -41,4 +41,13 @@ public class Holiday extends Model {
 		}
 		return null;
 	}
+	public static boolean isHoliday(int month, int day) {
+		List<Holiday> holidays = getAll();
+		for (Holiday holiday : holidays) {
+			if (holiday.getMonth() == month && holiday.getDay() == day) {
+				return true;
+			}
+		}
+		return false;
+	}
 }

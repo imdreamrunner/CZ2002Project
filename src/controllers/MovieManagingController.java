@@ -23,7 +23,7 @@ public class MovieManagingController extends Controller {
 			break;
 		case 2:
             String newMovieName = gi.inputString("movie name");
-            String newMovieType = gi.inputString("movie type");
+            int newMovieType = gi.inputInteger("type (1 regular, 2 3D)", 1, 2);
             int newMovieStatus = gi.inputInteger("status (1. now showing 2. coming soon)", 1, 2);
             boolean success = addMovie(newMovieName,newMovieType,newMovieStatus);
             if (success) System.out.println("Movie added!");
@@ -56,7 +56,7 @@ public class MovieManagingController extends Controller {
     			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
     }
 
-	public boolean addMovie(String newMovieName, String newMovieType, int newMovieStatus) {
+	public boolean addMovie(String newMovieName, int newMovieType, int newMovieStatus) {
     	Movie newMovie = new Movie();
     	newMovie.setName(newMovieName);
     	newMovie.setType(newMovieType);
@@ -70,7 +70,7 @@ public class MovieManagingController extends Controller {
     	if (key.equals("Name")) {
     		movie.setName(value);
     	} else if (key.equals("Type")) {
-    		movie.setType(value);
+    		movie.setType(Integer.parseInt(value));
     	} else if (key.equals("Status")) {
     		try {
     			int newStatus = Integer.parseInt(value);

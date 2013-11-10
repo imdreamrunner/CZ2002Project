@@ -1,9 +1,0 @@
-id=1&bookingId=1&price=10&ticketType=1&seatId=1&showId=1
-id=2&bookingId=1&price=10&ticketType=1&showId=1&seatId=2
-id=3&bookingId=2&price=10&ticketType=1&seatId=6&showId=2
-id=4&bookingId=2&price=10&ticketType=1&showId=2&seatId=7
-id=5&bookingId=2&price=10&ticketType=1&seatId=8&showId=2
-id=6&bookingId=3&price=10&ticketType=1&showId=1&seatId=3
-id=7&bookingId=4&price=10&ticketType=1&seatId=4&showId=1
-id=8&bookingId=4&price=10&ticketType=1&showId=1&seatId=4
-id=9&bookingId=4&price=10&ticketType=1&seatId=4&showId=1

@@ -1,10 +1,8 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Scanner;
 
 import models.Cinema;
 import models.Cineplex;
@@ -14,11 +12,9 @@ import utils.Controller;
 
 public class ShowManagingController extends Controller {
 
-	public Scanner scanner;
 	public void run() {
-		scanner = new Scanner(System.in);
         System.out.println("1. add a show 2. list coming shows");
-        int choice = scanner.nextInt();
+        int choice = gi.inputInteger("choice", 1, 2);
         switch(choice) {
         case 1:
         	addShow();
@@ -30,23 +26,18 @@ public class ShowManagingController extends Controller {
 	}
 	public void addShow() {
 		listMovie();
-		int movieId = scanner.nextInt();
+		int movieId = gi.inputInteger("movie id");
 		Movie movie = Movie.getOne(movieId);
 		listCineplex();
-		int cineplexId = scanner.nextInt();
+		int cineplexId = gi.inputInteger("sineplex id");
 		listCinema(cineplexId);
-		int cinemaId = scanner.nextInt();
+		int cinemaId = gi.inputInteger("cinema id");
 		Cinema cinema = Cinema.getOne(cinemaId);
-		System.out.print("Input Year (eg 2013): ");
-		int year = scanner.nextInt();
-		System.out.print("Input Month (1 ~ 12): ");
-		int month = scanner.nextInt();
-		System.out.print("Input Day: ");
-		int day = scanner.nextInt();
-		System.out.print("Input Hour: ");
-		int hour = scanner.nextInt();
-		System.out.print("Input Minute: ");
-		int minute = scanner.nextInt();
+		int year = gi.inputInteger("year", 2000, 2099);
+		int month =  gi.inputInteger("month", 1, 12);
+		int day = gi.inputInteger("day", 1, 31);
+		int hour = gi.inputInteger("hour", 1, 23);
+		int minute = gi.inputInteger("minute", 1, 59);
 		Calendar showTime = new GregorianCalendar(year, month, day, hour, minute, 0);
 		Show show = new Show(movie, cinema, showTime.getTime());
 		show.createSeats();

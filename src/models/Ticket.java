@@ -72,10 +72,22 @@ public class Ticket extends Model{
 		return seat;
 	}
 	public void calculatePrice() {
-		price = 10;
+		int base = show.getMovie().getType() * 10;
+		if (ticketType > 1) {
+			int priceId = base + ticketType;
+			price = TicketPrice.getOne(priceId).getValue();
+		} else {
+			int month = show.getShowTime().getMonth() + 1;
+			int day = show.getShowTime().getDay();
+			if (Holiday.isHoliday(month, day)) {
+				price = TicketPrice.getOne(base + 4).getValue();
+			} else {
+				price = TicketPrice.getOne(base + 1).getValue();
+			}
+		}
+		save();
 	}
 	public int getPrice() {
-		// calculate price here.
 		return price;
 	}
 	public Booking getBooking() {

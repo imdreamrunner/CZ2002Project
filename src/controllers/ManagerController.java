@@ -65,18 +65,6 @@ public class ManagerController extends Controller {
     public boolean login() {
         String username = gi.inputString("username")
              , password = gi.inputString("password");
-        return (checkAccount(username, password));
-    }
-
-    public boolean checkAccount(String username,String password) {
-    	Staff staffAccount = Staff.getByUsername(username);
-    	if (staffAccount == null) {
-    		return false;
-    	}
-    	if (staffAccount.getPassword().equals(password)) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+        return (Staff.login(username, password));
     }
 }

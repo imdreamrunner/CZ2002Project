@@ -42,4 +42,15 @@ public class Staff extends Model {
 		}
 		return null;
 	}
+	public static boolean login(String username, String password) {
+    	Staff staffAccount = Staff.getByUsername(username);
+    	if (staffAccount == null) {
+    		return false;
+    	}
+    	if (staffAccount.getPassword().equals(password)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+	}
 }

@@ -91,7 +91,8 @@ public class BookingController extends Controller {
     	List<Seat> seatList;
     	Show show = Show.getOne(showId);
     	seatList = show.getAvailableSeats();
-    	
+    	int width;
+    	int height = 0;
     	gi.display("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {
 			gi.display(seat.getId() + " " + seat.getName());

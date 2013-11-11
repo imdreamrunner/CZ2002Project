@@ -1,6 +1,6 @@
 package utils;
 
-import cui.GeneralInterface;
+import views.GeneralInterface;
 
 public abstract class Controller {
 	protected GeneralInterface gi;

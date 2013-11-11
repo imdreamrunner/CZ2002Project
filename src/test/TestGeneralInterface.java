@@ -1,6 +1,6 @@
 package test;
 
-import cui.GeneralInterface;
+import views.GeneralInterface;
 
 public class TestGeneralInterface {
 	public static void main(String[] args) {

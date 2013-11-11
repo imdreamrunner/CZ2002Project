@@ -34,6 +34,8 @@ public class ReportController extends Controller {
 				ListByDay(year, month);
 				break;
 			case 4:
+				year = gi.inputInteger("year");
+				ListByMonth(year);
 				break;
 			case 5:
 				break;
@@ -112,6 +114,31 @@ public class ReportController extends Controller {
 			//display the day first
 			gi.display("day " + day);
 			ListByCineplexes(year,month,day);
+		}
+	}
+	
+	public void ListByMonth(int year) {
+		for (int month = 1; month <= 12; month++) {
+			gi.display("month " + month);
+			List<Ticket> ticketList = Ticket.getAllByMonth(year,month);
+			List<Cineplex> cineplexList = new ArrayList<Cineplex>();
+			for (Ticket ticket : ticketList) {
+				if (!cineplexList.contains(ticket.getCineplex())) {
+					cineplexList.add(ticket.getCineplex());
+				}
+			}
+			int totalRevenue = 0;
+			for (Cineplex cineplex: cineplexList) {
+				int revenue = 0;
+				for (Ticket ticket : ticketList) {
+					if (ticket.getCineplex().equals(cineplex)) {
+						revenue += ticket.getPrice();
+					}
+				}
+				displayRevenue(cineplex.getName(),revenue);
+				totalRevenue += revenue;
+			}
+			displayTotalRevenue(totalRevenue);
 		}
 	}
 }

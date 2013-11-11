@@ -1,2 +1,4 @@
 id=1&movieId=1&cinemaId=1&showTime=1384049400000&deleted=0
 id=2&movieId=2&cinemaId=1&showTime=1387003200000&deleted=0
+id=3&movieId=5&cinemaId=2&showTime=1387117200000&deleted=0
+id=4&movieId=6&cinemaId=2&showTime=1388577600000&deleted=0

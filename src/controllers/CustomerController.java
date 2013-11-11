@@ -12,8 +12,7 @@ public class CustomerController extends Controller {
 			String[] menu = {
 					"1. Make a booking",
 					"2. View booking history",
-					"3. Go back to previous page",
-					"4. Quit"
+					"3. Go back to previous page"
 			};
 		gi.display(menu);
 		choice = gi.inputInteger("choice", 1, 4);

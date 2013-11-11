@@ -111,7 +111,7 @@ public class BookingController extends Controller {
 	 public boolean createBooking(int showId, List<Integer> seatIdList, List<Integer> seatTypeList, Customer customer) {
 		 Show show = Show.getOne(showId);
 		 Booking booking = new Booking();
-		 booking.setTID("-1");
+		 booking.setTID("" + new Date().getTime());
 		 booking.setCustomer(customer);
 		 booking.setBookingStatus("success");
 		 booking.setCreateTime(new Date());

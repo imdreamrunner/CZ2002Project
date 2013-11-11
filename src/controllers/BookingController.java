@@ -104,6 +104,8 @@ public class BookingController extends Controller {
     			height = row;
     		}
     	}
+    	gi.display("*****SEAT AVAILABLE*****");
+    	gi.display(" select seats in []");
     	for (char row = 'A'; row <= height; row++) {
     		String line = "";
     		for (int col = 1; col <= width; col++) {

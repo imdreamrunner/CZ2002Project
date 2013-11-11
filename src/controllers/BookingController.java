@@ -1,5 +1,7 @@
 package controllers;
 
+import gui.SearchGUI;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,19 +13,21 @@ import models.Seat;
 import models.Show;
 import models.Ticket;
 import utils.Controller;
+import utils.MovieLister;
 
 public class BookingController extends Controller {
-    private String[] menu = { 
-    		"*****CUSTOMER PAGE*****",
-    		"Please get show info from GUI."
-    };
-    
 	@Override
 	public void run() {
-    	gi.display(menu);
-    	// GraphSearchInterface.run();
+    	gi.display("List movie by 1. console, 2. GUI");
+    	int choice = gi.inputInteger("choice", 1, 2);
+    	MovieLister movieLister;
+    	if (choice == 1) {
+    		movieLister = new SearchController();
+    	} else {
+    		movieLister = new SearchGUI();
+    	}
+    	movieLister.listMovie();
         boolean result = false;
-        
         Customer customer= null;
         int showId = gi.inputInteger("show id");
         Show show = Show.getOne(showId);
@@ -83,7 +87,7 @@ public class BookingController extends Controller {
     	gi.display("Movie name: "+ movie.getName());
     	gi.display("Cineplex: "+ show.getCinema().getCineplex().getName());
     	gi.display("Cinema: "+ show.getCinema().getCinemaCode());
-    	gi.display("Date: "+ show.getShowTime().getTime());
+    	gi.display("Date: "+ show.getShowTime().toLocaleString());
     	gi.display("*****END OF SHOW INFO*****");
     }
 

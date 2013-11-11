@@ -1,8 +1,11 @@
-package controllers;
-import gui.Search;
+package gui;
 
-public class GraphSearchInterface {
-	public static void run(){
+import utils.MovieLister;
+
+public class SearchGUI implements MovieLister {
+
+	@Override
+	public void listMovie(){
 		
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -28,4 +31,5 @@ public class GraphSearchInterface {
         });
         
 	}
+	
 }

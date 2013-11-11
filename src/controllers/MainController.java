@@ -1,5 +1,6 @@
 package controllers;
 
+import gui.SearchGUI;
 import utils.Controller;
 
 public class MainController extends Controller {
@@ -24,7 +25,7 @@ public class MainController extends Controller {
 				(new ManagerController()).run();
 				break;
 			case 3:
-				GraphSearchInterface.run();
+				(new SearchGUI()).listMovie();
 				break;
 			}
 		}

@@ -26,7 +26,7 @@ public class ManagerController extends Controller {
         displayMenu();
         int choice;
         choice = gi.inputInteger("choice", 1, 7);
-        while (choice<=6) {
+        while (choice<6) {
             switch (choice) {
             case 1:
             	(new MovieManagingController()).run();

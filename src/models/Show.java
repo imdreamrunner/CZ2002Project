@@ -91,8 +91,17 @@ public class Show extends Model {
 		return null;
 	}
 	@SuppressWarnings("unchecked")
-	public static List<Show> getAll() {
+	public static List<Show> getAllIncludingDeleted() {
 		return Database.getAll(Show.class);
+	}
+	public static List<Show> getAll() {
+		List<Show> shows = getAllIncludingDeleted();
+		List<Show> selected = new ArrayList<Show>();
+		for (Show show : shows) {
+			if (!show.getDeleted())
+				selected.add(show);
+		}
+		return selected;
 	}
 	public static List<Show> getAllByMovie(Movie movie) {
 		List<Show> shows = getAll();

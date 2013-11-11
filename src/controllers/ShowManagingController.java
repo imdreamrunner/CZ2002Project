@@ -13,8 +13,8 @@ import utils.Controller;
 public class ShowManagingController extends Controller {
 
 	public void run() {
-        System.out.println("1. add a show 2. list coming shows");
-        int choice = gi.inputInteger("choice", 1, 2);
+        System.out.println("1. add a show 2. list coming shows 3. update a show");
+        int choice = gi.inputInteger("choice", 1, 3);
         switch(choice) {
         case 1:
         	addShow();
@@ -22,6 +22,11 @@ public class ShowManagingController extends Controller {
         case 2:
         	listShow();
         	break;
+        case 3:
+        	listShow();
+        	updateShow();
+        	break;
+        	
         }
 	}
 	public void addShow() {
@@ -73,5 +78,16 @@ public class ShowManagingController extends Controller {
 					+ " | " + show.getShowTime().toLocaleString());
 		}
 	}
-    
+	public void updateShow() {
+		int showId = gi.inputInteger("show id");
+		int deleted = gi.inputInteger("0 normal, 1 deleted", 0, 1);
+		Show show = Show.getOne(showId);
+		if (show == null) {
+			gi.display("No such show");
+			return;
+		}
+		show.setDeleted(deleted == 1);
+		show.save();
+		gi.display("changes saved");
+	}
 }

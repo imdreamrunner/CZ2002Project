@@ -43,8 +43,7 @@ public class ReportController extends Controller {
 			"2. List by cineplex",
 			"3. List by day",
 			"4. List by month",
-			"5. Return to previous page",
-			"Please input your choice:"		
+			"5. Return to previous page"	
 	};
 	
 	public void displayRevenue(String name, int revenue) {

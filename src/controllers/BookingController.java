@@ -14,7 +14,11 @@ import models.Ticket;
 import utils.Controller;
 
 public class BookingController extends Controller {
-
+    private String[] menu = { 
+    		"*****CUSTOMER PAGE*****",
+    		"Please get show info from GUI."
+    };
+    
 	@Override
 	public void run() {
     	gi.display(menu);
@@ -70,11 +74,6 @@ public class BookingController extends Controller {
         result = createBooking(showId, seatIdList, seatTypeList, customer);
         displayBookingResult(result);
 	}
-
-        String[] menu = { 
-        		"*****CUSTOMER PAGE*****",
-        		"Please get show info from GUI."
-        };
     
     public void displayShowInfo(int showId){
     	gi.display("*****SHOW INFO*****");

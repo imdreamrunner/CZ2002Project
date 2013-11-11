@@ -11,7 +11,8 @@ public class MainController extends Controller {
 					"Please select your entry:",
 	                "1. Customer Entry",
 	                "2. Staff Entry",
-	                "3. Quit"
+	                "3. Start GUI",
+	                "4. Quit"
 			};
 			gi.display(menu);
 			choice = gi.inputInteger("choice", 1, 3);
@@ -21,6 +22,9 @@ public class MainController extends Controller {
 				break;
 			case 2:
 				(new ManagerController()).run();
+				break;
+			case 3:
+				GraphSearchInterface.run();
 				break;
 			}
 		}

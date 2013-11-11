@@ -1,5 +1,5 @@
 package controllers;
-import views.Search;
+import gui.Search;
 
 public class GraphSearchInterface {
 	public static void run(){

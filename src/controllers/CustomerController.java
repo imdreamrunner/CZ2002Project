@@ -15,7 +15,7 @@ public class CustomerController extends Controller {
 					"3. Go back to previous page"
 			};
 		gi.display(menu);
-		choice = gi.inputInteger("choice", 1, 4);
+		choice = gi.inputInteger("choice", 1, 3);
 
         switch (choice) {
         	case 1:

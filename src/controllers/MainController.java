@@ -16,7 +16,7 @@ public class MainController extends Controller {
 	                "4. Quit"
 			};
 			gi.display(menu);
-			choice = gi.inputInteger("choice", 1, 3);
+			choice = gi.inputInteger("choice", 1, 4);
 			switch (choice) {
 			case 1:
 				(new CustomerController()).run();

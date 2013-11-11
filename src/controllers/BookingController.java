@@ -35,6 +35,10 @@ public class BookingController extends Controller {
         	gi.display("No such show");
         	return;
         }
+        if (show.getAvailableSeats().size() < 1) {
+        	gi.display("No more empty seats");
+        	return;
+        }
         displayShowInfo(showId);
         displaySeats(showId);
         int quantity = gi.inputInteger("number of tickets", 1, show.getAvailableSeats().size());
@@ -175,7 +179,21 @@ public class BookingController extends Controller {
 		//create booking
 		 booking.save();
 		 booking.calculateTotalPrice();
-		 gi.display("Totol price: " + booking.getTotalPrice());
+		 List<Ticket> tickets = booking.getTickets();
+		 int i = 0;
+		 for (Ticket ticket : tickets) {
+			 i++;
+			 gi.display("Ticket " + i);
+			 gi.display("Seat " + ticket.getId());
+			 gi.display("Price " + ticket.getPrice() / 100);
+			 String type = "Adult";
+			 if (ticket.getTicketType() == 1)
+				 type = "Senior";
+			 if (ticket.getTicketType() == 2)
+				 type = "Student";
+			 gi.display("Type " + type);
+		 }
+		 gi.display("Totol price: " + booking.getTotalPrice() / 100);
 		 return true;
 	 }
 	 

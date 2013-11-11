@@ -2,3 +2,4 @@ id=1&createTime=1384088148526&customerId=2&TID=-1&bookingStatus=success&totalPri
 id=2&createTime=1384163517139&customerId=3&TID=-1&bookingStatus=success&totalPrice=30
 id=3&createTime=1384165173654&customerId=4&TID=-1&bookingStatus=success&totalPrice=1000
 id=4&createTime=1384165308517&customerId=5&TID=-1&bookingStatus=success&totalPrice=1600
+id=5&createTime=1384166133562&customerId=2&TID=1384166133562&bookingStatus=success&totalPrice=0

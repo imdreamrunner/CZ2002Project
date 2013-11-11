@@ -23,7 +23,7 @@ public class MovieManagingController extends Controller {
 			break;
 		case 2:
             String newMovieName = gi.inputString("movie name");
-            int newMovieType = gi.inputInteger("type (1 regular, 2 3D)", 1, 2);
+            int newMovieType = gi.inputInteger("type (0 regular, 1 3D)", 0, 1);
             int newMovieStatus = gi.inputInteger("status (1. now showing 2. coming soon)", 1, 2);
             boolean success = addMovie(newMovieName,newMovieType,newMovieStatus);
             if (success) System.out.println("Movie added!");

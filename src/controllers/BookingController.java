@@ -21,7 +21,7 @@ public class BookingController extends Controller {
 	@Override
 	public void run() {
     	gi.display(menu);
-    	GraphSearchInterface.run();
+    	// GraphSearchInterface.run();
         boolean result = false;
         
         Customer customer= null;

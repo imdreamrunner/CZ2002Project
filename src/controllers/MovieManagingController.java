@@ -32,7 +32,7 @@ public class MovieManagingController extends Controller {
 		case 3: 
         	displayMovieList();
             int movieId = gi.inputInteger("movie id");
-            gi.display("Enter filed number to edit: [Name,Type,Satus] ");
+            gi.display("Enter filed number to edit: [Name,Type,Status] ");
             success = editMovie(movieId);
             if (success) gi.display("Movie details updated!");
             else gi.display("Error!");

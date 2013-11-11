@@ -90,9 +90,25 @@ public class BookingController extends Controller {
     public void displaySeats(int showId){
     	List<Seat> seatList;
     	Show show = Show.getOne(showId);
-    	seatList = show.getAvailableSeats();
-    	int width;
-    	int height = 0;
+    	seatList = show.getSeats();
+    	int width = 1;
+    	char height = 'A';
+    	for (Seat seat : seatList) {
+    		String name = seat.getName();
+    		char row = name.charAt(0);
+    		int col = Integer.parseInt(name.substring(1));
+    		if (col > width) {
+    			width = col;
+    		}
+    		if (row > height) {
+    			height = row;
+    		}
+    	}
+    	for (char row = 'A'; row <= height; row++) {
+    		for (int col = 1; col <= width; col++) {
+    			System.out.println("" + row + col);
+    		}
+    	}
     	gi.display("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {
 			gi.display(seat.getId() + " " + seat.getName());

@@ -48,7 +48,7 @@ public class ManagerController extends Controller {
                 break;
             }
             displayMenu();
-            choice = gi.inputInteger("choice", 1, 7);
+            choice = gi.inputInteger("choice", 1, 6);
         }
 	}
 

@@ -17,11 +17,8 @@ public class ReportController extends Controller {
 		switch (operation) {
 			case 1:
 				int year, month, day;
-				gi.display("Input the year:");
 				year = gi.inputInteger("year");
-				gi.display("Input the month:");
 				month = gi.inputInteger("month");
-				gi.display("Input the day:");
 				day = gi.inputInteger("day");
 				ListByMovie(year,month,day);
 				break;

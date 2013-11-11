@@ -37,7 +37,7 @@ public class ShowManagingController extends Controller {
 		int month =  gi.inputInteger("month", 1, 12);
 		int day = gi.inputInteger("day", 1, 31);
 		int hour = gi.inputInteger("hour", 1, 23);
-		int minute = gi.inputInteger("minute", 1, 59);
+		int minute = gi.inputInteger("minute", 0, 59);
 		Calendar showTime = new GregorianCalendar(year, month, day, hour, minute, 0);
 		Show show = new Show(movie, cinema, showTime.getTime());
 		show.createSeats();

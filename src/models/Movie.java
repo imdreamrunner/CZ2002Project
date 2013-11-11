@@ -51,6 +51,17 @@ public class Movie extends Model {
 	public static List<Movie> getAll() {
 		return Database.getAll(Movie.class);
 	}
+	public static List<Movie> getAll(boolean beforeEnd) {
+		if (!beforeEnd) 
+			return getAll();
+		List<Movie> movies = getAll();
+		List<Movie> selected = new ArrayList<Movie>();
+		for (Movie movie : movies) {
+			if (movie.getStatus() < 3)
+				selected.add(movie);
+		}
+		return selected;
+	}
 	public static Movie getOne(int id) {
 		List<Movie> movies = getAll();
 		for (Movie movie : movies) {
@@ -59,20 +70,21 @@ public class Movie extends Model {
 		}
 		return null;
 	}
-	public static List<Movie> getAllByCineplex(Cineplex cineplex) {
+	public static List<Movie> getAllByCineplex(Cineplex cineplex, boolean beforeEnd) {
 		List<Show> showList = Show.getAll();
 		List<Movie> movieList = new ArrayList<Movie>();
 		for (Show show : showList) {
 			boolean sameCineplex = show.getCinema().getCineplex().equals(cineplex);
 			boolean notInList = !(movieList.contains(show.getMovie()));
 			if ( sameCineplex && notInList ) {
-				movieList.add(show.getMovie());
+				if (show.getMovie().getStatus() < 3)
+					movieList.add(show.getMovie());
 			}
 		}
 		return movieList;
 	}
-	public static List<Movie> getMovieByCineplex(int cineplexId) {
+	public static List<Movie> getMovieByCineplex(int cineplexId, boolean beforeEnd) {
 		Cineplex cineplex = Cineplex.getOne(cineplexId);
-		return getAllByCineplex(cineplex);
+		return getAllByCineplex(cineplex, beforeEnd);
 	}
 }

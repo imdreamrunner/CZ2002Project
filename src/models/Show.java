@@ -114,7 +114,7 @@ public class Show extends Model {
 		return selected;
 	}
 	public static Show getOne(int id) {
-		List<Show> shows = getAll();
+		List<Show> shows = getAllIncludingDeleted();
 		for (Show show : shows) {
 			if (show.getId() == id) {
 				return show;

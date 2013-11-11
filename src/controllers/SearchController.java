@@ -26,7 +26,7 @@ public class SearchController extends Controller implements MovieLister {
 		gi.display("\nEnter CineplexId to display Movie List on show: ");
 		int cineplexId = gi.inputInteger("cineplexId");             //In this case, cineplexId is index, not real cineplexId, the same to movieId.
 		gi.display("==== Movie List ====");
-		List<Movie> movieList = Movie.getAllByCineplex(cineplexList.get(cineplexId));
+		List<Movie> movieList = Movie.getAllByCineplex(cineplexList.get(cineplexId), true);
 		i = 0;
 		for(Movie movie : movieList){
 			System.out.printf("%4d. %s\n",i,movie.getName());

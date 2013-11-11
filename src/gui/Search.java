@@ -226,16 +226,7 @@ public class Search extends javax.swing.JFrame {
     
 
 	public List<Movie> getMovieByCineplex(Cineplex cineplex) {
-		List<Show> showList = Show.getAll();
-		List<Movie> movieList = new ArrayList<Movie>();
-		for (Show show : showList) {
-			boolean sameCineplex = show.getCinema().getCineplex().equals(cineplex);
-			boolean notInList = !(movieList.contains(show.getMovie()));
-			if ( sameCineplex && notInList ) {
-				movieList.add(show.getMovie());
-			}
-		}
-		return movieList;
+		return Movie.getAllByCineplex(cineplex, true);
 	}
 
 	public List<Movie> getMovieByCineplex(int cineplexId) {

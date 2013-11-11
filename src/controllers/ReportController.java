@@ -14,17 +14,24 @@ public class ReportController extends Controller {
 	public void run() {
 		gi.display(menu);
 		int operation = gi.inputInteger("operation");
+		int year, month, day;
 		switch (operation) {
 			case 1:
-				int year, month, day;
 				year = gi.inputInteger("year");
-				month = gi.inputInteger("month");
-				day = gi.inputInteger("day");
+				month = gi.inputInteger("month", 1, 12);
+				day = gi.inputInteger("day", 1, 31);
 				ListByMovie(year,month,day);
 				break;
 			case 2:
+				year = gi.inputInteger("year");
+				month = gi.inputInteger("month", 1, 12);
+				day = gi.inputInteger("day", 1, 31);
+				ListByCineplexes(year, month, day);
 				break;
 			case 3:
+				year = gi.inputInteger("year");
+				month = gi.inputInteger("month", 1, 12);
+				ListByDay(year, month);
 				break;
 			case 4:
 				break;
@@ -102,7 +109,8 @@ public class ReportController extends Controller {
 	
 	public void ListByDay(int year, int month) {
 		for (int day=1; day<NumberOfDay[month-1]; day++) {
-			//display the day frist
+			//display the day first
+			gi.display("day " + day);
 			ListByCineplexes(year,month,day);
 		}
 	}

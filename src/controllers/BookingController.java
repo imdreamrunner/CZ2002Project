@@ -120,10 +120,12 @@ public class BookingController extends Controller {
     		}
     		gi.display(line);
     	}
+    	/*
     	gi.display("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {
 			gi.display(seat.getId() + " " + seat.getName());
     	}
+    	*/
     	gi.display("**************************");
     }
     

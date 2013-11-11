@@ -33,9 +33,7 @@ public class MovieManagingController extends Controller {
         	displayMovieList();
             int movieId = gi.inputInteger("movie id");
             gi.display("Enter filed number to edit: [Name,Type,Satus] ");
-            String key = gi.inputString("key");
-            String value = gi.inputString("new value");
-            success = editMovie(movieId,key,value);
+            success = editMovie(movieId);
             if (success) gi.display("Movie details updated!");
             else gi.display("Error!");
 			break;
@@ -65,19 +63,18 @@ public class MovieManagingController extends Controller {
         return true;  //for successful adding
     }
     
-    public boolean editMovie(int id, String key, String value) {
+    public boolean editMovie(int id) {
+        String key = gi.inputString("key");
     	Movie movie = Movie.getOne(id);
     	if (key.equals("Name")) {
+    		 String value = gi.inputString("movie name");
     		movie.setName(value);
     	} else if (key.equals("Type")) {
-    		movie.setType(Integer.parseInt(value));
+    		 int value = gi.inputInteger("movie type", 0, 1);
+    		 movie.setType(value);
     	} else if (key.equals("Status")) {
-    		try {
-    			int newStatus = Integer.parseInt(value);
-    			movie.setStatus(newStatus);
-    		} catch (Exception e) {
-    			return false;
-    		}
+    		int value = gi.inputInteger("movie status", 0, 1);
+			movie.setStatus(value);
     	} else return false;
     	movie.save();
         return true;

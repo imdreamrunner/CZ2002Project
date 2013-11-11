@@ -47,7 +47,7 @@ public class PriceManagingController extends Controller {
 	}
     public void displayPriceList() {
     	gi.display("*****PRICE LIST*****");
-    	List<TicketPrice> priceList = getPriceList();
+    	List<TicketPrice> priceList = TicketPrice.getAll();
     	for (TicketPrice tp : priceList) {
     		gi.display(tp.getId() + " " + tp.getKey() + " " + (tp.getValue()/100) + "." + (tp.getValue()%100));
     	}
@@ -76,10 +76,5 @@ public class PriceManagingController extends Controller {
     	if (tp==null) return false;
     	tp.delete();
     	return true;
-    }
-    
-    public List<TicketPrice> getPriceList() {
-    	List<TicketPrice> priceList = TicketPrice.getAll();
-    	return priceList;
     }
 }

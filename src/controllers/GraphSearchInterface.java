@@ -2,7 +2,7 @@ package controllers;
 import gui.Search;
 
 public class GraphSearchInterface {
-	public static void main(String[] args){
+	public static void run(){
 		
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {

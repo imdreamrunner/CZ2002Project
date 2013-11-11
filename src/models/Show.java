@@ -82,6 +82,14 @@ public class Show extends Model {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
+	public Seat getSeat(String name) {
+		List<Seat> seats = getSeats();
+		for (Seat seat : seats) {
+			if (seat.getName().equals(name))
+				return seat;
+		}
+		return null;
+	}
 	@SuppressWarnings("unchecked")
 	public static List<Show> getAll() {
 		return Database.getAll(Show.class);

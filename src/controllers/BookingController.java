@@ -105,9 +105,20 @@ public class BookingController extends Controller {
     		}
     	}
     	for (char row = 'A'; row <= height; row++) {
+    		String line = "";
     		for (int col = 1; col <= width; col++) {
-    			System.out.println("" + row + col);
+    			Seat seat = null;
+    			if ((seat = show.getSeat("" + row + col)) != null) {
+    				if (seat.getStatus()) {
+    					line += "[" + seat.getName() + "] ";
+    				} else {
+    					line += " " + seat.getName() + "  ";
+    				}
+    			} else {
+    				line += "     ";
+    			}
     		}
+    		gi.display(line);
     	}
     	gi.display("*****SEAT AVAILABLE*****");
     	for (Seat seat : seatList) {

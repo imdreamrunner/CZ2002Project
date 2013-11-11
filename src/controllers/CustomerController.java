@@ -13,8 +13,7 @@ public class CustomerController extends Controller {
 					"1. Make a booking",
 					"2. View booking history",
 					"3. Go back to previous page",
-					"4. Quit",
-					"Please input your choice: "
+					"4. Quit"
 			};
 		gi.display(menu);
 		choice = gi.inputInteger("choice", 1, 4);

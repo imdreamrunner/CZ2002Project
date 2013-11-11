@@ -140,7 +140,8 @@ public class Search extends javax.swing.JFrame {
     		//String rating = show.getMovie().getRating();
     		//String item = String.format("%-8d%-10s%-20s%-8s%s\n",Id,cinema,showtime,type,rating);
     		String item = String.format("%-8d%-10s%-20s\n",Id,cinema,showtime);
-    		display.concat(item);
+    		System.out.println(item);
+    		display += item;
     	}
     	
         showTime.setText(display);

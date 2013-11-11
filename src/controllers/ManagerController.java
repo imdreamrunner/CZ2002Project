@@ -56,7 +56,7 @@ public class ManagerController extends Controller {
                 "3. Set price",
                 "4. Set holiday",
                 "5. Generate sale revenue report",
-                "6. Go back to previous page"});
+                "6. Log out"});
     }
     
     public boolean login() {

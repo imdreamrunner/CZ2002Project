@@ -191,7 +191,7 @@ public class BookingController extends Controller {
 			 i++;
 			 gi.display("Ticket " + i);
 			 gi.display("Seat " + ticket.getSeat().getName());
-			 gi.display("Price " + ticket.getPrice() / 100);
+			 gi.display("Price " + ticket.getPrice() / 100.0);
 			 String type = "Adult";
 			 if (ticket.getTicketType() == 1)
 				 type = "Senior";
@@ -200,7 +200,7 @@ public class BookingController extends Controller {
 			 gi.display("Type " + type);
 			 gi.display("--------------");
 		 }
-		 gi.display("Totol price: " + booking.getTotalPrice() / 100);
+		 gi.display("Totol price: " + booking.getTotalPrice() / 100.0);
 		 return true;
 	 }
 	 

@@ -57,7 +57,7 @@ public class ReportController extends Controller {
 	}
 	
 	public void displayTotalRevenue(int revenue) {
-		gi.display("Total Revenue: " + revenue);
+		gi.display("Total Revenue: $" + revenue/100.0);
 	}
 	
 

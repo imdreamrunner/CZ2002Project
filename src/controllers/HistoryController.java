@@ -13,10 +13,7 @@ public class HistoryController extends Controller {
 	public void run() {
 		gi.display(menu);
 		
-		gi.display("Please enter your name: ");
     	String name = gi.inputString("name");
-    	gi.display("Please enter your mobile number: ");
-    	
     	//do we need any error checking on this?
     	int mobile = gi.inputInteger("mobile");
     	Customer customer = validateCustomer(name, mobile);
@@ -33,7 +30,8 @@ public class HistoryController extends Controller {
     public void displayHistory(List<Booking> bookingList){
     	for (Booking booking : bookingList) {
     		gi.display(booking.getCreateTime().toString() + " " + booking.getMovie().getName()
-    				+ " " + booking.getTotalPrice());
+    				+ "*" + booking.getTickets().size()
+    				+ " $" + booking.getTotalPrice()/100);
     		
     	}
     	gi.display("********************************");

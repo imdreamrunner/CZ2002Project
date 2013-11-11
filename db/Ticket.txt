@@ -8,3 +8,5 @@ id=7&bookingId=4&price=800&ticketType=1&seatId=7&showId=2
 id=8&bookingId=5&price=0&ticketType=1&seatId=25&showId=5
 id=9&bookingId=6&price=800&ticketType=1&showId=2&seatId=8
 id=10&bookingId=6&price=800&ticketType=1&showId=2&seatId=9
+id=11&bookingId=7&price=800&ticketType=1&showId=2&seatId=10
+id=12&bookingId=8&price=800&ticketType=1&showId=3&seatId=13

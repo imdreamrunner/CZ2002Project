@@ -7,10 +7,10 @@ id=6&status=0&name=A1&showId=2
 id=7&status=0&name=A2&showId=2
 id=8&status=0&name=A3&showId=2
 id=9&status=0&name=B2&showId=2
-id=10&status=1&name=B3&showId=2
+id=10&status=0&name=B3&showId=2
 id=11&status=1&name=A1&showId=3
 id=12&status=1&name=A2&showId=3
-id=13&status=1&name=A3&showId=3
+id=13&status=0&name=A3&showId=3
 id=14&status=1&name=B2&showId=3
 id=15&status=1&name=B3&showId=3
 id=16&status=1&name=A1&showId=4

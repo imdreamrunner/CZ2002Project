@@ -71,7 +71,7 @@ public class BookingController extends Controller {
     	int mobile = gi.inputInteger("mobile number");
     	if (Customer.getOneByMobile(mobile) != null) {  //!!!!!ugly code!!!!!
     		customer = 	Customer.getOneByMobile(mobile);
-    		System.out.println("Customer Record Retrieved...");
+    		gi.display("Welcome " + customer.getName());
     	} else {
         	String name = gi.inputString("name");
         	String email = gi.inputString("email");
@@ -181,10 +181,16 @@ public class BookingController extends Controller {
 		 booking.calculateTotalPrice();
 		 List<Ticket> tickets = booking.getTickets();
 		 int i = 0;
+		 gi.display("--------------");
+		 gi.display("Movie " + tickets.get(0).getMovie().getName());
+		 gi.display("Cineplex " + tickets.get(0).getCineplex().getName());
+		 gi.display("Cinema " + tickets.get(0).getCinema().getCinemaCode());
+		 gi.display("Time " + tickets.get(0).getShow().getShowTime().toLocaleString());
+		 gi.display("--------------");
 		 for (Ticket ticket : tickets) {
 			 i++;
 			 gi.display("Ticket " + i);
-			 gi.display("Seat " + ticket.getId());
+			 gi.display("Seat " + ticket.getSeat().getName());
 			 gi.display("Price " + ticket.getPrice() / 100);
 			 String type = "Adult";
 			 if (ticket.getTicketType() == 1)
@@ -192,6 +198,7 @@ public class BookingController extends Controller {
 			 if (ticket.getTicketType() == 2)
 				 type = "Student";
 			 gi.display("Type " + type);
+			 gi.display("--------------");
 		 }
 		 gi.display("Totol price: " + booking.getTotalPrice() / 100);
 		 return true;

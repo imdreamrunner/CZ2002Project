@@ -16,12 +16,14 @@ public class Cinema extends Model {
 		cinemaCode = get("cinemaCode").getString();
 		cineplex = Cineplex.getOne(get("cineplexId").getInteger());
 		seatPlan = get("seatPlan").getString();
+		cinemaClass = get("cinemaClass").getInteger();
 	}
 	
 	public void saveData() {
 		set("cinemaCode", cinemaCode);
 		set("cineplexId", cineplex.getId());
 		set("seatPlan", seatPlan);
+		set("cinemaClass", cinemaClass);
 	}
 	
 	public String getCinemaCode() {

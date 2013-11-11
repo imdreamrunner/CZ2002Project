@@ -1,3 +1,3 @@
-id=1&cinemaCode=1&cineplexId=1&seatPlan=A1 A2 A3 B2 B3
-id=2&cinemaCode=2&cineplexId=1&seatPlan=A1 A2 A3 B2 B3
-id=3&cinemaCode=3&cineplexId=1&seatPlan=A2 A3 B1 B2 B3 B4 C1 C2 C3 C4
+id=1&cinemaCode=1&cineplexId=1&cinemaClass=1&seatPlan=A1 A2 A3 B2 B3
+id=2&cinemaCode=2&cineplexId=1&cinemaClass=0&seatPlan=A1 A2 A3 B2 B3
+id=3&cinemaCode=3&cineplexId=1&cinemaClass=0&seatPlan=A2 A3 B1 B2 B3 B4 C1 C2 C3 C4

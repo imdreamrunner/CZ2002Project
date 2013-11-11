@@ -85,6 +85,9 @@ public class Ticket extends Model{
 				price = TicketPrice.getOne(base + 1).getValue();
 			}
 		}
+		if (show.getCinema().getCinemaClass() == 1) {
+			price += TicketPrice.getOne(21).getValue();
+		}
 		save();
 	}
 	public int getPrice() {

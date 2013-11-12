@@ -51,7 +51,7 @@ public class MovieManagingController extends Controller {
 	
 	public void displayMovieInfo(Movie movie) {
     	gi.display("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
-    			+ " Movie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
+    			+ "\nMovie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
     }
 
 	public boolean addMovie(String newMovieName, int newMovieType, int newMovieStatus) {

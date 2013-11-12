@@ -173,7 +173,7 @@ public class BookingController extends Controller {
 			 ticket.setShow(show);
 			 ticket.setSeat(seat);
 			 ticket.setBooking(booking);
-			 ticket.setTicketType(1);
+			 ticket.setTicketType(type);
 			 ticket.save();
 		 }
 		//create booking
@@ -193,9 +193,9 @@ public class BookingController extends Controller {
 			 gi.display("Seat " + ticket.getSeat().getName());
 			 gi.display("Price " + ticket.getPrice() / 100.0);
 			 String type = "Adult";
-			 if (ticket.getTicketType() == 1)
-				 type = "Senior";
 			 if (ticket.getTicketType() == 2)
+				 type = "Senior";
+			 if (ticket.getTicketType() == 3)
 				 type = "Student";
 			 gi.display("Type " + type);
 			 gi.display("--------------");

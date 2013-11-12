@@ -53,7 +53,7 @@ public class ReportController extends Controller {
 	};
 	
 	public void displayRevenue(String name, int revenue) {
-		gi.display(name + " : " + revenue);
+		gi.display(name + " : $" + revenue/100.0);
 	}
 	
 	public void displayTotalRevenue(int revenue) {

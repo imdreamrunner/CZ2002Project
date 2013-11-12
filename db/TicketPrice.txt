@@ -1,6 +1,6 @@
 id=1&value=1000&key=Regular Movie
 id=2&value=500&key=Regular Senior
-id=3&value=5000&key=Regular Student
+id=3&value=500&key=Regular Student
 id=4&value=1200&key=Regular Holoday
 id=11&value=1500&key=3D Movie
 id=12&value=1000&key=3D Senior

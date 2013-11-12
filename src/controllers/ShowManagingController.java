@@ -52,7 +52,8 @@ public class ShowManagingController extends Controller {
 	public void listMovie() {
 		List<Movie> movieList = Movie.getAll();
 		for (Movie movie : movieList) {
-			System.out.println("" + movie.getId() + " " + movie.getName());
+			if (movie.getStatus() < 3)
+				System.out.println("" + movie.getId() + " " + movie.getName());
 		}
 	}
 	public void listCineplex() {

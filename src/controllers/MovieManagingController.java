@@ -49,9 +49,23 @@ public class MovieManagingController extends Controller {
     	// gi.display("*****END OF MOVIE LIST*****");
     }
 	
+	public String movieType(int type) {
+		switch (type) {
+		case 0:
+			return "coming soon";
+		case 1:
+			return "preview";
+		case 2:
+			return "on show";
+		}
+		return "end of show";
+	}
+	
 	public void displayMovieInfo(Movie movie) {
-    	gi.display("Movie " + movie.getId() + " \nName: " + movie.getName()
-    			+ "\nType: " + movie.getType() + "\nStatus: " + movie.getStatus()
+    	gi.display("Movie " + movie.getId()
+    			+ " \nName: " + movie.getName()
+    			+ "\nType: " + movie.getType() 
+    			+ "\nStatus: " + movieType(movie.getStatus())
     			+ "\nRating: " + movie.getRating()
     			+ "\n----------");
     }
@@ -71,13 +85,13 @@ public class MovieManagingController extends Controller {
         int key = gi.inputInteger("choice", 1, 4);
     	Movie movie = Movie.getOne(id);
     	if (key == 1) {
-    		 String value = gi.inputString("movie name");
+    		 String value = gi.inputString("name");
     		movie.setName(value);
     	} else if (key == 2) {
-    		 int value = gi.inputInteger("movie type", 0, 1);
+    		 int value = gi.inputInteger("type", 0, 1);
     		 movie.setType(value);
     	} else if (key == 3) {
-    		int value = gi.inputInteger("movie status", 0, 3);
+    		int value = gi.inputInteger("status (0. coming soon 1. preview 2. on show 3. end)", 0, 3);
 			movie.setStatus(value);
     	} else if (key == 4) {
     		movie.setRating(gi.inputString("rating"));

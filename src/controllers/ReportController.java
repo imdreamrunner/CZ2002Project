@@ -110,7 +110,7 @@ public class ReportController extends Controller {
 	
 	
 	public void ListByDay(int year, int month) {
-		for (int day=1; day<NumberOfDay[month-1]; day++) {
+		for (int day=1; day<=NumberOfDay[month-1]; day++) {
 			//display the day first
 			gi.display("day " + day);
 			ListByCineplexes(year,month,day);

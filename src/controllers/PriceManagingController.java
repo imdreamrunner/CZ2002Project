@@ -15,7 +15,7 @@ public class PriceManagingController extends Controller {
         int operation = gi.inputInteger("operation", 1, 2);
         if (operation == 1) {
         	int newID = gi.inputInteger("id");
-        	int newPrice = gi.inputInteger("new price");
+        	int newPrice = gi.inputInteger("new price in cents");
         	success = editPrice(newID,newPrice);
             if (success) 
             	gi.display("Price updated!");

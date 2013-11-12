@@ -50,6 +50,13 @@ public class MovieManagingController extends Controller {
     }
 	
 	public String movieType(int type) {
+		if (type == 0)
+			return "Regular";
+		else
+			return "3D";
+	}
+	
+	public String movieStatus(int type) {
 		switch (type) {
 		case 0:
 			return "coming soon";
@@ -65,7 +72,7 @@ public class MovieManagingController extends Controller {
     	gi.display("Movie " + movie.getId()
     			+ " \nName: " + movie.getName()
     			+ "\nType: " + movie.getType() 
-    			+ "\nStatus: " + movieType(movie.getStatus())
+    			+ "\nStatus: " + movieStatus(movie.getStatus())
     			+ "\nRating: " + movie.getRating()
     			+ "\n----------");
     }

@@ -13,7 +13,7 @@ import utils.Controller;
 public class ShowManagingController extends Controller {
 
 	public void run() {
-        System.out.println("1. add a show 2. list coming shows 3. update a show");
+        System.out.println("1. add a show 2. list coming shows 3. update a show 4. remove a show");
         int choice = gi.inputInteger("choice", 1, 3);
         switch(choice) {
         case 1:
@@ -26,6 +26,9 @@ public class ShowManagingController extends Controller {
         	listShow();
         	updateShow();
         	break;
+        case 4:
+        	listShow();
+        	removeShow();
         }
 	}
 	public void addShow() {
@@ -80,13 +83,29 @@ public class ShowManagingController extends Controller {
 	}
 	public void updateShow() {
 		int showId = gi.inputInteger("show id");
-		int deleted = gi.inputInteger("0 normal, 1 deleted", 0, 1);
+		int year = gi.inputInteger("year", 2000, 2099);
+		int month =  gi.inputInteger("month", 1, 12);
+		int day = gi.inputInteger("day", 1, 31);
+		int hour = gi.inputInteger("hour", 0, 23);
+		int minute = gi.inputInteger("minute", 0, 59);
 		Show show = Show.getOne(showId);
 		if (show == null) {
 			gi.display("No such show");
 			return;
 		}
-		show.setDeleted(deleted == 1);
+		Calendar showTime = new GregorianCalendar(year, month-1, day, hour, minute, 0);
+		show.setShowTime(showTime.getTime());
+		show.save();
+		gi.display("changes saved");
+	}
+	public void removeShow() {
+		int showId = gi.inputInteger("show id");
+		Show show = Show.getOne(showId);
+		if (show == null) {
+			gi.display("No such show");
+			return;
+		}
+		show.setDeleted(true);
 		show.save();
 		gi.display("changes saved");
 	}

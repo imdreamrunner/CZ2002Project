@@ -1,7 +1,7 @@
-id=1&status=3&name=Kung Fu Panda&rating=7&type=1
-id=2&status=2&name=Bad Apple&rating=7&type=1
-id=3&status=2&name=Titanic&rating=7&type=0
-id=4&status=2&name=Inception&rating=7&type=0
-id=5&status=2&name=The Shawshank Redemption&rating=7&type=1
-id=6&status=2&name=The Lord of the Rings: The Return of the King&rating=7&type=0
+id=1&status=3&name=Kung Fu Panda&rating=G&type=1
+id=2&status=2&name=Bad Apple&rating=G&type=0
+id=3&status=2&name=Titanic&rating=G&type=1
+id=4&status=2&name=Inception&rating=G&type=0
+id=5&status=2&name=The Shawshank Redemption&rating=G&type=1
+id=6&status=2&name=The Lord of the Rings: The Return of the King&rating=G&type=0
 id=7&status=1&name=Toy Story&rating=8.5&type=0

@@ -1,2 +1,6 @@
 id=1&bookingId=1&price=1000&ticketType=1&showId=3&seatId=18
 id=2&bookingId=1&price=500&ticketType=3&showId=3&seatId=19
+id=3&bookingId=2&price=500&ticketType=3&showId=4&seatId=24
+id=4&bookingId=3&price=1000&ticketType=1&showId=2&seatId=6
+id=5&bookingId=3&price=500&ticketType=3&showId=2&seatId=7
+id=6&bookingId=4&price=1500&ticketType=1&showId=5&seatId=26

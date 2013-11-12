@@ -131,7 +131,7 @@ public class Search extends javax.swing.JFrame {
     	
     	//String display = "ShowId  Cinema    Showtime            Type    Rating\n";
     	Movie movie = showList.get(0).getMovie();
-    	String display = String.format("Title: %s\nType: %s\nRating: %s\nShowId      Cinema      Showtime\n",movie.getName(),movie.getType(),movie.getRating());
+    	String display = String.format("Title: %s\nType: %s\nRating: %s\nShowId      Cinema      Showtime\n",movie.getName(),movieType(movie.getType()),movie.getRating());
     	for(Show show : showList){
     		int Id = show.getId();
     		String cinema = show.getCinema().getCinemaCode();
@@ -145,7 +145,14 @@ public class Search extends javax.swing.JFrame {
     	}
     	
         showTime.setText(display);
-    }                                        
+    } 
+    
+    public String movieType(int type) {
+		if (type == 0)
+			return "Regular";
+		else
+			return "3D";
+	}
 
     private void CloseActionPerformed(java.awt.event.ActionEvent evt) {                                         
         this.dispose();

@@ -25,14 +25,14 @@ public class MovieManagingController extends Controller {
             String newMovieName = gi.inputString("movie name");
             int newMovieType = gi.inputInteger("type (0 regular, 1 3D)", 0, 1);
             int newMovieStatus = gi.inputInteger("status (0. coming soon 1. preview 2. on show 3. end)", 0, 3);
-            boolean success = addMovie(newMovieName,newMovieType,newMovieStatus);
+            String newMovieRating = gi.inputString("rating");
+            boolean success = addMovie(newMovieName,newMovieType,newMovieStatus, newMovieRating);
             if (success) System.out.println("Movie added!");
             else System.out.println("Error!");
 			break;
 		case 3: 
         	displayMovieList();
             int movieId = gi.inputInteger("movie id");
-            gi.display("Enter filed number to edit: [Name,Type,Status] ");
             success = editMovie(movieId);
             if (success) gi.display("Movie details updated!");
             else gi.display("Error!");
@@ -46,36 +46,42 @@ public class MovieManagingController extends Controller {
     	for (Movie movie : movieList) {
     		displayMovieInfo(movie);
     	}
-    	gi.display("*****END OF MOVIE LIST*****");
+    	// gi.display("*****END OF MOVIE LIST*****");
     }
 	
 	public void displayMovieInfo(Movie movie) {
-    	gi.display("MovieID = " + movie.getId() + " Movie Name = " + movie.getName()
-    			+ "\nMovie Type = " + movie.getType() + " Mvoie Status = " + movie.getStatus());
+    	gi.display("Movie " + movie.getId() + " \nName: " + movie.getName()
+    			+ "\nType: " + movie.getType() + "\nStatus: " + movie.getStatus()
+    			+ "\nRating: " + movie.getRating()
+    			+ "\n----------");
     }
 
-	public boolean addMovie(String newMovieName, int newMovieType, int newMovieStatus) {
+	public boolean addMovie(String newMovieName, int newMovieType, int newMovieStatus, String newMovieRating) {
     	Movie newMovie = new Movie();
     	newMovie.setName(newMovieName);
     	newMovie.setType(newMovieType);
     	newMovie.setStatus(newMovieStatus);
+    	newMovie.setRating(newMovieRating);
     	newMovie.save();
         return true;  //for successful adding
     }
     
     public boolean editMovie(int id) {
-        String key = gi.inputString("key");
+    	gi.display("Edit 1. name 2. type 3. status 4. rating");
+        int key = gi.inputInteger("choice", 1, 4);
     	Movie movie = Movie.getOne(id);
-    	if (key.equals("Name")) {
+    	if (key == 1) {
     		 String value = gi.inputString("movie name");
     		movie.setName(value);
-    	} else if (key.equals("Type")) {
+    	} else if (key == 2) {
     		 int value = gi.inputInteger("movie type", 0, 1);
     		 movie.setType(value);
-    	} else if (key.equals("Status")) {
+    	} else if (key == 3) {
     		int value = gi.inputInteger("movie status", 0, 3);
 			movie.setStatus(value);
-    	} else return false;
+    	} else if (key == 4) {
+    		movie.setRating(gi.inputString("rating"));
+    	}
     	movie.save();
         return true;
     }

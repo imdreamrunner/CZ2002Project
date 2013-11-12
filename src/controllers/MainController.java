@@ -6,7 +6,7 @@ import utils.Controller;
 public class MainController extends Controller {
 	public void run() {
 		int choice = 0;
-		while (choice < 3) {
+		while (choice < 4) {
 			gi.display("***** Welcome To MOBLIMA *****");
 			String[] menu = {
 					"Please select your entry:",

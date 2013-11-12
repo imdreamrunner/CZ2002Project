@@ -131,7 +131,7 @@ public class Search extends javax.swing.JFrame {
     	
     	//String display = "ShowId  Cinema    Showtime            Type    Rating\n";
     	Movie movie = showList.get(0).getMovie();
-    	String display = String.format("Title: %s\nType: %s\nRating: %s\nShowId        Cinema        Showtime\n",movie.getName(),movie.getType(),movie.getRating());
+    	String display = String.format("Title: %s\nType: %s\nRating: %s\nShowId      Cinema      Showtime\n",movie.getName(),movie.getType(),movie.getRating());
     	for(Show show : showList){
     		int Id = show.getId();
     		String cinema = show.getCinema().getCinemaCode();
@@ -139,7 +139,7 @@ public class Search extends javax.swing.JFrame {
     		//String type = show.getMovie().getType();
     		//String rating = show.getMovie().getRating();
     		//String item = String.format("%1$-8d%1$-10s%1$-20s\n",Id,cinema,showtime,type,rating);
-    		String item = String.format("%-20d%-22s%-34s\n",Id,cinema,showtime);
+    		String item = String.format("%-15d%-15s%-28s\n",Id,cinema,showtime);
     		// System.out.println(item);
     		display += item;
     	}

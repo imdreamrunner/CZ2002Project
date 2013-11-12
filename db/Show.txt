@@ -3,3 +3,4 @@ id=2&movieId=3&cinemaId=2&showTime=1384431600000&deleted=0
 id=3&movieId=3&cinemaId=3&showTime=1384434000000&deleted=0
 id=4&movieId=3&cinemaId=4&showTime=1384516800000&deleted=0
 id=5&movieId=7&cinemaId=5&showTime=1384603200000&deleted=0
+id=6&movieId=4&cinemaId=5&showTime=1384405200000&deleted=1

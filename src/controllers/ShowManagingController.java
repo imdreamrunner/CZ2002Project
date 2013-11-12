@@ -18,6 +18,7 @@ public class ShowManagingController extends Controller {
         switch(choice) {
         case 1:
         	addShow();
+        	gi.display("Show added.");
         	break;
         case 2:
         	listShow();

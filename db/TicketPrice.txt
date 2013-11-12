@@ -1,4 +1,4 @@
-id=1&value=1000&key=Regular Movie
+id=1&value=900&key=Regular Movie
 id=2&value=500&key=Regular Senior
 id=3&value=500&key=Regular Student
 id=4&value=1200&key=Regular Holoday

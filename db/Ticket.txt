@@ -4,3 +4,6 @@ id=3&bookingId=2&price=500&ticketType=3&showId=4&seatId=24
 id=4&bookingId=3&price=1000&ticketType=1&showId=2&seatId=6
 id=5&bookingId=3&price=500&ticketType=3&showId=2&seatId=7
 id=6&bookingId=4&price=1500&ticketType=1&showId=5&seatId=26
+id=7&bookingId=5&price=1500&ticketType=1&showId=3&seatId=11
+id=8&bookingId=5&price=1200&ticketType=3&showId=3&seatId=12
+id=9&bookingId=6&price=1000&ticketType=2&showId=3&seatId=14

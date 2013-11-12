@@ -28,8 +28,3 @@ id=27&status=1&name=A2&showId=5
 id=28&status=1&name=A3&showId=5
 id=29&status=1&name=B2&showId=5
 id=30&status=1&name=B3&showId=5
-id=31&status=1&name=A1&showId=6
-id=32&status=1&name=A2&showId=6
-id=33&status=1&name=A3&showId=6
-id=34&status=1&name=B2&showId=6
-id=35&status=1&name=B3&showId=6

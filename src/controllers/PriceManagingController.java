@@ -10,21 +10,19 @@ public class PriceManagingController extends Controller {
 	@Override
 	public void run() {
 		displayPriceList();
-		gi.display("1. display price list 2. change a price; 3. add a new price; 4. delete a price");
+		gi.display("1. change a price 2. return");
         boolean success;
-        int operation = gi.inputInteger("operation");
+        int operation = gi.inputInteger("operation", 1, 2);
         if (operation == 1) {
-        	displayPriceList();
-        } else if (operation == 2) {
-        	gi.display("Enter ID: ");
-        	int newID = gi.inputInteger("newID");
-        	gi.display("Enter Value: ");
-        	int newPrice = gi.inputInteger("newPrice");
+        	int newID = gi.inputInteger("id");
+        	int newPrice = gi.inputInteger("new price");
         	success = editPrice(newID,newPrice);
             if (success) 
             	gi.display("Price updated!");
             else 
             	gi.display("Error!");
+        } else if (operation == 2) {
+        	return;
         } else if (operation == 3) {
         	gi.display("Enter New Key: ");
         	String newKey = gi.inputString("newKey");

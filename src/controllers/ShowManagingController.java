@@ -14,7 +14,7 @@ public class ShowManagingController extends Controller {
 
 	public void run() {
         System.out.println("1. add a show 2. list coming shows 3. update a show 4. remove a show");
-        int choice = gi.inputInteger("choice", 1, 3);
+        int choice = gi.inputInteger("choice", 1, 4);
         switch(choice) {
         case 1:
         	addShow();

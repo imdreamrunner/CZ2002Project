@@ -180,6 +180,11 @@ public class BookingController extends Controller {
 		//create booking
 		 booking.save();
 		 booking.calculateTotalPrice();
+		 printBooking(booking);
+		 return true;
+	 }
+	 
+	 public void printBooking(Booking booking) {
 		 List<Ticket> tickets = booking.getTickets();
 		 int i = 0;
 		 gi.display("--------------");
@@ -202,7 +207,6 @@ public class BookingController extends Controller {
 			 gi.display("--------------");
 		 }
 		 gi.display("Totol price: " + booking.getTotalPrice() / 100.0);
-		 return true;
 	 }
 	 
 

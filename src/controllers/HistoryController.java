@@ -5,6 +5,7 @@ import java.util.List;
 
 import models.Booking;
 import models.Customer;
+import models.Ticket;
 import utils.Controller;
 
 public class HistoryController extends Controller {
@@ -29,9 +30,12 @@ public class HistoryController extends Controller {
     	
     public void displayHistory(List<Booking> bookingList){
     	for (Booking booking : bookingList) {
+    		printBooking(booking);
+    		/*
     		gi.display(booking.getCreateTime().toString() + " " + booking.getMovie().getName()
     				+ "*" + booking.getTickets().size()
     				+ " $" + booking.getTotalPrice()/100);
+    		*/
     		
     	}
     	gi.display("********************************");
@@ -53,4 +57,29 @@ public class HistoryController extends Controller {
     	}
     	return resultList;
     }
+    
+    public void printBooking(Booking booking) {
+		 List<Ticket> tickets = booking.getTickets();
+		 int i = 0;
+		 gi.display("****************");
+		 gi.display("Movie " + tickets.get(0).getMovie().getName());
+		 gi.display("Cineplex " + tickets.get(0).getCineplex().getName());
+		 gi.display("Cinema " + tickets.get(0).getCinema().getCinemaCode());
+		 gi.display("Time " + tickets.get(0).getShow().getShowTime().toLocaleString());
+		 gi.display("--------------");
+		 for (Ticket ticket : tickets) {
+			 i++;
+			 gi.display("Ticket " + i);
+			 gi.display("Seat " + ticket.getSeat().getName());
+			 gi.display("Price " + ticket.getPrice() / 100.0);
+			 String type = "Adult";
+			 if (ticket.getTicketType() == 2)
+				 type = "Senior";
+			 if (ticket.getTicketType() == 3)
+				 type = "Student";
+			 gi.display("Type " + type);
+			 gi.display("--------------");
+		 }
+		 gi.display("Totol price: " + booking.getTotalPrice() / 100.0);
+	 }
 }

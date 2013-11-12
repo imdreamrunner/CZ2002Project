@@ -1,3 +1,5 @@
 id=1&cinemaCode=Primer&cineplexId=1&cinemaClass=1&seatPlan=A1 A2 A3 B2 B3
-id=2&cinemaCode=A&cineplexId=1&cinemaClass=0&seatPlan=A1 A2 A3 B2 B3
-id=3&cinemaCode=B&cineplexId=1&cinemaClass=0&seatPlan=A2 A3 B1 B2 B3 B4 C1 C2 C3 C4
+id=2&cinemaCode=Hall A&cineplexId=1&cinemaClass=0&seatPlan=A1 A2 A3 B2 B3
+id=3&cinemaCode=Hall B&cineplexId=1&cinemaClass=0&seatPlan=A2 A3 B1 B2 B3 B4 C1 C2 C3 C4
+id=4&cinemaCode=Hall A&cineplexId=2&cinemaClass=0&seatPlan=A1 A2 A3 B2 B3
+id=5&cinemaCode=Hall A&cineplexId=3&cinemaClass=0&seatPlan=A1 A2 A3 B2 B3

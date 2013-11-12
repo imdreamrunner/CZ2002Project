@@ -13,3 +13,4 @@ id=12&movieId=6&cinemaId=3&showTime=1387022400000&deleted=0
 id=13&movieId=2&cinemaId=1&showTime=1387029600000&deleted=0
 id=14&movieId=3&cinemaId=2&showTime=1387029600000&deleted=0
 id=15&movieId=4&cinemaId=3&showTime=1387029600000&deleted=0
+id=16&movieId=1&cinemaId=3&showTime=1384412400000&deleted=0

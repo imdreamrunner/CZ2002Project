@@ -6,3 +6,4 @@ id=5&createTime=1384166133562&customerId=2&TID=1384166133562&bookingStatus=succe
 id=6&createTime=1384176055215&customerId=2&TID=1384176055215&bookingStatus=success&totalPrice=1600
 id=7&createTime=1384176589817&customerId=6&TID=1384176589817&bookingStatus=success&totalPrice=800
 id=8&createTime=1384177385154&customerId=2&TID=1384177385154&bookingStatus=success&totalPrice=800
+id=9&createTime=1384245868840&customerId=7&TID=1384245868840&bookingStatus=success&totalPrice=1000

@@ -10,21 +10,23 @@ public class HolidayManagingController extends Controller {
 
 	@Override
 	public void run() {
-		displayHolidayList();
-		gi.display("1. add a new holiday; 2. delete a holiday");
+		gi.display("1. list holidays 2. add a new holiday; 3. delete a holiday");
         boolean success;
-        int operation = gi.inputInteger("operation");
+        int operation = gi.inputInteger("operation", 1, 3);
         if (operation == 1) {
+    		displayHolidayList();
+        } else if (operation == 2) {
         	gi.display("Enter Month: ");
         	int month = gi.inputInteger("month");
         	gi.display("Enter Day: ");
         	int day = gi.inputInteger("day");
         	success = addHoliday(month,day);
             if (success) 
-            	gi.display("Price added!");
+            	gi.display("Holiday added!");
             else 
             	gi.display("Error!");
-        } else if (operation == 2) {
+        } else if (operation == 3) {
+    		displayHolidayList();
         	gi.display("Enter ID: ");
         	int id = gi.inputInteger("id");
         	success = deleteHoliday(id);
@@ -37,18 +39,13 @@ public class HolidayManagingController extends Controller {
 	
 	 public void displayHolidayList() {
         gi.display("*****HOLIDAY LIST*****");
-        List<Holiday> holidayList = getHolidayList();
+        List<Holiday> holidayList = Holiday.getAll();
         for (Holiday holiday : holidayList) {
         	gi.display(holiday.getId() + " Month = " + holiday.getMonth() + " Day = " + holiday.getDay());
         }
         gi.display("*****END OF HOLIDAY LIST*****");
     }
 	 
-    public List<Holiday> getHolidayList() {
-    	List<Holiday> holidayList = Holiday.getAll();
-    	return holidayList;
-    }
-    
     public boolean addHoliday(int month, int day) {
     	//add some restriction here
     	Holiday holiday = new Holiday();
